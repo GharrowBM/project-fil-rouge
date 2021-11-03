@@ -1,6 +1,5 @@
 import {Link} from "react-router-dom"
 import React from 'react'
-import '../styles/NavBar.css'
 
 class NavBar extends React.PureComponent {
 
@@ -23,7 +22,7 @@ class NavBar extends React.PureComponent {
                     <input type="text" name="search-input" id="search-input" placeholder="Rechercher..." value={this.inputValue} onChange={(e) => this.setState({inputValue: e.currentTarget.value})}/>
                     </div>
                     <Link to="/signin">Se connecter</Link>
-                    <Link to="/signup">S'enregister</Link>
+                    <Link to="/register">S'enregister</Link>
                     <Link to="/about">A propos</Link>
             </nav>
         )

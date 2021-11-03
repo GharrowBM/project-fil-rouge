@@ -19,7 +19,8 @@ body {
 }
 
 header {
-    background-color: var(--main-color-1)
+    background-color: var(--main-color-1);
+    margin-bottom: 50px;
 }
 
 .header-navbar {
@@ -36,7 +37,7 @@ header {
     gap: 25px;
     width: 60%;
     padding: 10px;
-    margin: 25px auto;
+    margin: 0 auto 50px auto;
     /* border: var(--main-color-3) solid 1px; */
     /* background-color: var(--main-color-3); */
     text-align: center;
@@ -157,7 +158,7 @@ header {
     font-size: 11px;
 }
 
-.forum-poster__avatar {
+.forum-poster__avatar, .post-poster__avatar {
     width: 40px;
 }
 
@@ -176,4 +177,8 @@ header {
 
 .forum-poster__name {
     align-self: center;
+}
+
+.form-register, .form-signin {
+    color: white;
 }

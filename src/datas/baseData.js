@@ -233,13 +233,14 @@ export const baseForums = [
 export const baseUsers = [
     {
         id: 0,
-        name: "Fils Rouge",
+        name: "Fils rouge",
         selectedTags: [
             "React",
             "Javascript",
         ],
         mail: "filsrouge@gmail.com",
         password: "fiidfsyhduifsdopf",
+        avatar: null
     },
     {
         id: 1,
@@ -250,6 +251,7 @@ export const baseUsers = [
         ],
         mail: "fillerose@outlook.com",
         password: "ikhffsd5dfd56d5",
+        avatar: null
     },
     {
         id: 2,
@@ -261,6 +263,7 @@ export const baseUsers = [
         ],
         mail: "grandperevert@aol.com",
         password: "0011110011011100110011000011011110011001",
+        avatar: null
     },
     {
         id: 3,
@@ -271,6 +274,7 @@ export const baseUsers = [
         ],
         mail: "grandmerebleue@laposte.fr",
         password: "uizfddiqodqdg",
+        avatar: null
     },
     {
         id: 4,
@@ -281,6 +285,7 @@ export const baseUsers = [
         ],
         mail: "gordon.freeman@protonmail.com",
         password: "dffjLKLDN272d_dhozeb!",
+        avatar: null
     },
     {
         id: 5,
@@ -291,6 +296,7 @@ export const baseUsers = [
         ],
         mail: "stanley@gmail.com",
         password: "iuyufoiefghfiiug",
+        avatar: null
     },
     {
         id: 6,
@@ -304,6 +310,7 @@ export const baseUsers = [
         ],
         mail: "james.sunderland@gmail.com",
         password: "fiuzhfefmariadfhgfzefiozfh",
+        avatar: null
     },
     {
         id: 7,
@@ -313,6 +320,7 @@ export const baseUsers = [
         ],
         mail: "ohmygod@gmail.com",
         password: "yokoohno",
+        avatar: null
     },
     {
         id: 8,
@@ -322,6 +330,7 @@ export const baseUsers = [
         ],
         mail: "dio@gmail.com",
         password: "mudamuda",
+        avatar: null
     },
     {
         id: 9,
@@ -334,6 +343,7 @@ export const baseUsers = [
         ],
         mail: "ilovemyhair@gmail.com",
         password: "What did you say about my hair ?",
+        avatar: null
     },
     {
         id: 10,
@@ -349,5 +359,6 @@ export const baseUsers = [
         ],
         mail: "yareyare@gmail.com",
         password: "oraoraora",
+        avatar: null
     },
 ]
