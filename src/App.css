@@ -33,11 +33,12 @@ header {
 .tags-area {
     display: grid;
     grid-template: 1fr / repeat(2, 1fr);
+    gap: 25px;
     width: 60%;
     padding: 10px;
     margin: 25px auto;
-    border: var(--main-color-3) solid 1px;
-    border-radius: 5px;
+    /* border: var(--main-color-3) solid 1px; */
+    /* background-color: var(--main-color-3); */
     text-align: center;
 }
 
@@ -46,6 +47,8 @@ header {
     grid-template: repeat(5, 1fr) / repeat(5, 1fr);
     grid-auto-rows: 1fr;
     row-gap: 10px;
+    background-color: var(--main-color-3);
+    border-radius: 5px;
 }
 
 .selected-tags {
@@ -53,18 +56,26 @@ header {
     grid-template: repeat(5, 1fr) / 1fr;
     row-gap: 10px;
     justify-content: center;    
+    background-color: var(--main-color-3);
+    border-radius: 5px;
 }
 
 .search-tags div, .selected-tags div {
-    border: var(--main-color-3) solid 1px;
+    /* border: var(--main-color-3) solid 1px; */
+    border: var(--main-bg-color) solid 1px;
     border-radius: 5px;
     color: white;
-    margin: 0 auto;
+    margin: 5px auto;
     padding: 2px 5px;
     min-width: 80px;
 } 
 
 .selected-tags div {
+    /* background-color: rgba(35, 99, 85, 0.8); */
+    background-color: rgb(22, 129, 49);
+}
+
+.search-tags div {
     background-color: var(--main-color-2);
 }
 
@@ -83,6 +94,7 @@ header {
     border: none;
     appearance: none;
     background-color: var(--main-bg-color);
+    font-family: var(--main-text-font);
     color: white; 
     font-size: 15px;
 }
@@ -105,4 +117,63 @@ header {
 
 .header-navbar a:hover {
     color: var(--main-navbar-text-hover);
+}
+
+.forum-question {
+    width: 70%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 0.7fr 8fr 1fr;
+    margin-bottom: 50px;
+    background-color: rgba(170, 192, 197,0.6);
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.forum-question:hover {
+    background-color: rgba(108, 193, 212, 0.8);
+    transform: scale(1.01);
+}
+
+.forum-question__content {
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.forum-question a {
+    text-decoration: none;
+    color: rgb(32, 44, 218);
+}
+
+.forum-counters {
+    align-self: center;
+    padding: 10px;
+}
+
+.forum-poster {
+    font-size: 11px;
+}
+
+.forum-poster__avatar {
+    width: 40px;
+}
+
+.forum-poster__asked {
+    text-align: center;
+}
+
+.forum-posterinfo{
+    display: flex;
+    justify-content: center;
+}
+
+.forum-posterinfo * {
+    margin: 3px;
+}
+
+.forum-poster__name {
+    align-self: center;
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import {baseTags} from '../datas/baseTags' 
+import {baseTags} from '../datas/baseData' 
 
 class SearchTags extends React.PureComponent {
     constructor(props) {

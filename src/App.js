@@ -3,8 +3,9 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-import Home from './views/Home'
-import './App.css'
+import Home from './views/Home';
+import './App.css';
+import { baseForums, baseTags, baseUsers } from "./datas/baseData";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
           <Route path="/users">
           </Route>
           <Route path="/">
-            <Home />
+            <Home baseForums={baseForums} baseTags={baseTags} baseUsers={baseUsers} />
           </Route>
         </Switch>
     </Router>
