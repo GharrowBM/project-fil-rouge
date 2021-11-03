@@ -1,38 +1,108 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+:root {
+    --main-bg-color: #202124;
+    --main-color-1: #3E2C41;
+    --main-color-2: #5C527F;
+    --main-color-3: #6E85B2;
+    --main-navbar-text-color: rgba(255,255,255,0.8);
+    --main-navbar-text-hover: rgba(255,255,255,0.95);
+    --main-text-font : 'Ubuntu Mono', monospace;
   }
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    }
+
+body {
+  background-color: var(--main-bg-color)
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+header {
+    background-color: var(--main-color-1)
 }
 
-.App-link {
-  color: #61dafb;
+.header-navbar {
+    height: 50px;
+    text-align: center;
+    display: grid;
+    grid-template: 1fr / 1fr 6fr repeat(3, 1fr) ;
+    align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.tags-area {
+    display: grid;
+    grid-template: 1fr / repeat(2, 1fr);
+    width: 60%;
+    padding: 10px;
+    margin: 25px auto;
+    border: var(--main-color-3) solid 1px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.search-tags {
+    display: grid;
+    grid-template: repeat(5, 1fr) / repeat(5, 1fr);
+    grid-auto-rows: 1fr;
+    row-gap: 10px;
+}
+
+.selected-tags {
+    display: grid;
+    grid-template: repeat(5, 1fr) / 1fr;
+    row-gap: 10px;
+    justify-content: center;    
+}
+
+.search-tags div, .selected-tags div {
+    border: var(--main-color-3) solid 1px;
+    border-radius: 5px;
+    color: white;
+    margin: 0 auto;
+    padding: 2px 5px;
+    min-width: 80px;
+} 
+
+.selected-tags div {
+    background-color: var(--main-color-2);
+}
+
+.search-area {
+    display: grid;
+    grid-template: 1fr / 1fr 9fr;
+    align-items: center;
+    background-color: var(--main-bg-color);
+    color: greenyellow; 
+    font-family: var(--main-text-font);
+    font-size: 15px;
+}
+
+#search-input {
+    padding: 10px 0 10px 5px;   
+    border: none;
+    appearance: none;
+    background-color: var(--main-bg-color);
+    color: white; 
+    font-size: 15px;
+}
+
+#search-input:focus {
+    outline: none;
+}
+
+#search-input::placeholder {
+    color: greenyellow; 
+    margin-left: 10px;
+}
+
+.header-navbar a {
+    appearance: none;
+    text-decoration: none;
+    color: var(--main-navbar-text-color);
+    font-weight: bold;
+}
+
+.header-navbar a:hover {
+    color: var(--main-navbar-text-hover);
 }
