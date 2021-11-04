@@ -23,8 +23,14 @@ class Home extends React.PureComponent {
         return (<>
             <Header />
             <div className="tags-area">
+                <div>
+                    <h2>Selected tags :</h2>
                 <SelectedTags />
-            <SearchTags />
+                </div>
+                <div>
+                    <h2>Available tags :</h2>
+                    <SearchTags />
+                </div>
             </div>
             {this.state.baseQuestions.map((forum,index) => <Question key={index} forum={forum}/>)}
         </>)

@@ -13,7 +13,10 @@ class SignIn extends React.PureComponent {
 
     testSignin(mail, pass) {
 
-        const tmpUser = baseUsers.find(x => x.mail === mail)
+        const tmpUser = baseUsers.find(x => x.mail === mail);
+        const loginError = document.querySelector(".loginerror")
+
+        tmpUser?.password === pass ? window.location = "/" : loginError.innerHTML = "Erreur"
 
         console.log(tmpUser?.password === pass ? 'Login Successful' : 'Login Failed')
     }
@@ -40,6 +43,7 @@ class SignIn extends React.PureComponent {
                     <input type="password" name="input-password" id="input-password" value={this.state.password} onChange={(e) => this.setState({password: e.currentTarget.value})}/>
                 </fieldset>
                 <button onClick={() => this.testSignin(this.state.mail, this.state.password)}>Se connecter</button>
+                <div className="loginerror"></div>
             </form>
 
         </>)

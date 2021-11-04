@@ -9,6 +9,7 @@ import { baseQuestions, baseTags, baseUsers } from "./datas/baseData";
 import QuestionDetails from './views/QuestionDetails'
 import Register from './views/Register'
 import SignIn from "./views/SignIn";
+import About from "./views/About";
 
 
 function App() {
@@ -16,6 +17,9 @@ function App() {
     <Router>
         <Switch>
         <Route path="/about">
+        <About allQuestions={baseQuestions} allTags={baseTags} allUsers={baseUsers} >
+          Hello World !
+        </About>
           </Route>
           <Route path="/signin">
             <SignIn />
