@@ -9,10 +9,10 @@ export const baseTags = [
     'Java'
 ]
 
-export const baseForums = [
+export const baseQuestions = [
     {
         id: 0,
-        creator: "Fils Rouge",
+        creator: "Fils rouge",
         date: "03/11/2021",
         views: 5,
         answers: 3,
@@ -120,7 +120,7 @@ export const baseForums = [
     },
     {
         id: 1,
-        creator: "Fils Rouge",
+        creator: "Fils rouge",
         date: "03/11/2021",
         views: 5000,
         answers: 3,
@@ -244,7 +244,7 @@ export const baseUsers = [
     },
     {
         id: 1,
-        name: "Fille Rose",
+        name: "Fille rose",
         selectedTags: [
             "HTML",
             "CSS",

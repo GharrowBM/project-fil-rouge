@@ -6,6 +6,13 @@
     --main-navbar-text-color: rgba(255,255,255,0.8);
     --main-navbar-text-hover: rgba(255,255,255,0.95);
     --main-text-font : 'Ubuntu Mono', monospace;
+    --selected-tag-bg: rgb(22, 129, 49);
+    --text--color-active: greenyellow; 
+    --question-bg-color: rgba(170, 192, 197,0.6);
+    --question-bg-color-hover: rgba(108, 193, 212, 0.8);
+    --question-link-color: rgb(32, 44, 218);
+    --answer-bg-color: rgb(225,225,225);
+    --answer-bg-color-hover: rgba(214, 214, 181, 0.8);
   }
 
 html, body {
@@ -38,9 +45,16 @@ header {
     width: 60%;
     padding: 10px;
     margin: 0 auto 50px auto;
-    /* border: var(--main-color-3) solid 1px; */
-    /* background-color: var(--main-color-3); */
+    background-color: var(--main-color-1);
+    border-radius: 25px;
     text-align: center;
+}
+
+.search-tags, .selected-tags {
+    background-color: var(--main-bg-color);
+    border: var(--text--color-active) 1px solid;
+    border-radius: 25px;
+    padding: 10px;
 }
 
 .search-tags {
@@ -48,23 +62,18 @@ header {
     grid-template: repeat(5, 1fr) / repeat(5, 1fr);
     grid-auto-rows: 1fr;
     row-gap: 10px;
-    background-color: var(--main-color-3);
-    border-radius: 5px;
 }
 
 .selected-tags {
     display: grid;
     grid-template: repeat(5, 1fr) / 1fr;
     row-gap: 10px;
-    justify-content: center;    
-    background-color: var(--main-color-3);
-    border-radius: 5px;
+    justify-content: center;   
 }
 
 .search-tags div, .selected-tags div {
-    /* border: var(--main-color-3) solid 1px; */
-    border: var(--main-bg-color) solid 1px;
-    border-radius: 5px;
+    border: none;
+    border-radius: 25px;
     color: white;
     margin: 5px auto;
     padding: 2px 5px;
@@ -73,11 +82,22 @@ header {
 
 .selected-tags div {
     /* background-color: rgba(35, 99, 85, 0.8); */
-    background-color: rgb(22, 129, 49);
+    background-color: var(--text--color-active);
+    color: black;
 }
 
 .search-tags div {
+    background-color: var(--main-color-1);
+}
+
+.search-tags div:hover {
     background-color: var(--main-color-2);
+}
+
+.selected-tags div:hover, .search-tags div:hover {
+    transform: scale(1.05);
+    font-weight: bold;
+    cursor: pointer;
 }
 
 .search-area {
@@ -85,7 +105,7 @@ header {
     grid-template: 1fr / 1fr 9fr;
     align-items: center;
     background-color: var(--main-bg-color);
-    color: greenyellow; 
+    color: var(--text--color-active);
     font-family: var(--main-text-font);
     font-size: 15px;
 }
@@ -105,7 +125,7 @@ header {
 }
 
 #search-input::placeholder {
-    color: greenyellow; 
+    color: var(--text--color-active);
     margin-left: 10px;
 }
 
@@ -126,14 +146,14 @@ header {
     display: grid;
     grid-template-columns: 0.7fr 8fr 1fr;
     margin-bottom: 50px;
-    background-color: rgba(170, 192, 197,0.6);
+    background-color: var(--main-color-1);
     color: white;
     border-radius: 5px;
     padding: 10px;
 }
 
 .forum-question:hover {
-    background-color: rgba(108, 193, 212, 0.8);
+    background-color: var(--main-color-2);
     transform: scale(1.01);
 }
 
@@ -146,7 +166,7 @@ header {
 
 .forum-question a {
     text-decoration: none;
-    color: rgb(32, 44, 218);
+    color: var(--text--color-active)
 }
 
 .forum-counters {
@@ -181,4 +201,272 @@ header {
 
 .form-register, .form-signin {
     color: white;
+}
+
+.question {
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template: 1fr 9fr / 8fr 2fr;
+    background-color: var(--main-color-1);
+    color: white;
+    border-radius: 25px;
+}
+
+.question-header {
+    grid-row: 1;
+    grid-column: span 2;
+    padding: 0 2%;
+}
+
+.question-details {
+    display: flex;
+    align-items: center;
+}
+
+.question-header hr {
+    width: 90%;
+}
+
+.question-side {
+    grid-row: 2;
+    grid-column: 2;
+    padding-left: 5%;
+}
+
+.question-body {
+    grid-row: 2;
+    grid-column: 1;
+    padding: 5px;
+}
+
+.question-content {
+    padding-left: 5%;
+}
+
+.question-tags {
+    margin: 10px 0;
+}
+
+.question-tags button {
+    border: 1px solid var(--text--color-active);
+    padding: 5px 10px;
+    color: white;
+    background-color: var(--main-bg-color);
+    border-radius: 12px;
+    margin-right: 10px;
+    font-family: var(--main-text-font);
+}
+
+.question-tags button:hover {
+    transform: scale(1.05);
+    font-weight: bolder;
+}
+
+.answers {
+    margin: 10px 0 10px 2%;
+    padding: 5px;
+    word-break: break-word;
+}
+
+.answers-nb {
+    padding: 5px 10px;
+    color: var(--text--color-active);
+    background-color: var(--main-bg-color);
+    border-radius: 12px;
+    margin-right: 10px;
+    font-size: 20px;
+    font-family: var(--main-text-font);
+}
+
+.answers hr {
+    width: 90%;
+    height: 2px;
+    background-color: var(--main-color-3);
+}
+
+.answer {
+    padding: 10px;
+    display: grid;
+    grid-template: 50px 9fr / 1fr 11fr;
+}
+
+.answer-writer {
+    grid-row: 1;
+    grid-column: 1;
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
+
+.answer-writer span {
+    margin-left: 10px;
+}
+
+.answer-date {
+    grid-row: 1;
+    grid-column: 2;
+    font-size: 14px;
+    margin: auto 0;
+}
+
+.answer-score {
+    grid-row: 2;
+    grid-column: 1;
+    margin: auto;
+}
+
+.answer-content {
+    grid-row: 2;
+    grid-column: 2;
+}
+
+.answer-comments {
+    margin-top: 20px;
+    padding: 2px;
+}
+
+.answer-comments input {
+    margin: 20px 0;
+    width: 100%;
+    min-height: 50px;
+    border-radius: 10px;
+    padding-left: 10px;
+    background-color: var(--main-bg-color);
+    font-family: var(--main-text-font);
+    color: white;
+    border: none;
+    font-size: 15px;
+}
+
+.answer-comments input:focus {
+    outline: none;
+}
+
+.comment {
+    display: grid;
+    grid-template: 50px 9fr / 1fr 11fr;
+
+}
+
+.comment:hover {
+    background-color: var(--main-color-2);
+}
+
+.comment-writer {
+    grid-row: 1;
+    grid-column: 1;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+}
+
+.comment-writer span {
+    margin-left: 10px;
+}
+
+.comment-date {
+    grid-row: 1;
+    grid-column: 2;
+    margin: auto 0;
+}
+
+.comment-score {
+    grid-row: 2;
+    grid-column: 1;
+    margin: auto;
+}
+
+.comment-content {
+    grid-row: 2;
+    grid-column: 2;
+}
+
+.form-signin, .form-register {
+    background-color: var(--main-color-1);
+    border-radius: 10px;
+    margin: auto;
+    padding: 25px 10px;
+    text-align: right;
+}
+
+.form-signin {
+    width: 40%;
+}
+
+.form-register {
+    width: 60%;
+}
+
+.form-signin fieldset, .form-register fieldset {
+    background-color: var(--main-bg-color);
+    border: var(--text--color-active) solid 1px;
+    display: flex;
+    align-items: center;
+    font-family: var(--main-text-font);
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.form-signin fieldset label, .form-register fieldset label {
+    color: var(--text--color-active)
+}
+
+.form-signin fieldset input, .form-register fieldset input {
+    width: 100%;
+    height: 100%;
+    padding-left: 20px;
+    border: none;
+    color: white;
+    font-family: var(--main-text-font);
+    font-size: 15px;
+    background-color: var(--main-bg-color);
+}
+
+.form-signin fieldset input:focus, .form-register fieldset input:focus {
+    outline: none;
+}
+
+.form-signin button, .form-register button {
+    margin-right: 10px;
+    appearance: none;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--main-bg-color);
+    color: white;
+    padding: 5px 10px;
+}
+
+.form-signin button:hover, .form-register button:hover {
+    background-color: var(--text--color-active);
+    color: var(--main-bg-color);
+    cursor: pointer;
+    transform: scale(1.02);
+}
+
+.form-register .website-conditions {
+    text-align: justify;
+    max-height: 250px;
+    overflow: scroll;
+    padding: 20px;
+    background-color: var(--main-bg-color);
+    margin-bottom: 10px;
+    border: solid 1px var(--text--color-active);
+}
+
+.form-register .website-conditions::-webkit-scrollbar {
+    width: 5px;
+}
+
+.form-register .website-conditions::-webkit-scrollbar-track {
+    background-color: var(--main-bg-color);
+}
+
+.form-register .website-conditions::-webkit-scrollbar-thumb {
+    background-color: var(--text--color-active);
+    border-radius: 3px;
+}
+
+.form-register .website-conditions::-webkit-scrollbar-corner {
+    display: none;
 }

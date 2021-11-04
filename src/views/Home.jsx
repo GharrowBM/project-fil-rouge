@@ -9,7 +9,7 @@ class Home extends React.PureComponent {
     constructor(props) {
         super(props)
         this.state = {
-            baseForums: props.baseForums,
+            baseQuestions: props.baseQuestions,
             baseTags: props.baseTags,
             baseUsers: props.baseUsers,
         }
@@ -26,7 +26,7 @@ class Home extends React.PureComponent {
                 <SelectedTags />
             <SearchTags />
             </div>
-            {this.state.baseForums.map((forum,index) => <Question key={index} forum={forum}/>)}
+            {this.state.baseQuestions.map((forum,index) => <Question key={index} forum={forum}/>)}
         </>)
     }
 }

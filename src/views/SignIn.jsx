@@ -15,7 +15,7 @@ class SignIn extends React.PureComponent {
 
         const tmpUser = baseUsers.find(x => x.mail === mail)
 
-        console.log(tmpUser.password === pass ? 'Login Successful' : 'Login Failed')
+        console.log(tmpUser?.password === pass ? 'Login Successful' : 'Login Failed')
     }
 
     componentDidMount() {
@@ -32,11 +32,11 @@ class SignIn extends React.PureComponent {
             <Header />
             <form className="form-signin" onSubmit={(e) => e.preventDefault()}>
             <fieldset>
-                    <legend>Email</legend>
+                <label htmlFor="input-mail">email</label>
                     <input type="mail" name="input-mail" id="input-mail" value={this.state.mail} onChange={(e) => this.setState({mail: e.currentTarget.value})}/>
                 </fieldset>
                 <fieldset>
-                    <legend>Mot de passe</legend>
+                    <label htmlFor="input-password">password</label>
                     <input type="password" name="input-password" id="input-password" value={this.state.password} onChange={(e) => this.setState({password: e.currentTarget.value})}/>
                 </fieldset>
                 <button onClick={() => this.testSignin(this.state.mail, this.state.password)}>Se connecter</button>
