@@ -1,0 +1,26 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "be6730a3-f11b-4b7e-8797-65f1cbfcda3c": {
+      "ProjectGuid": "be6730a3-f11b-4b7e-8797-65f1cbfcda3c",
+      "DisplayName": "wpf-fil-rouge",
+      "ColorIndex": 0
+    },
+    "5dfa3b9b-6115-4c29-9ee5-ac55f3d44f6e": {
+      "ProjectGuid": "5dfa3b9b-6115-4c29-9ee5-ac55f3d44f6e",
+      "DisplayName": "FilRouge.Data",
+      "ColorIndex": 1
+    },
+    "01124d9a-f247-4838-bec7-a5821d601470": {
+      "ProjectGuid": "01124d9a-f247-4838-bec7-a5821d601470",
+      "DisplayName": "FilRouge.WPFApp",
+      "ColorIndex": 2
+    },
+    "a6b3b48d-03b4-46cd-a7f8-b89e14e9922f": {
+      "ProjectGuid": "a6b3b48d-03b4-46cd-a7f8-b89e14e9922f",
+      "DisplayName": "FilRouge.Domain",
+      "ColorIndex": 3
+    }
+  },
+  "NextColorIndex": 4
+}
