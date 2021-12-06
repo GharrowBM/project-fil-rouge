@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="150" d:DesignWidth="800">
 
-    <Grid Margin="10">
+    <Grid Background="#3E2C41">
         <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*" />
@@ -20,20 +20,27 @@
             </Grid.ColumnDefinitions>
             <TextBlock x:Name="postTitleTextBlock"
                         Text="Post Title"
+                       FontWeight="Bold"
+                       Margin="5 0 0 0"
+                       Foreground="YellowGreen"
                          Grid.Row="0"
                          Grid.Column="0"/>
             <TextBlock x:Name="postAuthorTextBlock"
                        Text="Author"
                        Margin="10 0"
+                       Foreground="#dddddd"
                        Grid.Row="0"
                        Grid.Column="1"/>
             <TextBlock x:Name="postCreationDateTextBlock"
                        Text="10-02-2021"
+                       FontStyle="Italic"
                        Grid.Column="2"/>
         </Grid>
         <TextBlock x:Name="postContentTextBlock"
                    Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo, mi ac tempor elementum, dui magna congue magna, nec dapibus arcu arcu ac nunc. Aliquam cursus nisl pulvinar auctor fringilla. Praesent quis accumsan erat, sit amet commodo arcu. Donec ac ante sit amet justo ultrices posuere lacinia ut lectus. Aenean ut diam at neque convallis tincidunt. Etiam pulvinar elementum quam, vitae condimentum quam luctus eget. Integer felis lorem, accumsan in urna eu, vestibulum auctor metus. In risus felis, scelerisque eget leo id, porta sodales ante. Nulla vel vulputate nunc, eget consequat metus. Morbi eget gravida sem, eget convallis nunc. Donec eu justo vitae magna scelerisque vulputate ac quis ante."
                    TextWrapping="Wrap"
+                   Padding="5 0"
+                   Foreground="#6E85B2"
                    Grid.Row="1"
                    Grid.ColumnSpan="3"/>
         </Grid>

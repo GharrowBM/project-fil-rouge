@@ -18,7 +18,6 @@ namespace FilRouge.Data.Configurations.Entities
                 .WithOne(a => a.Post)
                 .HasForeignKey(a => a.PostId);
 
-
             builder
                 .HasData
                 (

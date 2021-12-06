@@ -29,6 +29,8 @@ namespace FilRouge.WPFApp.View
             InitializeComponent();
 
             posts = context.Posts.ToList();
+
+            postListView.ItemsSource = posts;
         }
 
         private void postListView_SelectionChanged(object sender, SelectionChangedEventArgs e)

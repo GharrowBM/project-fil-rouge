@@ -6,13 +6,23 @@
         xmlns:custC="clr-namespace:FilRouge.WPFApp.View.CustomControls"
         xmlns:local="clr-namespace:FilRouge.WPFApp.View"
         mc:Ignorable="d"
-        Title="PostsWindow" Height="450" Width="800">
-    <StackPanel Margin="10">
+        Title="PostsWindow" Height="450" Width="800" Background="#101010">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
         <TextBox x:Name="searchPostTextBox"
             Margin="0 5"
-            TextChanged="searchPostTextBox_TextChanged"/>
+                 Background="#202124"
+                 Foreground="GreenYellow"
+            TextChanged="searchPostTextBox_TextChanged"
+                 BorderBrush="#3E2C41"
+                 FontSize="15"/>
         <ListView x:Name="postListView"
-                  SelectionChanged="postListView_SelectionChanged">
+                  Background="#261C2C"
+                  SelectionChanged="postListView_SelectionChanged"
+                  Grid.Row="1">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
@@ -24,5 +34,5 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-    </StackPanel>
+    </Grid>
 </Window>
