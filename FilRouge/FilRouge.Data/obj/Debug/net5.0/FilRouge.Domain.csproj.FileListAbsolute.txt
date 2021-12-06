@@ -2,7 +2,6 @@ G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.Data\bin\Debug\ne
 G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.Data\bin\Debug\net5.0\FilRouge.Domain.dll
 G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.Data\bin\Debug\net5.0\ref\FilRouge.Domain.dll
 G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.Data\bin\Debug\net5.0\FilRouge.Domain.pdb
-G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.Data\obj\Debug\net5.0\FilRouge.Domain.csproj.AssemblyReference.cache
 G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.Data\obj\Debug\net5.0\FilRouge.Domain.GeneratedMSBuildEditorConfig.editorconfig
 G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.Data\obj\Debug\net5.0\FilRouge.Domain.AssemblyInfoInputs.cache
 G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.Data\obj\Debug\net5.0\FilRouge.Domain.AssemblyInfo.cs
@@ -10,3 +9,4 @@ G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.Data\obj\Debug\ne
 G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.Data\obj\Debug\net5.0\FilRouge.Domain.dll
 G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.Data\obj\Debug\net5.0\ref\FilRouge.Domain.dll
 G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.Data\obj\Debug\net5.0\FilRouge.Domain.pdb
+G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.Data\obj\Debug\net5.0\FilRouge.Domain.csproj.AssemblyReference.cache

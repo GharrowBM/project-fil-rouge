@@ -59,7 +59,7 @@ namespace FilRouge.WPFApp.View {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/FilRouge.WPFApp;V1.0.0.0;component/view/loginwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/FilRouge.WPFApp;component/view/loginwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\LoginWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

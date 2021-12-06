@@ -18,6 +18,8 @@ namespace FilRouge.Domain
         public bool IsBlacklisted { get; set; }
 
         public virtual List<Post> Posts { get; set; }
+        public virtual List<Answer> Answers { get; set; }
+        public virtual List<Comment> Comments { get; set; }
         public virtual List<Tag> FavoriteTags { get; set; }
     }
 }

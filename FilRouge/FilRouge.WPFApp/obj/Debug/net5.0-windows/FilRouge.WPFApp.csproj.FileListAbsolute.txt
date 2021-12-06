@@ -6,13 +6,11 @@ G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.WPFApp\bin\Debug\
 G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.WPFApp\bin\Debug\net5.0-windows\ref\FilRouge.WPFApp.dll
 G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.WPFApp\bin\Debug\net5.0-windows\FilRouge.WPFApp.pdb
 G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.WPFApp\obj\Debug\net5.0-windows\FilRouge.WPFApp.csproj.AssemblyReference.cache
-G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.WPFApp\obj\Debug\net5.0-windows\MainWindow.g.cs
 G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.WPFApp\obj\Debug\net5.0-windows\View\LoginWindow.g.cs
 G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.WPFApp\obj\Debug\net5.0-windows\App.g.cs
 G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.WPFApp\obj\Debug\net5.0-windows\GeneratedInternalTypeHelper.g.cs
 G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.WPFApp\obj\Debug\net5.0-windows\FilRouge.WPFApp_MarkupCompile.cache
 G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.WPFApp\obj\Debug\net5.0-windows\FilRouge.WPFApp_MarkupCompile.lref
-G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.WPFApp\obj\Debug\net5.0-windows\MainWindow.baml
 G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.WPFApp\obj\Debug\net5.0-windows\View\LoginWindow.baml
 G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.WPFApp\obj\Debug\net5.0-windows\FilRouge.WPFApp.g.resources
 G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.WPFApp\obj\Debug\net5.0-windows\FilRouge.WPFApp.GeneratedMSBuildEditorConfig.editorconfig
@@ -67,3 +65,7 @@ G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.WPFApp\bin\Debug\
 G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.WPFApp\bin\Debug\net5.0-windows\FilRouge.Data.pdb
 G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.WPFApp\bin\Debug\net5.0-windows\Humanizer.dll
 G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.WPFApp\bin\Debug\net5.0-windows\Microsoft.EntityFrameworkCore.Design.dll
+G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.WPFApp\obj\Debug\net5.0-windows\View\CustomControls\PostControl.g.cs
+G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.WPFApp\obj\Debug\net5.0-windows\View\PostsWindow.g.cs
+G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.WPFApp\obj\Debug\net5.0-windows\View\CustomControls\PostControl.baml
+G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.WPFApp\obj\Debug\net5.0-windows\View\PostsWindow.baml

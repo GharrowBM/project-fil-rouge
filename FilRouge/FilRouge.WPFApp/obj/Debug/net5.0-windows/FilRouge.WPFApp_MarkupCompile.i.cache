@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET5_0;NETCOREAPP
 G:\Documents\Gharrow\repos\project-fil-rouge\FilRouge\FilRouge.WPFApp\App.xaml
-11671398720
+3921652323
 
-7972578058
+101996399320
 217-710228323
-View\LoginWindow.xaml;
+View\CustomControls\PostControl.xaml;View\LoginWindow.xaml;View\PostsWindow.xaml;
 
 True
 

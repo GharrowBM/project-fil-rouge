@@ -9,11 +9,13 @@ namespace FilRouge.Domain
     public class Post
     {
         public int Id { get; set; }
+        public string Title { get; set; }
         public string Content { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime EditedAt { get; set; }
         public int Score { get; set; }
 
+        public int AuthorId { get; set; }
         public virtual User Author { get; set; }
         public virtual List<Answer> Answers { get; set; }
         public virtual List<Tag> Tags { get; set; }

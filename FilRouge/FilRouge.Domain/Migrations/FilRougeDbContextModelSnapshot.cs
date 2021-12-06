@@ -26,7 +26,7 @@ namespace FilRouge.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AuthorId")
+                    b.Property<int>("AuthorId")
                         .HasColumnType("int");
 
                     b.Property<string>("Content")
@@ -38,7 +38,7 @@ namespace FilRouge.Data.Migrations
                     b.Property<DateTime>("EditedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("PostId")
+                    b.Property<int>("PostId")
                         .HasColumnType("int");
 
                     b.Property<int>("Score")
@@ -51,6 +51,48 @@ namespace FilRouge.Data.Migrations
                     b.HasIndex("PostId");
 
                     b.ToTable("Answers");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AuthorId = 1,
+                            Content = "Answer A",
+                            CreatedAt = new DateTime(2021, 12, 6, 15, 26, 37, 520, DateTimeKind.Local).AddTicks(3172),
+                            EditedAt = new DateTime(2021, 12, 6, 15, 26, 37, 520, DateTimeKind.Local).AddTicks(3481),
+                            PostId = 1,
+                            Score = 0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AuthorId = 2,
+                            Content = "Answer B",
+                            CreatedAt = new DateTime(2021, 12, 6, 15, 26, 37, 520, DateTimeKind.Local).AddTicks(4392),
+                            EditedAt = new DateTime(2021, 12, 6, 15, 26, 37, 520, DateTimeKind.Local).AddTicks(4403),
+                            PostId = 1,
+                            Score = 0
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AuthorId = 1,
+                            Content = "Answer C",
+                            CreatedAt = new DateTime(2021, 12, 6, 15, 26, 37, 520, DateTimeKind.Local).AddTicks(4407),
+                            EditedAt = new DateTime(2021, 12, 6, 15, 26, 37, 520, DateTimeKind.Local).AddTicks(4409),
+                            PostId = 2,
+                            Score = 0
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AuthorId = 2,
+                            Content = "Answer D",
+                            CreatedAt = new DateTime(2021, 12, 6, 15, 26, 37, 520, DateTimeKind.Local).AddTicks(4412),
+                            EditedAt = new DateTime(2021, 12, 6, 15, 26, 37, 520, DateTimeKind.Local).AddTicks(4414),
+                            PostId = 2,
+                            Score = 0
+                        });
                 });
 
             modelBuilder.Entity("FilRouge.Domain.Comment", b =>
@@ -60,10 +102,10 @@ namespace FilRouge.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AnswerId")
+                    b.Property<int>("AnswerId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("AuthorId")
+                    b.Property<int>("AuthorId")
                         .HasColumnType("int");
 
                     b.Property<string>("Content")
@@ -85,6 +127,88 @@ namespace FilRouge.Data.Migrations
                     b.HasIndex("AuthorId");
 
                     b.ToTable("Comments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AnswerId = 1,
+                            AuthorId = 1,
+                            Content = "Comment A",
+                            CreatedAt = new DateTime(2021, 12, 6, 15, 26, 37, 520, DateTimeKind.Local).AddTicks(9321),
+                            EditedAt = new DateTime(2021, 12, 6, 15, 26, 37, 520, DateTimeKind.Local).AddTicks(9618),
+                            Score = 0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AnswerId = 1,
+                            AuthorId = 2,
+                            Content = "Comment B",
+                            CreatedAt = new DateTime(2021, 12, 6, 15, 26, 37, 521, DateTimeKind.Local).AddTicks(518),
+                            EditedAt = new DateTime(2021, 12, 6, 15, 26, 37, 521, DateTimeKind.Local).AddTicks(530),
+                            Score = 0
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AnswerId = 2,
+                            AuthorId = 1,
+                            Content = "Comment C",
+                            CreatedAt = new DateTime(2021, 12, 6, 15, 26, 37, 521, DateTimeKind.Local).AddTicks(534),
+                            EditedAt = new DateTime(2021, 12, 6, 15, 26, 37, 521, DateTimeKind.Local).AddTicks(536),
+                            Score = 0
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AnswerId = 2,
+                            AuthorId = 2,
+                            Content = "Comment D",
+                            CreatedAt = new DateTime(2021, 12, 6, 15, 26, 37, 521, DateTimeKind.Local).AddTicks(539),
+                            EditedAt = new DateTime(2021, 12, 6, 15, 26, 37, 521, DateTimeKind.Local).AddTicks(541),
+                            Score = 0
+                        },
+                        new
+                        {
+                            Id = 5,
+                            AnswerId = 3,
+                            AuthorId = 1,
+                            Content = "Comment A",
+                            CreatedAt = new DateTime(2021, 12, 6, 15, 26, 37, 521, DateTimeKind.Local).AddTicks(544),
+                            EditedAt = new DateTime(2021, 12, 6, 15, 26, 37, 521, DateTimeKind.Local).AddTicks(546),
+                            Score = 0
+                        },
+                        new
+                        {
+                            Id = 6,
+                            AnswerId = 3,
+                            AuthorId = 2,
+                            Content = "Comment B",
+                            CreatedAt = new DateTime(2021, 12, 6, 15, 26, 37, 521, DateTimeKind.Local).AddTicks(549),
+                            EditedAt = new DateTime(2021, 12, 6, 15, 26, 37, 521, DateTimeKind.Local).AddTicks(551),
+                            Score = 0
+                        },
+                        new
+                        {
+                            Id = 7,
+                            AnswerId = 4,
+                            AuthorId = 1,
+                            Content = "Comment C",
+                            CreatedAt = new DateTime(2021, 12, 6, 15, 26, 37, 521, DateTimeKind.Local).AddTicks(553),
+                            EditedAt = new DateTime(2021, 12, 6, 15, 26, 37, 521, DateTimeKind.Local).AddTicks(555),
+                            Score = 0
+                        },
+                        new
+                        {
+                            Id = 8,
+                            AnswerId = 4,
+                            AuthorId = 2,
+                            Content = "Comment D",
+                            CreatedAt = new DateTime(2021, 12, 6, 15, 26, 37, 521, DateTimeKind.Local).AddTicks(558),
+                            EditedAt = new DateTime(2021, 12, 6, 15, 26, 37, 521, DateTimeKind.Local).AddTicks(560),
+                            Score = 0
+                        });
                 });
 
             modelBuilder.Entity("FilRouge.Domain.Post", b =>
@@ -94,7 +218,7 @@ namespace FilRouge.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AuthorId")
+                    b.Property<int>("AuthorId")
                         .HasColumnType("int");
 
                     b.Property<string>("Content")
@@ -109,11 +233,36 @@ namespace FilRouge.Data.Migrations
                     b.Property<int>("Score")
                         .HasColumnType("int");
 
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("AuthorId");
 
                     b.ToTable("Posts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AuthorId = 1,
+                            Content = "Post A content",
+                            CreatedAt = new DateTime(2021, 12, 6, 15, 26, 37, 519, DateTimeKind.Local).AddTicks(3902),
+                            EditedAt = new DateTime(2021, 12, 6, 15, 26, 37, 519, DateTimeKind.Local).AddTicks(4343),
+                            Score = 0,
+                            Title = "Post A"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AuthorId = 2,
+                            Content = "Post B content",
+                            CreatedAt = new DateTime(2021, 12, 6, 15, 26, 37, 519, DateTimeKind.Local).AddTicks(5161),
+                            EditedAt = new DateTime(2021, 12, 6, 15, 26, 37, 519, DateTimeKind.Local).AddTicks(5173),
+                            Score = 666,
+                            Title = "Post B"
+                        });
                 });
 
             modelBuilder.Entity("FilRouge.Domain.Tag", b =>
@@ -139,6 +288,33 @@ namespace FilRouge.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Tags");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Tag A"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Tag B"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Tag C"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Tag D"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "Tag E"
+                        });
                 });
 
             modelBuilder.Entity("FilRouge.Domain.User", b =>
@@ -172,17 +348,45 @@ namespace FilRouge.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AvatarURI = "http://avatar.com/jojo",
+                            Email = "jotaro.cujoh@mail.com",
+                            FirstName = "Jotaro",
+                            IsBlacklisted = false,
+                            LastName = "Cujoh",
+                            RegisterAt = new DateTime(2021, 12, 6, 15, 26, 37, 513, DateTimeKind.Local).AddTicks(9279),
+                            Username = "Jojo"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AvatarURI = "http://avatar.com/jojogirl",
+                            Email = "jotaro.cujoh.girl@mail.com",
+                            FirstName = "Jolyne",
+                            IsBlacklisted = true,
+                            LastName = "Cujoh",
+                            RegisterAt = new DateTime(2021, 12, 6, 15, 26, 37, 516, DateTimeKind.Local).AddTicks(4195),
+                            Username = "JojoGirl"
+                        });
                 });
 
             modelBuilder.Entity("FilRouge.Domain.Answer", b =>
                 {
                     b.HasOne("FilRouge.Domain.User", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorId");
+                        .WithMany("Answers")
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("FilRouge.Domain.Post", "Post")
                         .WithMany("Answers")
-                        .HasForeignKey("PostId");
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Author");
 
@@ -193,11 +397,15 @@ namespace FilRouge.Data.Migrations
                 {
                     b.HasOne("FilRouge.Domain.Answer", "Answer")
                         .WithMany("Comments")
-                        .HasForeignKey("AnswerId");
+                        .HasForeignKey("AnswerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("FilRouge.Domain.User", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorId");
+                        .WithMany("Comments")
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("Answer");
 
@@ -208,7 +416,9 @@ namespace FilRouge.Data.Migrations
                 {
                     b.HasOne("FilRouge.Domain.User", "Author")
                         .WithMany("Posts")
-                        .HasForeignKey("AuthorId");
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("Author");
                 });
@@ -238,6 +448,10 @@ namespace FilRouge.Data.Migrations
 
             modelBuilder.Entity("FilRouge.Domain.User", b =>
                 {
+                    b.Navigation("Answers");
+
+                    b.Navigation("Comments");
+
                     b.Navigation("FavoriteTags");
 
                     b.Navigation("Posts");
