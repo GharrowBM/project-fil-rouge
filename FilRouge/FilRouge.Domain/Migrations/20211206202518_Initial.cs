@@ -8,6 +8,19 @@ namespace FilRouge.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "Tags",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tags", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Users",
                 columns: table => new
                 {
@@ -32,6 +45,7 @@ namespace FilRouge.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Content = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     EditedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -47,6 +61,30 @@ namespace FilRouge.Data.Migrations
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "TagUser",
+                columns: table => new
+                {
+                    FavoriteTagsId = table.Column<int>(type: "int", nullable: false),
+                    SubscribersId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TagUser", x => new { x.FavoriteTagsId, x.SubscribersId });
+                    table.ForeignKey(
+                        name: "FK_TagUser_Tags_FavoriteTagsId",
+                        column: x => x.FavoriteTagsId,
+                        principalTable: "Tags",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TagUser_Users_SubscribersId",
+                        column: x => x.SubscribersId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -80,30 +118,27 @@ namespace FilRouge.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Tags",
+                name: "PostTag",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PostId = table.Column<int>(type: "int", nullable: true),
-                    UserId = table.Column<int>(type: "int", nullable: true)
+                    RelatedPostsId = table.Column<int>(type: "int", nullable: false),
+                    TagsId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tags", x => x.Id);
+                    table.PrimaryKey("PK_PostTag", x => new { x.RelatedPostsId, x.TagsId });
                     table.ForeignKey(
-                        name: "FK_Tags_Posts_PostId",
-                        column: x => x.PostId,
+                        name: "FK_PostTag_Posts_RelatedPostsId",
+                        column: x => x.RelatedPostsId,
                         principalTable: "Posts",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Tags_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
+                        name: "FK_PostTag_Tags_TagsId",
+                        column: x => x.TagsId,
+                        principalTable: "Tags",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -162,14 +197,14 @@ namespace FilRouge.Data.Migrations
                 column: "AuthorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tags_PostId",
-                table: "Tags",
-                column: "PostId");
+                name: "IX_PostTag_TagsId",
+                table: "PostTag",
+                column: "TagsId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tags_UserId",
-                table: "Tags",
-                column: "UserId");
+                name: "IX_TagUser_SubscribersId",
+                table: "TagUser",
+                column: "SubscribersId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -178,10 +213,16 @@ namespace FilRouge.Data.Migrations
                 name: "Comments");
 
             migrationBuilder.DropTable(
-                name: "Tags");
+                name: "PostTag");
+
+            migrationBuilder.DropTable(
+                name: "TagUser");
 
             migrationBuilder.DropTable(
                 name: "Answers");
+
+            migrationBuilder.DropTable(
+                name: "Tags");
 
             migrationBuilder.DropTable(
                 name: "Posts");

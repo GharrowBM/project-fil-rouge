@@ -51,48 +51,6 @@ namespace FilRouge.Data.Migrations
                     b.HasIndex("PostId");
 
                     b.ToTable("Answers");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AuthorId = 1,
-                            Content = "Answer A",
-                            CreatedAt = new DateTime(2021, 12, 6, 18, 39, 55, 856, DateTimeKind.Local).AddTicks(760),
-                            EditedAt = new DateTime(2021, 12, 6, 18, 39, 55, 856, DateTimeKind.Local).AddTicks(1070),
-                            PostId = 1,
-                            Score = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AuthorId = 2,
-                            Content = "Answer B",
-                            CreatedAt = new DateTime(2021, 12, 6, 18, 39, 55, 856, DateTimeKind.Local).AddTicks(1982),
-                            EditedAt = new DateTime(2021, 12, 6, 18, 39, 55, 856, DateTimeKind.Local).AddTicks(1995),
-                            PostId = 1,
-                            Score = 0
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AuthorId = 1,
-                            Content = "Answer C",
-                            CreatedAt = new DateTime(2021, 12, 6, 18, 39, 55, 856, DateTimeKind.Local).AddTicks(1998),
-                            EditedAt = new DateTime(2021, 12, 6, 18, 39, 55, 856, DateTimeKind.Local).AddTicks(2001),
-                            PostId = 2,
-                            Score = 0
-                        },
-                        new
-                        {
-                            Id = 4,
-                            AuthorId = 2,
-                            Content = "Answer D",
-                            CreatedAt = new DateTime(2021, 12, 6, 18, 39, 55, 856, DateTimeKind.Local).AddTicks(2003),
-                            EditedAt = new DateTime(2021, 12, 6, 18, 39, 55, 856, DateTimeKind.Local).AddTicks(2005),
-                            PostId = 2,
-                            Score = 0
-                        });
                 });
 
             modelBuilder.Entity("FilRouge.Domain.Comment", b =>
@@ -127,88 +85,6 @@ namespace FilRouge.Data.Migrations
                     b.HasIndex("AuthorId");
 
                     b.ToTable("Comments");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AnswerId = 1,
-                            AuthorId = 1,
-                            Content = "Comment A",
-                            CreatedAt = new DateTime(2021, 12, 6, 18, 39, 55, 856, DateTimeKind.Local).AddTicks(8426),
-                            EditedAt = new DateTime(2021, 12, 6, 18, 39, 55, 856, DateTimeKind.Local).AddTicks(8724),
-                            Score = 0
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AnswerId = 1,
-                            AuthorId = 2,
-                            Content = "Comment B",
-                            CreatedAt = new DateTime(2021, 12, 6, 18, 39, 55, 856, DateTimeKind.Local).AddTicks(9618),
-                            EditedAt = new DateTime(2021, 12, 6, 18, 39, 55, 856, DateTimeKind.Local).AddTicks(9630),
-                            Score = 0
-                        },
-                        new
-                        {
-                            Id = 3,
-                            AnswerId = 2,
-                            AuthorId = 1,
-                            Content = "Comment C",
-                            CreatedAt = new DateTime(2021, 12, 6, 18, 39, 55, 856, DateTimeKind.Local).AddTicks(9634),
-                            EditedAt = new DateTime(2021, 12, 6, 18, 39, 55, 856, DateTimeKind.Local).AddTicks(9637),
-                            Score = 0
-                        },
-                        new
-                        {
-                            Id = 4,
-                            AnswerId = 2,
-                            AuthorId = 2,
-                            Content = "Comment D",
-                            CreatedAt = new DateTime(2021, 12, 6, 18, 39, 55, 856, DateTimeKind.Local).AddTicks(9640),
-                            EditedAt = new DateTime(2021, 12, 6, 18, 39, 55, 856, DateTimeKind.Local).AddTicks(9642),
-                            Score = 0
-                        },
-                        new
-                        {
-                            Id = 5,
-                            AnswerId = 3,
-                            AuthorId = 1,
-                            Content = "Comment A",
-                            CreatedAt = new DateTime(2021, 12, 6, 18, 39, 55, 856, DateTimeKind.Local).AddTicks(9644),
-                            EditedAt = new DateTime(2021, 12, 6, 18, 39, 55, 856, DateTimeKind.Local).AddTicks(9646),
-                            Score = 0
-                        },
-                        new
-                        {
-                            Id = 6,
-                            AnswerId = 3,
-                            AuthorId = 2,
-                            Content = "Comment B",
-                            CreatedAt = new DateTime(2021, 12, 6, 18, 39, 55, 856, DateTimeKind.Local).AddTicks(9649),
-                            EditedAt = new DateTime(2021, 12, 6, 18, 39, 55, 856, DateTimeKind.Local).AddTicks(9651),
-                            Score = 0
-                        },
-                        new
-                        {
-                            Id = 7,
-                            AnswerId = 4,
-                            AuthorId = 1,
-                            Content = "Comment C",
-                            CreatedAt = new DateTime(2021, 12, 6, 18, 39, 55, 856, DateTimeKind.Local).AddTicks(9654),
-                            EditedAt = new DateTime(2021, 12, 6, 18, 39, 55, 856, DateTimeKind.Local).AddTicks(9656),
-                            Score = 0
-                        },
-                        new
-                        {
-                            Id = 8,
-                            AnswerId = 4,
-                            AuthorId = 2,
-                            Content = "Comment D",
-                            CreatedAt = new DateTime(2021, 12, 6, 18, 39, 55, 856, DateTimeKind.Local).AddTicks(9659),
-                            EditedAt = new DateTime(2021, 12, 6, 18, 39, 55, 856, DateTimeKind.Local).AddTicks(9661),
-                            Score = 0
-                        });
                 });
 
             modelBuilder.Entity("FilRouge.Domain.Post", b =>
@@ -241,28 +117,6 @@ namespace FilRouge.Data.Migrations
                     b.HasIndex("AuthorId");
 
                     b.ToTable("Posts");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AuthorId = 1,
-                            Content = "Post A content",
-                            CreatedAt = new DateTime(2021, 12, 6, 18, 39, 55, 855, DateTimeKind.Local).AddTicks(1195),
-                            EditedAt = new DateTime(2021, 12, 6, 18, 39, 55, 855, DateTimeKind.Local).AddTicks(1649),
-                            Score = 0,
-                            Title = "Post A"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AuthorId = 2,
-                            Content = "Post B content",
-                            CreatedAt = new DateTime(2021, 12, 6, 18, 39, 55, 855, DateTimeKind.Local).AddTicks(2369),
-                            EditedAt = new DateTime(2021, 12, 6, 18, 39, 55, 855, DateTimeKind.Local).AddTicks(2382),
-                            Score = 666,
-                            Title = "Post B"
-                        });
                 });
 
             modelBuilder.Entity("FilRouge.Domain.Tag", b =>
@@ -275,41 +129,9 @@ namespace FilRouge.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PostId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("PostId");
-
                     b.ToTable("Tags");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Tag A"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Tag B"
-                        },
-                        new
-                        {
-                            Id = 3,
-                            Name = "Tag C"
-                        },
-                        new
-                        {
-                            Id = 4,
-                            Name = "Tag D"
-                        },
-                        new
-                        {
-                            Id = 5,
-                            Name = "Tag E"
-                        });
                 });
 
             modelBuilder.Entity("FilRouge.Domain.User", b =>
@@ -343,30 +165,21 @@ namespace FilRouge.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+                });
 
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            AvatarURI = "http://avatar.com/jojo",
-                            Email = "jotaro.cujoh@mail.com",
-                            FirstName = "Jotaro",
-                            IsBlacklisted = false,
-                            LastName = "Cujoh",
-                            RegisterAt = new DateTime(2021, 12, 6, 18, 39, 55, 848, DateTimeKind.Local).AddTicks(2443),
-                            Username = "Jojo"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            AvatarURI = "http://avatar.com/jojogirl",
-                            Email = "jotaro.cujoh.girl@mail.com",
-                            FirstName = "Jolyne",
-                            IsBlacklisted = true,
-                            LastName = "Cujoh",
-                            RegisterAt = new DateTime(2021, 12, 6, 18, 39, 55, 851, DateTimeKind.Local).AddTicks(5296),
-                            Username = "JojoGirl"
-                        });
+            modelBuilder.Entity("PostTag", b =>
+                {
+                    b.Property<int>("RelatedPostsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TagsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("RelatedPostsId", "TagsId");
+
+                    b.HasIndex("TagsId");
+
+                    b.ToTable("PostTag");
                 });
 
             modelBuilder.Entity("TagUser", b =>
@@ -433,11 +246,19 @@ namespace FilRouge.Data.Migrations
                     b.Navigation("Author");
                 });
 
-            modelBuilder.Entity("FilRouge.Domain.Tag", b =>
+            modelBuilder.Entity("PostTag", b =>
                 {
                     b.HasOne("FilRouge.Domain.Post", null)
-                        .WithMany("Tags")
-                        .HasForeignKey("PostId");
+                        .WithMany()
+                        .HasForeignKey("RelatedPostsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FilRouge.Domain.Tag", null)
+                        .WithMany()
+                        .HasForeignKey("TagsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TagUser", b =>
@@ -463,8 +284,6 @@ namespace FilRouge.Data.Migrations
             modelBuilder.Entity("FilRouge.Domain.Post", b =>
                 {
                     b.Navigation("Answers");
-
-                    b.Navigation("Tags");
                 });
 
             modelBuilder.Entity("FilRouge.Domain.User", b =>

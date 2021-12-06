@@ -12,5 +12,6 @@ namespace FilRouge.Domain
         public string Name { get; set; }
 
         public virtual List<User> Subscribers { get; set; }
+        public virtual List<Post> RelatedPosts { get; set; }
     }
 }

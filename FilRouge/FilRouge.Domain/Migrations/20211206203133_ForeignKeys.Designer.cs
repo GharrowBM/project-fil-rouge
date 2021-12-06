@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FilRouge.Data.Migrations
 {
     [DbContext(typeof(FilRougeDbContext))]
-    [Migration("20211206134027_TitleAdded")]
-    partial class TitleAdded
+    [Migration("20211206203133_ForeignKeys")]
+    partial class ForeignKeys
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,7 +28,7 @@ namespace FilRouge.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AuthorId")
+                    b.Property<int>("AuthorId")
                         .HasColumnType("int");
 
                     b.Property<string>("Content")
@@ -40,7 +40,7 @@ namespace FilRouge.Data.Migrations
                     b.Property<DateTime>("EditedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("PostId")
+                    b.Property<int>("PostId")
                         .HasColumnType("int");
 
                     b.Property<int>("Score")
@@ -62,10 +62,10 @@ namespace FilRouge.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AnswerId")
+                    b.Property<int>("AnswerId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("AuthorId")
+                    b.Property<int>("AuthorId")
                         .HasColumnType("int");
 
                     b.Property<string>("Content")
@@ -96,7 +96,7 @@ namespace FilRouge.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AuthorId")
+                    b.Property<int>("AuthorId")
                         .HasColumnType("int");
 
                     b.Property<string>("Content")
@@ -131,17 +131,7 @@ namespace FilRouge.Data.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PostId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("PostId");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Tags");
                 });
@@ -179,15 +169,49 @@ namespace FilRouge.Data.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("PostTag", b =>
+                {
+                    b.Property<int>("RelatedPostsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TagsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("RelatedPostsId", "TagsId");
+
+                    b.HasIndex("TagsId");
+
+                    b.ToTable("PostTag");
+                });
+
+            modelBuilder.Entity("TagUser", b =>
+                {
+                    b.Property<int>("FavoriteTagsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubscribersId")
+                        .HasColumnType("int");
+
+                    b.HasKey("FavoriteTagsId", "SubscribersId");
+
+                    b.HasIndex("SubscribersId");
+
+                    b.ToTable("TagUser");
+                });
+
             modelBuilder.Entity("FilRouge.Domain.Answer", b =>
                 {
                     b.HasOne("FilRouge.Domain.User", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorId");
+                        .WithMany("Answers")
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("FilRouge.Domain.Post", "Post")
                         .WithMany("Answers")
-                        .HasForeignKey("PostId");
+                        .HasForeignKey("PostId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Author");
 
@@ -198,11 +222,15 @@ namespace FilRouge.Data.Migrations
                 {
                     b.HasOne("FilRouge.Domain.Answer", "Answer")
                         .WithMany("Comments")
-                        .HasForeignKey("AnswerId");
+                        .HasForeignKey("AnswerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("FilRouge.Domain.User", "Author")
-                        .WithMany()
-                        .HasForeignKey("AuthorId");
+                        .WithMany("Comments")
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("Answer");
 
@@ -213,20 +241,41 @@ namespace FilRouge.Data.Migrations
                 {
                     b.HasOne("FilRouge.Domain.User", "Author")
                         .WithMany("Posts")
-                        .HasForeignKey("AuthorId");
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("Author");
                 });
 
-            modelBuilder.Entity("FilRouge.Domain.Tag", b =>
+            modelBuilder.Entity("PostTag", b =>
                 {
                     b.HasOne("FilRouge.Domain.Post", null)
-                        .WithMany("Tags")
-                        .HasForeignKey("PostId");
+                        .WithMany()
+                        .HasForeignKey("RelatedPostsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("FilRouge.Domain.Tag", null)
+                        .WithMany()
+                        .HasForeignKey("TagsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("TagUser", b =>
+                {
+                    b.HasOne("FilRouge.Domain.Tag", null)
+                        .WithMany()
+                        .HasForeignKey("FavoriteTagsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("FilRouge.Domain.User", null)
-                        .WithMany("FavoriteTags")
-                        .HasForeignKey("UserId");
+                        .WithMany()
+                        .HasForeignKey("SubscribersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("FilRouge.Domain.Answer", b =>
@@ -237,13 +286,13 @@ namespace FilRouge.Data.Migrations
             modelBuilder.Entity("FilRouge.Domain.Post", b =>
                 {
                     b.Navigation("Answers");
-
-                    b.Navigation("Tags");
                 });
 
             modelBuilder.Entity("FilRouge.Domain.User", b =>
                 {
-                    b.Navigation("FavoriteTags");
+                    b.Navigation("Answers");
+
+                    b.Navigation("Comments");
 
                     b.Navigation("Posts");
                 });
