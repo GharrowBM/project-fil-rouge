@@ -32,6 +32,10 @@ namespace FilRouge.Data.Configurations.Entities
                 .OnDelete(DeleteBehavior.Restrict);
 
             builder
+                .HasMany(u => u.FavoriteTags)
+                .WithMany(t => t.Subscribers);
+
+            builder
                 .HasData
                 (
                     new User

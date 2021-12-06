@@ -14,6 +14,11 @@ namespace FilRouge.Data.Configurations.Entities
         public void Configure(EntityTypeBuilder<Tag> builder)
         {
             builder
+                .HasMany(t => t.Subscribers)
+                .WithMany(u => u.FavoriteTags);
+                
+
+            builder
                 .HasData
                 (
                     new Tag { Id = 1, Name = "Tag A"},
