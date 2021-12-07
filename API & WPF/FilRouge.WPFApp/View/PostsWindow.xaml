@@ -61,8 +61,18 @@
                 </ListView.ItemContainerStyle>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <custC:PostControl Post="{Binding}"/>
-                        </DataTemplate>
+                        <custC:PostControl Post="{Binding}">
+                            <custC:PostControl.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Header="Supprimer le Post..."
+                                              Command="{Binding DeletePostCommand}"
+                                              CommandParameter="{Binding SelectedPost, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <MenuItem Header="Voir le contenu du Post..."/>
+                                    <MenuItem Header="Voir l'auteur du Post..."/>
+                                </ContextMenu>
+                            </custC:PostControl.ContextMenu>
+                        </custC:PostControl>
+                    </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </Grid>

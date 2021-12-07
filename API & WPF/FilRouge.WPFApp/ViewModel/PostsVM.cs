@@ -41,6 +41,7 @@ namespace FilRouge.WPFApp.ViewModel
             { 
                 selectedFilter = value;
                 OnPropertyChanged("SelectedFilter");
+                FilterListOfPosts();
             }
         }
 
