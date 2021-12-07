@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FilRouge.WPFApp.ViewModel.Enums
+namespace FilRouge.Domain.Enums
 {
     public enum TypeOfFilterEnum
     {

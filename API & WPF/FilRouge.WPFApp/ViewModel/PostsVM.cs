@@ -1,7 +1,7 @@
 ﻿using FilRouge.Data;
 using FilRouge.Domain;
+using FilRouge.Domain.Enums;
 using FilRouge.WPFApp.ViewModel.Commands;
-using FilRouge.WPFApp.ViewModel.Enums;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -71,6 +71,7 @@ namespace FilRouge.WPFApp.ViewModel
 
         public PostsVM()
         {
+
             DeletePostCommand = new DeletePostCommand(this);
             Posts = context.Posts.Include(p => p.User).ToList();
             SearchText = "";
