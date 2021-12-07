@@ -4,35 +4,68 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:custC="clr-namespace:FilRouge.WPFApp.View.CustomControls"
+        xmlns:vm="clr-namespace:FilRouge.WPFApp.ViewModel"
         xmlns:local="clr-namespace:FilRouge.WPFApp.View"
         mc:Ignorable="d"
-        Title="PostsWindow" Height="450" Width="800" Background="#101010">
-    <Grid Margin="10">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <TextBox x:Name="searchPostTextBox"
+        Title="Gestion des Posts" Height="450" Width="800" Background="{StaticResource BG-1}">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <vm:PostsVM x:Key="pVm" />
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <DockPanel DataContext="{StaticResource pVm}">
+        <Menu DockPanel.Dock="Top">
+
+            <MenuItem Header="Edition">
+                <MenuItem Header="Supprimer le Post..."
+                          Command="{Binding DeletePostCommand}"
+                          CommandParameter="{Binding SelectedPost, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <MenuItem Header="Voir le contenu du Post..."/>
+                <MenuItem Header="Voir l'auteur du Post..."/>
+            </MenuItem>
+        </Menu>
+        <Grid Margin="10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <TextBox x:Name="searchPostTextBox"
             Margin="0 5"
-                 Background="#202124"
-                 Foreground="GreenYellow"
-            TextChanged="searchPostTextBox_TextChanged"
-                 BorderBrush="#3E2C41"
+                 Background="{StaticResource BG-2}"
+                 Foreground="{StaticResource TXT-1}"
+                 Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 BorderBrush="{StaticResource BG-3}"
                  FontSize="15"/>
-        <ListView x:Name="postListView"
-                  Background="#261C2C"
-                  SelectionChanged="postListView_SelectionChanged"
-                  Grid.Row="1">
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                </Style>
-            </ListView.ItemContainerStyle>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <custC:PostControl Post="{Binding}"/>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </Grid>
+            <ComboBox x:Name="filterByComboBox"
+                  Style="{StaticResource COMBO-1}"
+                  SelectedItem="{Binding SelectedFilter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  ItemsSource="{Binding TypeOfFilters}"
+                  Width="100"
+                  Grid.Column="1"/>
+            <ListView x:Name="postListView"
+                  Background="{StaticResource BG-3}"
+                  ItemsSource="{Binding FilteredPosts}"
+                  SelectedItem="{Binding SelectedPost}"
+                  Grid.Row="1"
+                  Grid.ColumnSpan="2">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <custC:PostControl Post="{Binding}"/>
+                        </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </DockPanel>
+
 </Window>

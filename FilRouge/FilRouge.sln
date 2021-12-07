@@ -12,6 +12,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B472652F-25F1-41CC-8B21-D162FAA3DF93}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		SQL_Queries.sql = SQL_Queries.sql
 	EndProjectSection
 EndProject
 Global

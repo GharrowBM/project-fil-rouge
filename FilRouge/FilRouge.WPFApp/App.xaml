@@ -10,5 +10,22 @@
             <Setter Property="FontStyle" Value="Italic"/>
             <Setter Property="TextDecorations" Value="Underline"/>
         </Style>
+
+        <SolidColorBrush x:Key="BG-1" Color="#101010"/>
+        <SolidColorBrush x:Key="BG-2" Color="#261C2C"/>
+        <SolidColorBrush x:Key="BG-3" Color="#3E2C41"/>
+        <SolidColorBrush x:Key="BG-4" Color="#5C527F"/>
+        <SolidColorBrush x:Key="BG-5" Color="#6E85B2"/>
+
+        <SolidColorBrush x:Key="TXT-1" Color="GreenYellow"/>
+
+        <Style x:Key="COMBO-1" TargetType="ComboBox">
+            <Setter Property="Background" Value="{StaticResource BG-2}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BG-3}"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
     </Application.Resources>
 </Application>

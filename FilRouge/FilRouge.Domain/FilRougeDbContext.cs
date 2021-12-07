@@ -326,64 +326,66 @@ namespace FilRouge.Data
 
             #region DB Links - Constraints
 
-            modelBuilder.Entity<User>()
-                .HasMany(u => u.Posts)
-                .WithOne(p => p.User)
-                .HasForeignKey(u => u.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //modelBuilder.Entity<User>()
+            //    .HasMany(u => u.Posts)
+            //    .WithOne(p => p.User)
+            //    .HasForeignKey(u => u.UserId)
+            //    .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<User>()
-                .HasMany(u => u.Answers)
-                .WithOne(p => p.User)
-                .HasForeignKey(u => u.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //modelBuilder.Entity<User>()
+            //    .HasMany(u => u.Answers)
+            //    .WithOne(p => p.User)
+            //    .HasForeignKey(u => u.UserId)
+            //    .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<User>()
-                .HasMany(u => u.Comments)
-                .WithOne(p => p.User)
-                .HasForeignKey(u => u.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //modelBuilder.Entity<User>()
+            //    .HasMany(u => u.Comments)
+            //    .WithOne(p => p.User)
+            //    .HasForeignKey(u => u.UserId)
+            //    .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<Post>()
-                .HasMany(p => p.Answers)
-                .WithOne(a => a.Post)
-                .HasForeignKey(a => a.PostId);
+            //modelBuilder.Entity<Post>()
+            //    .HasMany(p => p.Answers)
+            //    .WithOne(a => a.Post)
+            //    .HasForeignKey(a => a.PostId)
+            //    .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<Answer>()
-                .HasMany(a => a.Comments)
-                .WithOne(c => c.Answer)
-                .HasForeignKey(c => c.AnswerId);
+            //modelBuilder.Entity<Answer>()
+            //    .HasMany(a => a.Comments)
+            //    .WithOne(c => c.Answer)
+            //    .HasForeignKey(c => c.AnswerId)
+            //    .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<Post>()
-                .HasOne(p => p.User)
-                .WithMany(a => a.Posts)
-                .HasForeignKey(p => p.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //modelBuilder.Entity<Post>()
+            //    .HasOne(p => p.User)
+            //    .WithMany(a => a.Posts)
+            //    .HasForeignKey(p => p.UserId)
+            //    .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<Answer>()
-                .HasOne(p => p.User)
-                .WithMany(a => a.Answers)
-                .HasForeignKey(p => p.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //modelBuilder.Entity<Answer>()
+            //    .HasOne(p => p.User)
+            //    .WithMany(a => a.Answers)
+            //    .HasForeignKey(p => p.UserId)
+            //    .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<Answer>()
-                .HasOne(a => a.Post)
-                .WithMany(p => p.Answers)
-                .HasForeignKey(a => a.PostId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //modelBuilder.Entity<Answer>()
+            //    .HasOne(a => a.Post)
+            //    .WithMany(p => p.Answers)
+            //    .HasForeignKey(a => a.PostId)
+            //    .OnDelete(DeleteBehavior.NoAction);
 
 
-            modelBuilder.Entity<Comment>()
-                .HasOne(p => p.User)
-                .WithMany(a => a.Comments)
-                .HasForeignKey(p => p.UserId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //modelBuilder.Entity<Comment>()
+            //    .HasOne(p => p.User)
+            //    .WithMany(a => a.Comments)
+            //    .HasForeignKey(p => p.UserId)
+            //    .OnDelete(DeleteBehavior.NoAction);
 
-            modelBuilder.Entity<Comment>()
-                .HasOne(c => c.Answer)
-                .WithMany(a => a.Comments)
-                .HasForeignKey(c => c.AnswerId)
-                .OnDelete(DeleteBehavior.Restrict);
+            //modelBuilder.Entity<Comment>()
+            //    .HasOne(c => c.Answer)
+            //    .WithMany(a => a.Comments)
+            //    .HasForeignKey(c => c.AnswerId)
+            //    .OnDelete(DeleteBehavior.NoAction);
 
             //modelBuilder.Entity<User>()
             //    .OwnsMany(u => u.FavoriteTags)

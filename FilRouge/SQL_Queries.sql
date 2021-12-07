@@ -1,0 +1,1 @@
+﻿DROP DATABASE FilRouge_EFCore;
