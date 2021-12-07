@@ -33,6 +33,7 @@
                        Grid.Column="1"/>
             <TextBlock x:Name="postCreationDateTextBlock"
                        Text="10-02-2021"
+                       Foreground="#ddd"
                        FontStyle="Italic"
                        Grid.Column="2"/>
         </Grid>

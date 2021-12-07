@@ -40,7 +40,7 @@ namespace FilRouge.WPFApp.View.CustomControls
 
             if (control != null)
             {
-                control.postAuthorTextBlock.Text = (e.NewValue as Post).Author.Username;
+                control.postAuthorTextBlock.Text = (e.NewValue as Post).User.Username;
                 control.postTitleTextBlock.Text = (e.NewValue as Post).Title;
                 control.postCreationDateTextBlock.Text = (e.NewValue as Post).CreatedAt.ToString();
                 control.postContentTextBlock.Text = (e.NewValue as Post).Content;

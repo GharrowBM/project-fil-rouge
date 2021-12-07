@@ -14,8 +14,8 @@ namespace FilRouge.Domain
         public DateTime EditedAt { get; set; }
         public int Score { get; set; }
 
-        public int AuthorId { get; set; }
-        public virtual User Author { get; set; }
+        public int UserId { get; set; }
+        public virtual User User { get; set; }
         public int PostId { get; set; }
         public virtual Post Post { get; set; }
         public virtual List<Comment> Comments { get; set; }

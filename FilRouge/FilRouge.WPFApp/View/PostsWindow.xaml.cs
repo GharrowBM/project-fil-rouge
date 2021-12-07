@@ -29,9 +29,9 @@ namespace FilRouge.WPFApp.View
         {
             InitializeComponent();
 
-            PopulateDatabase();
+            //PopulateDatabase();
 
-            posts = context.Posts.ToList();
+            posts = context.Posts.Include(p => p.User).ToList();
 
             postListView.ItemsSource = posts;
         }
@@ -114,8 +114,8 @@ namespace FilRouge.WPFApp.View
                 CreatedAt = DateTime.Now,
                 EditedAt = DateTime.Now,
                 Score = 0,
-                Author = userA,
-                AuthorId = 1,
+                User = userA,
+                UserId = 1,
                 Tags = new List<Tag> { tagA, tagB },
                 Answers = new List<Answer>()
 
@@ -128,8 +128,8 @@ namespace FilRouge.WPFApp.View
                 CreatedAt = DateTime.Now,
                 EditedAt = DateTime.Now,
                 Score = 666,
-                Author = userB,
-                AuthorId = 2,
+                User = userB,
+                UserId = 2,
                 Tags = new List<Tag> { tagC, tagD, tagE },
                 Answers = new List<Answer>()
             };
@@ -155,8 +155,8 @@ namespace FilRouge.WPFApp.View
                 CreatedAt = DateTime.Now,
                 EditedAt = DateTime.Now,
                 Score = 0,
-                Author = userA,
-                AuthorId = 1,
+                User = userA,
+                UserId = 1,
                 Post = postA,
                 PostId = 1,
                 Comments = new List<Comment>()
@@ -168,8 +168,8 @@ namespace FilRouge.WPFApp.View
                 CreatedAt = DateTime.Now,
                 EditedAt = DateTime.Now,
                 Score = 0,
-                Author = userB,
-                AuthorId = 2,
+                User = userB,
+                UserId = 2,
                 Post = postA,
                 PostId = 1,
                 Comments = new List<Comment>()
@@ -181,8 +181,8 @@ namespace FilRouge.WPFApp.View
                 CreatedAt = DateTime.Now,
                 EditedAt = DateTime.Now,
                 Score = 0,
-                Author = userA,
-                AuthorId = 1,
+                User = userA,
+                UserId = 1,
                 Post = postB,
                 PostId = 2,
                 Comments = new List<Comment>()
@@ -194,8 +194,8 @@ namespace FilRouge.WPFApp.View
                 CreatedAt = DateTime.Now,
                 EditedAt = DateTime.Now,
                 Score = 0,
-                Author = userB,
-                AuthorId = 2,
+                User = userB,
+                UserId = 2,
                 Post = postB,
                 PostId = 2,
                 Comments = new List<Comment>()
@@ -223,8 +223,8 @@ namespace FilRouge.WPFApp.View
                 CreatedAt = DateTime.Now,
                 EditedAt = DateTime.Now,
                 Score = 0,
-                Author = userA,
-                AuthorId = 1,
+                User = userA,
+                UserId = 1,
                 Answer = answerA,
                 AnswerId = 1
             };
@@ -235,8 +235,8 @@ namespace FilRouge.WPFApp.View
                 CreatedAt = DateTime.Now,
                 EditedAt = DateTime.Now,
                 Score = 0,
-                Author = userB,
-                AuthorId = 2,
+                User = userB,
+                UserId = 2,
                 Answer = answerA,
                 AnswerId = 1
             };
@@ -247,8 +247,8 @@ namespace FilRouge.WPFApp.View
                 CreatedAt = DateTime.Now,
                 EditedAt = DateTime.Now,
                 Score = 0,
-                Author = userA,
-                AuthorId = 1,
+                User = userA,
+                UserId = 1,
                 Answer = answerB,
                 AnswerId = 2
             };
@@ -259,8 +259,8 @@ namespace FilRouge.WPFApp.View
                 CreatedAt = DateTime.Now,
                 EditedAt = DateTime.Now,
                 Score = 0,
-                Author = userB,
-                AuthorId = 2,
+                User = userB,
+                UserId = 2,
                 Answer = answerB,
                 AnswerId = 2
             };
@@ -271,8 +271,8 @@ namespace FilRouge.WPFApp.View
                 CreatedAt = DateTime.Now,
                 EditedAt = DateTime.Now,
                 Score = 0,
-                Author = userA,
-                AuthorId = 1,
+                User = userA,
+                UserId = 1,
                 Answer = answerC,
                 AnswerId = 3
             };
@@ -283,8 +283,8 @@ namespace FilRouge.WPFApp.View
                 CreatedAt = DateTime.Now,
                 EditedAt = DateTime.Now,
                 Score = 0,
-                Author = userB,
-                AuthorId = 2,
+                User = userB,
+                UserId = 2,
                 Answer = answerC,
                 AnswerId = 3
             };
@@ -295,8 +295,8 @@ namespace FilRouge.WPFApp.View
                 CreatedAt = DateTime.Now,
                 EditedAt = DateTime.Now,
                 Score = 0,
-                Author = userA,
-                AuthorId = 1,
+                User = userA,
+                UserId = 1,
                 Answer = answerD,
                 AnswerId = 4
             };
@@ -307,8 +307,8 @@ namespace FilRouge.WPFApp.View
                 CreatedAt = DateTime.Now,
                 EditedAt = DateTime.Now,
                 Score = 0,
-                Author = userB,
-                AuthorId = 2,
+                User = userB,
+                UserId = 2,
                 Answer = answerD,
                 AnswerId = 4
             };
@@ -360,7 +360,7 @@ namespace FilRouge.WPFApp.View
             context.Comments.Add(commentF);
             context.Comments.Add(commentG);
             context.Comments.Add(commentH);
-
+            
             context.SaveChanges();
         }
 
