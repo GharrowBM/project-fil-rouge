@@ -1,6 +1,6 @@
 ﻿using FilRouge.Data;
-using FilRouge.Domain;
-using FilRouge.Domain.Enums;
+using FilRouge.Classes;
+using FilRouge.Classes.Enums;
 using FilRouge.WPFApp.ViewModel.Commands;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -9,12 +9,13 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FilRouge.Repositories;
 
 namespace FilRouge.WPFApp.ViewModel
 {
     public class PostsVM : INotifyPropertyChanged
     {
-        private FilRougeDbContext context = new FilRougeDbContext();
+        private DataContext context = new DataContext();
         private string _searchText;
         private List<Post> posts;
         private List<Post> filteredPosts;

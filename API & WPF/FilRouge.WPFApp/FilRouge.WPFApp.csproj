@@ -16,8 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FilRouge.Data\FilRouge.Domain.csproj" />
-    <ProjectReference Include="..\FilRouge.Domain\FilRouge.Data.csproj" />
+    <ProjectReference Include="..\FilRouge.Data\FilRouge.Classes.csproj" />
+    <ProjectReference Include="..\FilRouge.Domain\FilRouge.Repositories.csproj" />
   </ItemGroup>
 
 </Project>

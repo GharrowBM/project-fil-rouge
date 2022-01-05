@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FilRouge.Domain.Enums
+namespace FilRouge.Classes.Enums
 {
     public enum TypeOfFilterEnum
     {

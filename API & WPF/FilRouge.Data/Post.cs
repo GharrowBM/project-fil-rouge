@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FilRouge.Domain
+namespace FilRouge.Classes
 {
     public class Post
     {

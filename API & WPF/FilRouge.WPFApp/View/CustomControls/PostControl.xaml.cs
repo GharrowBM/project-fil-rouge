@@ -1,5 +1,5 @@
 ﻿using FilRouge.Data;
-using FilRouge.Domain;
+using FilRouge.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FilRouge.Repositories;
 
 namespace FilRouge.WPFApp.View.CustomControls
 {
@@ -22,7 +23,7 @@ namespace FilRouge.WPFApp.View.CustomControls
     /// </summary>
     public partial class PostControl : UserControl
     {
-        private static FilRougeDbContext context = new FilRougeDbContext();
+        private static DataContext context = new DataContext();
 
         public Post Post
         {

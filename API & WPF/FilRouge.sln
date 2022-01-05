@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilRouge.Domain", "FilRouge.Data\FilRouge.Domain.csproj", "{5DFA3B9B-6115-4C29-9EE5-AC55F3D44F6E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilRouge.Classes", "FilRouge.Data\FilRouge.Classes.csproj", "{5DFA3B9B-6115-4C29-9EE5-AC55F3D44F6E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilRouge.WPFApp", "FilRouge.WPFApp\FilRouge.WPFApp.csproj", "{01124D9A-F247-4838-BEC7-A5821D601470}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilRouge.Data", "FilRouge.Domain\FilRouge.Data.csproj", "{A6B3B48D-03B4-46CD-A7F8-B89E14E9922F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilRouge.Repositories", "FilRouge.Domain\FilRouge.Repositories.csproj", "{A6B3B48D-03B4-46CD-A7F8-B89E14E9922F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B472652F-25F1-41CC-8B21-D162FAA3DF93}"
 	ProjectSection(SolutionItems) = preProject
