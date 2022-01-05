@@ -83,7 +83,7 @@ namespace FilRouge.Repositories
                 u.Comments = entity.Comments;
                 u.Posts = entity.Posts;
                 u.RegisterAt = entity.RegisterAt;
-                u.AvatarURI = entity.AvatarURI;
+                u.AvatarPath = entity.AvatarPath;
                 u.Password = entity.Password;
 
                 _dataContext.Users.Update(u);

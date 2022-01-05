@@ -1,4 +1,5 @@
-﻿using FilRouge.Classes;
+﻿using System;
+using FilRouge.Classes;
 using FilRouge.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
@@ -28,28 +29,67 @@ namespace FilRouge.API.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            return Ok(_userRepository.Get(id));
+            User userToGet = _userRepository.Get(id);
+
+            if (userToGet != null)
+            {
+                return Ok(userToGet);
+            }
+
+            return NotFound(new {Message = "Cannot GET this user..."});
         }
 
         // POST api/<APIController>
         [HttpPost]
-        public IActionResult Post([FromForm] User user)
+        public IActionResult Post([FromBody] User user)
         {
-            return Ok(_userRepository.Add(user));
+            if (_userRepository.Add(user))
+            {
+                return Ok(new {Message = $"{user.Username} successfully added to database!"});
+            }
+
+            return NotFound(new {Message = $"{user.Username} cannot be added to database..."});
         }
 
         // PUT api/<APIController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromForm] User user)
+        public IActionResult Put(int id, [FromBody] User user)
         {
-            return Ok(_userRepository.Update(id, user));
+            User userToEdit = _userRepository.Get(id);
+
+            if(userToEdit != null)
+            {
+                userToEdit.FirstName = user.FirstName;
+                userToEdit.LastName = user.LastName;
+                userToEdit.Username = user.Username;
+                userToEdit.Password = user.Password;
+                userToEdit.AvatarPath = user.AvatarPath;
+                userToEdit.Email = user.Email;
+                userToEdit.IsBlacklisted = user.IsBlacklisted;
+                userToEdit.Posts = user.Posts;
+                userToEdit.Answers = user.Answers;
+                userToEdit.Comments = user.Comments;
+                userToEdit.FavoriteTags = user.FavoriteTags;
+                
+                if (_userRepository.Update(id, userToEdit))
+                {
+                    return Ok(new {Message=$"{user.Username} successfully edited!"});
+                }
+            }
+            
+            return NotFound(new {Message = $"{user.Username} cannot be edited..."});
         }
 
         // DELETE api/<APIController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            return Ok(_userRepository.Delete(id));
+            if(_userRepository.Delete(id))
+            {
+                return Ok(new {Message = "User " + id + " successfully deleted!"});
+            }
+
+            return NotFound(new {Message = "User" + id + " cannot be deleted..."});
         }
     }
 }

@@ -28,28 +28,57 @@ namespace FilRouge.API.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            return Ok(_tagRepository.Get(id));
+            Tag tagToGet = _tagRepository.Get(id);
+
+            if (tagToGet != null)
+            {
+                return Ok(tagToGet);
+            }
+
+            return NotFound(new {Message = "Cannot GET that tag..."});
         }
 
         // tag api/<APIController>
         [HttpPost]
-        public IActionResult tag([FromForm] Tag tag)
+        public IActionResult Post([FromForm] Tag tag)
         {
-            return Ok(_tagRepository.Add(tag));
+            if (_tagRepository.Add(tag))
+            {
+                return Ok(new {Message = $"{tag.Name} successfully added!"});
+            }
+
+            return NotFound(new {Message = $"{tag.Name} cannot be added..."});
         }
 
         // PUT api/<APIController>/5
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromForm] Tag tag)
         {
-            return Ok(_tagRepository.Update(id, tag));
+            Tag tagToEdit = _tagRepository.Get(id);
+
+            if (tagToEdit != null)
+            {
+                tagToEdit.Name = tag.Name;
+
+                if (_tagRepository.Update(id, tagToEdit))
+                {
+                    return Ok(new {Mesage=$"{tag.Name} was edited with success!"});
+                }
+            }
+
+            return NotFound(new {Message = $"{tag.Name} cannot be edited..."});
         }
 
         // DELETE api/<APIController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            return Ok(_tagRepository.Delete(id));
+            if (_tagRepository.Delete(id))
+            {
+                return Ok(new {Message = "Tag" + id + " was successfully deleted!"});
+            }
+
+            return NotFound(new {Message = "Tag " + id + " cannot be deleted..."});
         }
     }
 }

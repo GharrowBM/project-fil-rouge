@@ -25,5 +25,12 @@ namespace FilRouge.Classes
         public virtual User User { get; set; }
         public virtual List<Answer> Answers { get; set; }
         public virtual List<Tag> Tags { get; set; }
+
+        public Post()
+        {
+            CreatedAt = DateTime.Now;
+            Answers = new List<Answer>();
+            Tags = new List<Tag>();
+        }
     }
 }

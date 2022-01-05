@@ -14,7 +14,7 @@ namespace FilRouge.Classes
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Username { get; set; }
-        public Uri AvatarURI { get; set; }
+        public string AvatarPath { get; set; }
         public string Email { get; set; }
         public DateTime RegisterAt { get; set; }
         public bool IsBlacklisted { get; set; }
@@ -24,5 +24,15 @@ namespace FilRouge.Classes
         public virtual List<Answer> Answers { get; set; }
         public virtual List<Comment> Comments { get; set; }
         public virtual List<Tag> FavoriteTags { get; set; }
+
+        public User()
+        {
+            RegisterAt = DateTime.Now;
+            IsBlacklisted = false;
+            Posts = new List<Post>();
+            Answers = new List<Answer>();
+            Comments = new List<Comment>();
+            FavoriteTags = new List<Tag>();
+        }
     }
 }

@@ -18,6 +18,7 @@ namespace FilRouge.Repositories
         {
             return _dataContext.Posts
                 .Include(p => p.Answers)
+                .ThenInclude(a=>a.Comments)
                 .Include(p => p.User)
                 .Include(p => p.Tags)
                 .FirstOrDefault(p => p.Id == id);
@@ -27,6 +28,7 @@ namespace FilRouge.Repositories
         {
             return _dataContext.Posts
                 .Include(p => p.Answers)
+                .ThenInclude(a=>a.Comments)
                 .Include(p => p.User)
                 .Include(p => p.Tags)
                 .ToList();
@@ -36,6 +38,7 @@ namespace FilRouge.Repositories
         {
             return _dataContext.Posts
                 .Include(p => p.Answers)
+                .ThenInclude(a=>a.Comments)
                 .Include(p => p.User)
                 .Include(p => p.Tags)
                 .FirstOrDefault(searchMethod);
@@ -45,6 +48,7 @@ namespace FilRouge.Repositories
         {
             return _dataContext.Posts
                 .Include(p => p.Answers)
+                .ThenInclude(a=>a.Comments)
                 .Include(p => p.User)
                 .Include(p => p.Tags)
                 .Where(searchMethod).ToList();
