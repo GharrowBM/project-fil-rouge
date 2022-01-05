@@ -7,7 +7,7 @@ using FilRouge.Classes;
 using FilRouge.Repositories;
 using Microsoft.EntityFrameworkCore;
 
-namespace FilRouge.Data
+namespace FilRouge.Repositories
 {
     public class UserRepository : BaseRepository, IRepository<User>
     {
