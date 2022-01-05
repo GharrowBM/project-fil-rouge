@@ -49,12 +49,12 @@ namespace FilRouge.API
             services.AddCors(options => {
                 options.AddPolicy("allConnections", builder =>
                 {
-                    builder.AllowAnyOrigin().AllowAnyMethod();
+                    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
                 });
 
-                options.AddPolicy("specialOrigin", builder =>
+                options.AddPolicy("react", builder =>
                 {
-                    builder.WithOrigins("https://localhost:44397").AllowAnyMethod();
+                    builder.WithOrigins("https://localhost:3000").AllowAnyMethod().AllowAnyHeader();
                 });
             });
 
@@ -64,7 +64,7 @@ namespace FilRouge.API
                 options.TokenValidationParameters = new TokenValidationParameters()
                 {
                     ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Bonjour je suis la clé de cryptage")),
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Bonjour, je suis la clÃ© de cryptage!")),
                     ValidateIssuer = true,
                     ValidIssuer = "m2i",
                     ValidateAudience = true,
@@ -74,7 +74,7 @@ namespace FilRouge.API
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("admin", police =>
+                options.AddPolicy("protected", police =>
                 {
                     police.RequireClaim(ClaimTypes.Role, "admin");
                 });
@@ -97,8 +97,7 @@ namespace FilRouge.API
 
             app.UseCors();
 
-            app.UseAuthorization();
-
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

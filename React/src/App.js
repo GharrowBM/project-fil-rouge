@@ -10,14 +10,25 @@ import QuestionDetails from './views/QuestionDetails'
 import Register from './views/Register'
 import SignIn from "./views/SignIn";
 import About from "./views/About";
+import {useEffect, useState} from "react";
+import {getAllPosts} from "./services/data";
 
 
 function App() {
+
+    const [posts, setPosts] = useState(undefined)
+    const [firstLoading, setFirstLoading] = useState(true)
+
+    useEffect(()=> {
+        getAllPosts().then(res => {
+            setPosts([...res.data])
+        })
+    }, [firstLoading])
   return (
     <Router>
         <Switch>
         <Route path="/about">
-        <About allQuestions={baseQuestions} allTags={baseTags} allUsers={baseUsers} >
+        <About allQuestions={posts} allTags={baseTags} allUsers={baseUsers} >
           Hello World !
         </About>
           </Route>
@@ -28,10 +39,10 @@ function App() {
             <Register />
           </Route>
           <Route path="/question/:id">
-            <QuestionDetails questions={baseQuestions}/>
+            <QuestionDetails questions={posts}/>
           </Route>
           <Route path="/">
-            <Home baseQuestions={baseQuestions} baseTags={baseTags} baseUsers={baseUsers} />
+            <Home baseQuestions={posts} baseTags={baseTags} baseUsers={baseUsers} />
           </Route>
         </Switch>
     </Router>

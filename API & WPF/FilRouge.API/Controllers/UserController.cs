@@ -1,7 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 using FilRouge.Classes;
 using FilRouge.Repositories.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -49,6 +54,29 @@ namespace FilRouge.API.Controllers
             }
 
             return NotFound(new {Message = $"{user.Username} cannot be added to database..."});
+        }
+
+        [HttpPost("login")]
+        public string Login(string username, string password)
+        {
+            if (username == "test" && password == "pass")
+            {
+                List<Claim> claims = new List<Claim>()
+                {
+                    new Claim(ClaimTypes.Name, username),                  
+                    new Claim(ClaimTypes.Role, "admin"),
+                };
+
+                //Objet pour signer le token
+                SigningCredentials signingCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Bonjour, je suis la clé de cryptage!")), SecurityAlgorithms.HmacSha256);
+
+
+                //Créer notre jwt
+                JwtSecurityToken jwt = new JwtSecurityToken(issuer: "m2i", audience: "m2i", claims: claims, signingCredentials: signingCredentials, expires: DateTime.Now.AddDays(2));
+                return new JwtSecurityTokenHandler().WriteToken(jwt);
+            }
+
+            return null;
         }
 
         // PUT api/<APIController>/5

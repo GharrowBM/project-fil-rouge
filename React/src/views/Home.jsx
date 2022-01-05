@@ -32,7 +32,7 @@ class Home extends React.PureComponent {
                     <SearchTags />
                 </div>
             </div>
-            {this.state.baseQuestions.map((forum,index) => <Question key={index} forum={forum}/>)}
+            {this.state.baseQuestions?.map((forum,index) => <Question key={index} forum={forum}/>)}
         </>)
     }
 }
