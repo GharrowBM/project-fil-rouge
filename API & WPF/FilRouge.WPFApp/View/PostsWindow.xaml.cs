@@ -1,5 +1,4 @@
-﻿using FilRouge.Data;
-using FilRouge.Classes;
+﻿using FilRouge.Classes;
 using FilRouge.WPFApp.ViewModel;
 using Microsoft.EntityFrameworkCore;
 using System;

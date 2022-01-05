@@ -28,28 +28,28 @@ namespace FilRouge.API.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            return Ok();
+            return Ok(_userRepository.Get(id));
         }
 
         // POST api/<APIController>
         [HttpPost]
-        public IActionResult Post([FromBody] string value)
+        public IActionResult Post([FromForm] User user)
         {
-            return Ok();
+            return Ok(_userRepository.Add(user));
         }
 
         // PUT api/<APIController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, [FromForm] User user)
         {
-            return Ok();
+            return Ok(_userRepository.Update(id, user));
         }
 
         // DELETE api/<APIController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            return Ok();
+            return Ok(_userRepository.Delete(id));
         }
     }
 }

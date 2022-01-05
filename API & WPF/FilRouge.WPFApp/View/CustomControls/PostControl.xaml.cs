@@ -1,5 +1,4 @@
-﻿using FilRouge.Data;
-using FilRouge.Classes;
+﻿using FilRouge.Classes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
