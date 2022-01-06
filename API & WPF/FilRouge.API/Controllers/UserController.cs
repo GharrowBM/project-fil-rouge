@@ -95,9 +95,9 @@ namespace FilRouge.API.Controllers
         }*/
 
         [HttpPost("login")]
-        public string Login(string username, string password)
+        public string Login([FromForm] string username, [FromForm] string password)
         {
-            if (username == "test" && password == "pass")
+            if (_userRepository.GetAll().Find(u => u.Username == username && u.Password == password) != null)
             {
                 List<Claim> claims = new List<Claim>()
                 {

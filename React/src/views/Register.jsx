@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../components/Header'
-import {postUser} from "../services/data";
+import {postUserData} from "../services/data";
 
 class Register extends React.PureComponent {
 
@@ -32,7 +32,7 @@ class Register extends React.PureComponent {
             formdata.append('lastname', this.state.lastname)
             formdata.append('firstname', this.state.firstname)
 
-            postUser(formdata).then(res => {
+            postUserData(formdata).then(res => {
                 console.log(res.data)
             })
         }

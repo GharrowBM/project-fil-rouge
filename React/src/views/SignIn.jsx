@@ -1,24 +1,41 @@
 import React from 'react'
 import Header from '../components/Header'
-import { baseUsers } from '../datas/baseData'
+import { loginUser } from '../services/data'
 
 class SignIn extends React.PureComponent {
     constructor(props) {
         super(props)
         this.state = {
-            mail: "",
+            username: "",
             password: ""
         }
     }
 
-    testSignin(mail, pass) {
+    // testSignin(username, pass) {
 
-        const tmpUser = baseUsers.find(x => x.mail === mail);
-        const loginError = document.querySelector(".loginerror")
+    //     const tmpUser = baseUsers.find(x => x.username === username);
+    //     const loginError = document.querySelector(".loginerror")
 
-        tmpUser?.password === pass ? window.location = "/" : loginError.innerHTML = "Erreur"
+    //     tmpUser?.password === pass ? window.location = "/" : loginError.innerHTML = "Erreur"
 
-        console.log(tmpUser?.password === pass ? 'Login Successful' : 'Login Failed')
+    //     console.log(tmpUser?.password === pass ? 'Login Successful' : 'Login Failed')
+    // }
+
+    signInUser(e) {
+
+        e.preventDefault()
+
+        if (this.state.username !== undefined && this.state.password !== undefined) {
+            const formdata = new FormData()
+            formdata.append("username", this.state.username)
+            formdata.append("password", this.state.password)
+
+            console.log(formdata["username"])
+
+            loginUser(formdata).then(res => {
+                console.log(res.data)
+            })
+        }
     }
 
 
@@ -30,16 +47,16 @@ class SignIn extends React.PureComponent {
     render() {
         return(<>
             <Header />
-            <form className="form-signin" onSubmit={(e) => e.preventDefault()}>
+            <form className="form-signin">
             <fieldset>
-                <label htmlFor="input-mail">email</label>
-                    <input type="mail" name="input-mail" id="input-mail" value={this.state.mail} onChange={(e) => this.setState({mail: e.currentTarget.value})}/>
+                <label htmlFor="username">username</label>
+                    <input type="text" name="username" id="username" value={this.state.username} onChange={(e) => this.setState({username: e.currentTarget.value})}/>
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="input-password">password</label>
-                    <input type="password" name="input-password" id="input-password" value={this.state.password} onChange={(e) => this.setState({password: e.currentTarget.value})}/>
+                    <label htmlFor="password">password</label>
+                    <input type="password" name="password" id="password" value={this.state.password} onChange={(e) => this.setState({password: e.currentTarget.value})}/>
                 </fieldset>
-                <button onClick={() => this.testSignin(this.state.mail, this.state.password)}>Se connecter</button>
+                <button onClick={(e) => this.signInUser(e)}>Se connecter</button>
                 <div className="loginerror"></div>
             </form>
 

@@ -64,6 +64,10 @@ export const deletePost = (id) => {
     return axios.delete(baseUrl + '/Post/' + id, config)
 }
 
-/*export const postUserData = (data) => {
-    return axios.post(baseUrl + '/User', data)
-}}*/
+export const postUserData = (data) => {
+    return axios.post(baseUrl + '/User', data, config)
+}
+
+export const loginUser = (data) => {
+    return axios.post(baseUrl + '/User/login', data, config)
+}
