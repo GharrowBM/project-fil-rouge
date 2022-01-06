@@ -3,55 +3,62 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+import React from "react";
 import Home from './views/Home';
 import './App.css';
 import QuestionDetails from './views/QuestionDetails'
 import Register from './views/Register'
 import SignIn from "./views/SignIn";
 import About from "./views/About";
-import {useEffect, useState} from "react";
 import {getAllPosts, getAllTags} from "./services/data";
 
 
-function App() {
 
-  const [selectedTags, setSelectedTags] = useState(undefined)
-  const [availableTags, setAvailableTags] = useState(undefined)
-  const [currentUser, setCurrentUser] = useState(undefined)
-  const [posts, setPosts] = useState(undefined)
-  const [firstLoading, setFirstLoading] = useState(true)
+  class App extends React.PureComponent {
+    constructor(props) {
+        super(props)
+        this.state = {
+            selectedTags: undefined,
+            availableTags: undefined,
+            currentUser: undefined,
+            posts: undefined,
+        }
+    }
+    componentDidMount(){
+      getAllPosts().then(res => {
+      const posts = res.data;
 
-  useEffect(() => {
-    getAllPosts().then(res => {
-      setPosts([...res.data])
+      console.log(posts)
+      getAllTags().then(res => {
+        this.setState({availableTags: [...res.data], posts: [...posts] })
+      })
     })
-    getAllTags().then(res => {
-      setAvailableTags([...res.data])
-    })
-  }, [firstLoading])
+  }
+    render(){
+      return (
+        <Router>
+            <Switch>
+            <Route path="/about">
+            <About />
+              </Route>
+              <Route path="/signin">
+                <SignIn />
+              </Route>
+              <Route path="/register">
+                <Register />
+              </Route>
+              <Route path="/question/:id">
+                <QuestionDetails />
+              </Route>
+              <Route path="/" component={() =>(<Home basePosts={this.state.posts} availableTags={this.state.availableTags}/>)}>
+                
+              </Route>
+            </Switch>
+        </Router>
+      );
+    }
+    
+  }
 
-
-  return (
-    <Router>
-        <Switch>
-        <Route path="/about">
-        <About />
-          </Route>
-          <Route path="/signin">
-            <SignIn />
-          </Route>
-          <Route path="/register">
-            <Register />
-          </Route>
-          <Route path="/question/:id">
-            <QuestionDetails />
-          </Route>
-          <Route path="/">
-            <Home basePosts={posts} availableTags={availableTags}/>
-          </Route>
-        </Switch>
-    </Router>
-  );
-}
 
 export default App
