@@ -9,14 +9,10 @@ class Home extends React.PureComponent {
     constructor(props) {
         super(props)
         this.state = {
-            baseQuestions: props.baseQuestions,
-            baseTags: props.baseTags,
-            baseUsers: props.baseUsers,
+            basePosts: props.basePosts,
+            availableTags : props.availableTags,
+            selectedTags : props.selectedTags
         }
-    }
-
-    componentDidMount() {
-        // console.log(this.state.baseForums);
     }
 
     render() {
@@ -25,14 +21,14 @@ class Home extends React.PureComponent {
             <div className="tags-area">
                 <div>
                     <h2>Selected tags :</h2>
-                <SelectedTags />
+                <SelectedTags selectedTags={this.state.selectedTags}/>
                 </div>
                 <div>
                     <h2>Available tags :</h2>
-                    <SearchTags />
+                    <SearchTags availableTags={this.state.availableTags}/>
                 </div>
             </div>
-            {this.state.baseQuestions?.map((forum,index) => <Question key={index} forum={forum}/>)}
+            {this.state.basePosts?.map((forum,index) => <Question key={index} forum={forum}/>)}
         </>)
     }
 }

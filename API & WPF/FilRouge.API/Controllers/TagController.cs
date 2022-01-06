@@ -1,5 +1,7 @@
 ﻿using FilRouge.Classes;
 using FilRouge.Repositories.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -7,6 +9,8 @@ using Microsoft.AspNetCore.Mvc;
 namespace FilRouge.API.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("allConnections")]
+    [Authorize(Policy = "protected")]
     [ApiController]
     public class TagController : ControllerBase
     {

@@ -1,19 +1,26 @@
 import React from 'react'
-import {baseTags} from '../datas/baseData' 
 
 class SearchTags extends React.PureComponent {
     constructor(props) {
         super(props)
         this.state = {
-            tags: baseTags
+            availableTags: props.availableTags
         }
     }
 
     render() {
 
-        return(<div className="search-tags">
-            {this.state.tags.map((tag,index) => <div key={index}>{tag}</div>)}
-        </div>)
+        if (this.state.availableTags !== undefined) {
+            return(<div className="search-tags">
+                {this.state.availableTags.map((tag,index) => <div key={index}>{tag.name}</div>)}
+            </div>)
+        }
+        else {
+            return(<div className="search-tags">
+                <p className="empty-div">Loading...</p>
+            </div>)
+        }
+
     }
 }
 

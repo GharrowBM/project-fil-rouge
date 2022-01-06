@@ -5,43 +5,43 @@ const config = {
     headers: {Authorization: `Bearer ${token}`}
 }
 export const getAllUsers = () => {
-    return axios.get(baseUrl + '/User')
+    return axios.get(baseUrl + '/User', config)
 }
 
 export const getUser = (id) => {
-    return axios.get(baseUrl + '/User/' + id)
+    return axios.get(baseUrl + '/User/' + id, config)
 }
 
 export const postUser = (user) => {
-    return axios.post(baseUrl + '/User', {...user})
+    return axios.post(baseUrl + '/User', {...user}, config)
 }
 
 export const updateUser = (id, user) => {
-    return axios.put(baseUrl + '/User/'+ id, {...user})
+    return axios.put(baseUrl + '/User/'+ id, {...user}, config)
 }
 
 export const deleteUser = (id) => {
-    return axios.delete(baseUrl + '/User/' + id)
+    return axios.delete(baseUrl + '/User/' + id, config)
 }
 
 export const getAllTags = () => {
-    return axios.get(baseUrl + '/Tag')
+    return axios.get(baseUrl + '/Tag', config)
 }
 
 export const getTag = (id) => {
-    return axios.get(baseUrl + '/User/' + id)
+    return axios.get(baseUrl + '/User/' + id, config)
 }
 
 export const postTag = (tag) => {
-    return axios.post(baseUrl + '/Tag', {...tag})
+    return axios.post(baseUrl + '/Tag', {...tag}, config)
 }
 
 export const updateTag = (id, tag) => {
-    return axios.put(baseUrl + '/Tag/'+ id, {...tag})
+    return axios.put(baseUrl + '/Tag/'+ id, {...tag}, config)
 }
 
 export const deleteTag = (id) => {
-    return axios.delete(baseUrl + '/Tag/' + id)
+    return axios.delete(baseUrl + '/Tag/' + id, config)
 }
 
 export const getAllPosts = () => {
@@ -53,15 +53,15 @@ export const getPost = (id) => {
 }
 
 export const postPost = (post) => {
-    return axios.post(baseUrl + '/Post', {...post})
+    return axios.post(baseUrl + '/Post', {...post}, config)
 }
 
 export const updatePost = (id, post) => {
-    return axios.put(baseUrl + '/Post/'+ id, {...post})
+    return axios.put(baseUrl + '/Post/'+ id, {...post}, config)
 }
 
 export const deletePost = (id) => {
-    return axios.delete(baseUrl + '/Post/' + id)
+    return axios.delete(baseUrl + '/Post/' + id, config)
 }
 
 /*export const postUserData = (data) => {

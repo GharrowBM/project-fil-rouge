@@ -4,15 +4,23 @@ class SelectedTags extends React.PureComponent {
     constructor(props) {
         super(props)
         this.state = {
-            selectedTags: ['React', 'Typescript']
+            currentUserId: props.currentUserId,
+            selectedTags: props.currentUserId?.favoriteTags
         }
     }
 
 
     render() {
-        return(<div className='selected-tags'>
-            {this.state.selectedTags.map((tag,index) => <div key={index}>{tag}</div>)}
-        </div>)
+        if (this.state.selectedTags !== undefined) {
+            return(<div className='selected-tags'>
+                {this.state.selectedTags.map((tag,index) => <div key={index}>{tag}</div>)}
+            </div>)
+        } else {
+            return(<div className='selected-tags'>
+                <p className="empty-div">Not Logged in...</p>
+            </div>)
+        }
+
     }
 }
 

@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using FilRouge.API.Services;
 using FilRouge.Classes;
 using FilRouge.Repositories.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.IdentityModel.Tokens;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -13,14 +17,18 @@ using Microsoft.IdentityModel.Tokens;
 namespace FilRouge.API.Controllers
 {
     [Route("api/[controller]")]
+    [EnableCors("allConnections")]
+    [Authorize(Policy = "protected")]
     [ApiController]
     public class UserController : ControllerBase
     {
         private IRepository<User> _userRepository;
+        private UploadService _uploadService;
 
-        public UserController(IRepository<User> userRepository) 
+        public UserController(IRepository<User> userRepository, UploadService uploadService) 
         {
             _userRepository = userRepository;
+            _uploadService = uploadService;
         }
 
         // GET: api/<APIController>
@@ -44,10 +52,19 @@ namespace FilRouge.API.Controllers
             return NotFound(new {Message = "Cannot GET this user..."});
         }
 
-        // POST api/<APIController>
         [HttpPost]
-        public IActionResult Post([FromBody] User user)
+        public IActionResult Post([FromForm] IFormFile file, [FromForm] string username, [FromForm] string password, [FromForm] string lastname, [FromForm] string firstname, [FromForm] string email)
         {
+            User user = new User()
+            {
+                Username = username,
+                Password = password,
+                LastName = lastname,
+                FirstName = firstname,
+                AvatarPath = _uploadService.Upload(file),
+                Email = email
+            };
+            
             if (_userRepository.Add(user))
             {
                 return Ok(new {Message = $"{user.Username} successfully added to database!"});
@@ -55,6 +72,27 @@ namespace FilRouge.API.Controllers
 
             return NotFound(new {Message = $"{user.Username} cannot be added to database..."});
         }
+        
+        /*[HttpPost]
+        public IActionResult Post(string email, string password, string username, string avatarPath, string firstname, string lastname)
+        {
+            User user = new User()
+            {
+                FirstName = firstname,
+                LastName = lastname,
+                Email = email,
+                AvatarPath = avatarPath,
+                Username = username,
+                Password = password
+            };
+            
+            if (_userRepository.Add(user))
+            {
+                return Ok(new {Message = $"{user.Username} successfully added to database!"});
+            }
+
+            return NotFound(new {Message = $"{user.Username} cannot be added to database..."});
+        }*/
 
         [HttpPost("login")]
         public string Login(string username, string password)

@@ -5,32 +5,37 @@ import {
 } from "react-router-dom";
 import Home from './views/Home';
 import './App.css';
-import { baseQuestions, baseTags, baseUsers } from "./datas/baseData";
 import QuestionDetails from './views/QuestionDetails'
 import Register from './views/Register'
 import SignIn from "./views/SignIn";
 import About from "./views/About";
 import {useEffect, useState} from "react";
-import {getAllPosts} from "./services/data";
+import {getAllPosts, getAllTags} from "./services/data";
 
 
 function App() {
 
-    const [posts, setPosts] = useState(undefined)
-    const [firstLoading, setFirstLoading] = useState(true)
+  const [selectedTags, setSelectedTags] = useState(undefined)
+  const [availableTags, setAvailableTags] = useState(undefined)
+  const [currentUser, setCurrentUser] = useState(undefined)
+  const [posts, setPosts] = useState(undefined)
+  const [firstLoading, setFirstLoading] = useState(true)
 
-    useEffect(()=> {
-        getAllPosts().then(res => {
-            setPosts([...res.data])
-        })
-    }, [firstLoading])
+  useEffect(() => {
+    getAllPosts().then(res => {
+      setPosts([...res.data])
+    })
+    getAllTags().then(res => {
+      setAvailableTags([...res.data])
+    })
+  }, [firstLoading])
+
+
   return (
     <Router>
         <Switch>
         <Route path="/about">
-        <About allQuestions={posts} allTags={baseTags} allUsers={baseUsers} >
-          Hello World !
-        </About>
+        <About />
           </Route>
           <Route path="/signin">
             <SignIn />
@@ -39,10 +44,10 @@ function App() {
             <Register />
           </Route>
           <Route path="/question/:id">
-            <QuestionDetails questions={posts}/>
+            <QuestionDetails />
           </Route>
           <Route path="/">
-            <Home baseQuestions={posts} baseTags={baseTags} baseUsers={baseUsers} />
+            <Home basePosts={posts} availableTags={availableTags}/>
           </Route>
         </Switch>
     </Router>

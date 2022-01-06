@@ -18,6 +18,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using FilRouge.API.Services;
 
 namespace FilRouge.API
 {
@@ -45,6 +46,7 @@ namespace FilRouge.API
             services.AddScoped<IRepository<Post>, PostRepository>();
             services.AddScoped<IRepository<Tag>, TagRepository>();
             services.AddScoped<IRepository<User>, UserRepository>();
+            services.AddScoped<UploadService>();
 
             services.AddCors(options => {
                 options.AddPolicy("allConnections", builder =>

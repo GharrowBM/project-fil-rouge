@@ -1,23 +1,51 @@
 import React from 'react'
 import Header from '../components/Header'
+import {postUser} from "../services/data";
 
 class Register extends React.PureComponent {
 
     constructor(props) {
         super(props)
         this.state = {
-            nickname: "",
-            mail: "",
-            mailVerif: "",
+            username: "",
+            email: "",
+            emailVerif: "",
             password: "",
-            passwordVerif: ""
+            passwordVerif: "",
+            firstname: "",
+            lastname: "",
+            avatar: undefined
         }
+    }
+
+    postUserFromForm(e) {
+
+        e.preventDefault()
+
+        if (this.state.email === this.state.emailVerif && this.state.password === this.state.passwordVerif) {
+
+            const formdata = new FormData()
+            formdata.append('username', this.state.username)
+            formdata.append('file', this.state.avatar)
+            formdata.append('email', this.state.email)
+            formdata.append('password', this.state.password)
+            formdata.append('lastname', this.state.lastname)
+            formdata.append('firstname', this.state.firstname)
+
+            postUser(formdata).then(res => {
+                console.log(res.data)
+            })
+        }
+    }
+
+    onChangeFile = (e) => {
+        this.setState({avatar: e.target.files[0]})
     }
 
     render() {
         return(<>
             <Header />
-            <form action="submit" className="form-register">
+            <form className="form-register">
                 <div className="website-conditions">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam cupiditate deserunt assumenda, blanditiis iure in impedit iusto fuga sapiente saepe provident ipsa eos quisquam voluptatum placeat quaerat nostrum veniam eaque!
                     Praesentium, doloribus quo! Velit iure, vitae veniam nesciunt obcaecati corporis deleniti fugiat aspernatur incidunt reiciendis deserunt perferendis eum non doloremque, assumenda omnis illum veritatis inventore numquam similique a, autem quo.
@@ -45,28 +73,40 @@ class Register extends React.PureComponent {
                     Provident inventore mollitia officia laudantium optio adipisci voluptas ipsa? Deleniti vitae ut iste odit accusantium in illo dicta quae ratione expedita tempora nesciunt optio perferendis exercitationem eos, tenetur esse excepturi!
                     Officiis quos commodi, molestiae expedita autem est aspernatur ipsam molestias porro nobis tempore obcaecati corporis suscipit aliquid, eligendi delectus in velit laudantium. Omnis, nobis laudantium. Obcaecati iure totam est voluptas.
                 </div>
+                <fieldset>
+                    <label htmlFor="firstname">firstname</label>
+                    <input type="text" name="firstname" id="firstname" value={this.state.firstname} onChange={(e) => this.setState({firstname: e.currentTarget.value})}/>
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="lastname">lastname</label>
+                    <input type="text" name="lastname" id="lastname" value={this.state.lastname} onChange={(e) => this.setState({lastname: e.currentTarget.value})}/>
+                </fieldset>
+                <fieldset>
+                    <label htmlFor="username">username</label>
+                    <input type="text" name="username" id="username" value={this.state.username} onChange={(e) => this.setState({username: e.currentTarget.value})}/>
+                </fieldset>
             <fieldset>
-                    <label htmlFor="input-nickname">nickname</label>
-                    <input type="text" name="input-nickname" id="input-nickname" value={this.state.nickname} onChange={(e) => this.setState({nickname: e.currentTarget.value})}/>
-                </fieldset>
-            <fieldset>
-                    <label htmlFor="input-mail">mail</label>
-                    <input type="mail" name="input-mail" id="input-mail" value={this.state.mail} onChange={(e) => this.setState({mail: e.currentTarget.value})}/>
+                    <label htmlFor="email">mail</label>
+                    <input type="mail" name="email" id="email" value={this.state.email} onChange={(e) => this.setState({email: e.currentTarget.value})}/>
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="input-mail-verif">verifMail</label>
-                    <input type="mail" name="input-mail-verif" id="input-mail-verif" value={this.state.mailVerif} onChange={(e) => this.setState({mailVerif: e.currentTarget.value})}/>
+                    <label htmlFor="email-verif">verifMail</label>
+                    <input type="mail" name="email-verif" id="email-verif" value={this.state.emailVerif} onChange={(e) => this.setState({emailVerif: e.currentTarget.value})}/>
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="input-password">password</label>
-                    <input type="password" name="input-password" id="input-password" value={this.state.password} onChange={(e) => this.setState({password: e.currentTarget.value})}/>
+                    <label htmlFor="password">password</label>
+                    <input type="password" name="password" id="password" value={this.state.password} onChange={(e) => this.setState({password: e.currentTarget.value})}/>
                 </fieldset>
                 <fieldset>
-                    <label htmlFor="input-password-verif">verifPassword</label>
-                    <input type="password" name="input-password-verif" id="input-password-verif" value={this.state.passwordVerif} onChange={(e) => this.setState({passwordVerif: e.currentTarget.value})}/>
+                    <label htmlFor="password-verif">verifPassword</label>
+                    <input type="password" name="password-verif" id="password-verif" value={this.state.passwordVerif} onChange={(e) => this.setState({passwordVerif: e.currentTarget.value})}/>
                 </fieldset>
+                <fieldset>
+                <label htmlFor="file">avatar</label>
+                <input type="file" name="file" id="file" onChange={this.onChangeFile}/>
+            </fieldset>
 
-                <button type="submit">S'enregistrer</button>
+                <button onClick={(e) => this.postUserFromForm(e)}>S'enregistrer</button>
             </form>
         </>)
     }

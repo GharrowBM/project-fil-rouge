@@ -21,9 +21,6 @@ class SignIn extends React.PureComponent {
         console.log(tmpUser?.password === pass ? 'Login Successful' : 'Login Failed')
     }
 
-    componentDidMount() {
-        console.log(baseUsers)
-    }
 
     handleSubmit() {
 
