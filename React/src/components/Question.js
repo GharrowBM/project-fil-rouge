@@ -7,30 +7,30 @@ class Question extends React.PureComponent {
     constructor(props) {
         super(props)
         this.index = props.index
-        this.forum = props.forum
+        this.post = props.forum
     }
 
-    getAvatar(writer) {
-        if (baseUsers.find(x => x.name === writer).avatar) return baseUsers.find(x => x.name === writer).avatar
-        else return BASEAVATAR
+    getAvatar(user) {
+        // if (baseUsers.find(x => x.username === user).avatar) return baseUsers.find(x => x.username === user).avatar
+         return BASEAVATAR
     }
 
     render() {
         return (<>
             <article className="forum-question">
             <aside className="forum-counters">
-                <div>{this.forum.answers} answers</div>
-                <div>{this.forum.views} views</div>
+                <div>{this.post.answers.length} answers</div>
+                <div>{this.post.score} score</div>
             </aside>
             <section className="forum-question__content">
-                <Link to={`/question/${this.forum.id}`}><h2>{this.forum.posts[0].title}</h2></Link>
-                <p>{this.forum.posts[0].content}</p>
+                <Link to={`/question/${this.post.id}`}><h2>{this.post.title}</h2></Link>
+                <p>{this.post.content}</p>
             </section>
             <aside className="forum-poster">
-                <p className="forum-poster__asked">Asked : {this.forum.posts[0].date}</p>
+                <p className="forum-poster__asked">Asked : {this.post.createdAt}</p>
                 <div className="forum-posterinfo">
-                <img src={this.getAvatar(this.forum.posts[0].writer)} alt="writer avatar" className="forum-poster__avatar"/>
-                    <div className="forum-poster__name">{this.forum.creator}</div>
+                <img src={this.getAvatar(this.post.user)} alt="writer avatar" className="forum-poster__avatar"/>
+                    <div className="forum-poster__name">{this.post.user.username}</div>
                 </div>
             </aside>
         </article>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace FilRouge.Classes
@@ -19,9 +20,11 @@ namespace FilRouge.Classes
         public string Email { get; set; }
         public DateTime RegisterAt { get; set; }
         public bool IsBlacklisted { get; set; }
-
+        [JsonIgnore]
         public virtual List<Post> Posts { get; set; }
+        [JsonIgnore]
         public virtual List<Answer> Answers { get; set; }
+        [JsonIgnore]
         public virtual List<Comment> Comments { get; set; }
         public virtual List<Tag> FavoriteTags { get; set; }
 

@@ -28,7 +28,12 @@ class Home extends React.PureComponent {
                     <SearchTags availableTags={this.state.availableTags}/>
                 </div>
             </div>
-            {this.state.basePosts?.map((forum,index) => <Question key={index} forum={forum}/>)}
+            {/* {}
+            if (this.state.basePosts?.length > 0) {
+                {this.state.basePosts?.map((forum,index) => <Question key={index} forum={forum}/>)}
+            } */}
+            {this.state.basePosts !== undefined ? this.state.basePosts?.map((forum,index) => <Question key={index} forum={forum}/>) : <> </>}
+            
         </>)
     }
 }
