@@ -11,7 +11,6 @@ namespace FilRouge.API.Controllers
 {
     [Route("api/[controller]")]
     [EnableCors("allConnections")]
-    [Authorize(Policy = "protected")]
     [ApiController]
     public class PostController : ControllerBase
     {
@@ -28,7 +27,7 @@ namespace FilRouge.API.Controllers
         {
             return Ok(_postRepository.GetAll());
         }
-
+        
         // GET api/<APIController>/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
@@ -83,6 +82,7 @@ namespace FilRouge.API.Controllers
 
         // DELETE api/<APIController>/5
         [HttpDelete("{id}")]
+        [Authorize(Policy = "admin")]
         public IActionResult Delete(int id)
         {
             if (_postRepository.Delete(id))

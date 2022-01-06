@@ -76,9 +76,15 @@ namespace FilRouge.API
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("protected", police =>
+                options.AddPolicy("admin", police =>
                 {
                     police.RequireClaim(ClaimTypes.Role, "admin");
+                    //police.RequireClaim(ClaimTypes.Role, "admin");
+
+                });
+                options.AddPolicy("user", police =>
+                {
+                    police.RequireClaim(ClaimTypes.Role, "user");
                 });
             });
         }

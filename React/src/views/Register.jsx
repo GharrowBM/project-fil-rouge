@@ -14,7 +14,9 @@ class Register extends React.PureComponent {
             passwordVerif: "",
             firstname: "",
             lastname: "",
-            avatar: undefined
+            avatar: "",
+            isLoggedIn: props.isLoggedIn,
+            token: props.token
         }
     }
 
@@ -33,7 +35,8 @@ class Register extends React.PureComponent {
             formdata.append('firstname', this.state.firstname)
 
             postUserData(formdata).then(res => {
-                console.log(res.data)
+                this.setState({token: res.data, isLoggedIn: true})
+                console.log(this.state.token)
             })
         }
     }

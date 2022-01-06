@@ -3,15 +3,18 @@ import { withRouter } from "react-router-dom";
 import Header from "../components/Header";
 import Answer from "../components/Answer";
 import BASEAVATAR from "../assets/baseAvatar2wCircle.svg";
-import { baseUsers } from "../datas/baseData";
+import { getPost } from "../services/data";
 
 class QuestionDetails extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.question = props.questions[props.match.params.id];
-    this.answers = props.questions[props.match.params.id].posts.filter(
-      (x) => x !== this.question.posts[props.match.params.id]
-    );
+    this.state = {
+      post: {},
+  }
+    // this.question = props.questions[props.match.params.id];
+    // this.answers = props.questions[props.match.params.id].posts.filter(
+    //   (x) => x !== this.question.posts[props.match.params.id]
+    // );
   }
 
   componentDidMount() {
@@ -19,26 +22,29 @@ class QuestionDetails extends React.PureComponent {
     // console.log(this.question)
     // console.log('QuestionDetails Component : this.answers')
     // console.log(this.answers)
+    getPost(this.props.match.params.id).then(res => {
+        this.setState({post: [...res.data] })
+    })
   }
 
-  getAvatar(writer) {
-    if (baseUsers.find((x) => x.name === writer).avatar)
-      return (
-        <img
-          src={baseUsers.find((x) => x.name === writer).avatar}
-          alt="writer avatar"
-          className="post-poster__avatar"
-        />
-      );
-    else
-      return (
-        <img
-          src={BASEAVATAR}
-          alt="writer avatar"
-          className="post-poster__avatar"
-        />
-      );
-  }
+  // getAvatar(writer) {
+  //   if (baseUsers.find((x) => x.name === writer).avatar)
+  //     return (
+  //       <img
+  //         src={baseUsers.find((x) => x.name === writer).avatar}
+  //         alt="writer avatar"
+  //         className="post-poster__avatar"
+  //       />
+  //     );
+  //   else
+  //     return (
+  //       <img
+  //         src={BASEAVATAR}
+  //         alt="writer avatar"
+  //         className="post-poster__avatar"
+  //       />
+  //     );
+  // }
 
   render() {
     return (
@@ -46,21 +52,21 @@ class QuestionDetails extends React.PureComponent {
         <Header />
         <div className="question">
           <div className="question-header">
-            <h1>{this.question.posts[0].title}</h1>
+            <h1>{this.state.post.title}</h1>
             <div className="question-details">
-              {this.getAvatar(this.question.posts[0].writer)}
-              <span>{this.question.creator}</span>
-              <span>Asked on: {this.question.date}</span>
-              <span>Viewed {this.question.views} times</span>
+              {/* {this.getAvatar(this.state.post.user)} */}
+              <span>{this.state.post.user.username}</span>
+              <span>Asked on: {this.state.post.createdAt}</span>
+              <span>Viewed {this.state.post.score} times</span>
             </div>
             <hr />
           </div>
 
           <div className="question-body">
             <div className="question-content">
-              {this.question.posts[0].content}
+              {this.state.post.content}
               <div className="question-tags">
-              {this.question.tags.map((tag, index) => (
+              {this.state.post.tags.map((tag, index) => (
                 <button key={index}>{tag}</button>
               ))}
             </div>
@@ -69,16 +75,16 @@ class QuestionDetails extends React.PureComponent {
 
             <div className="answers">
               <span className="answers-nb">
-                {this.answers.length} Answers
+                {this.state.post.answers.length} Answers
               </span>
-              {this.answers.map((answer, index) => (<>
+              {this.state.post.answers.map((answer, index) => (<>
                 <Answer
                   key={index}
                   answer={answer}
                   getAvatar={this.getAvatar}
                   avatar={this.getAvatar(answer.writer)}
                 />
-                {index < this.answers.length - 1 ? <hr /> : null}
+                {index < this.state.post.answers.length - 1 ? <hr /> : null}
               </>))}
             </div>
           </div>

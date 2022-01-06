@@ -10,7 +10,6 @@ namespace FilRouge.API.Controllers
 {
     [Route("api/[controller]")]
     [EnableCors("allConnections")]
-    [Authorize(Policy = "protected")]
     [ApiController]
     public class TagController : ControllerBase
     {
@@ -44,6 +43,7 @@ namespace FilRouge.API.Controllers
 
         // tag api/<APIController>
         [HttpPost]
+        [Authorize(Policy = "admin")]
         public IActionResult Post([FromForm] Tag tag)
         {
             if (_tagRepository.Add(tag))
@@ -56,6 +56,7 @@ namespace FilRouge.API.Controllers
 
         // PUT api/<APIController>/5
         [HttpPut("{id}")]
+        [Authorize(Policy = "admin")]
         public IActionResult Put(int id, [FromForm] Tag tag)
         {
             Tag tagToEdit = _tagRepository.Get(id);
@@ -75,6 +76,7 @@ namespace FilRouge.API.Controllers
 
         // DELETE api/<APIController>/5
         [HttpDelete("{id}")]
+        [Authorize(Policy = "admin")]
         public IActionResult Delete(int id)
         {
             if (_tagRepository.Delete(id))

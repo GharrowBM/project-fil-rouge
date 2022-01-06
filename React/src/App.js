@@ -22,6 +22,8 @@ import {getAllPosts, getAllTags} from "./services/data";
             availableTags: undefined,
             currentUser: undefined,
             posts: undefined,
+            isLoggedIn: false,
+            token: undefined,
         }
     }
     componentDidMount(){
@@ -41,14 +43,14 @@ import {getAllPosts, getAllTags} from "./services/data";
             <Route path="/about">
             <About />
               </Route>
-              <Route path="/signin">
-                <SignIn />
+              <Route path="/signin" component={() =>(<SignIn isLoggedIn={this.state.isLoggedIn} token={this.state.token}/>)}>
+
               </Route>
-              <Route path="/register">
-                <Register />
+              <Route path="/register" component={() =>(<Register isLoggedIn={this.state.isLoggedIn} token={this.state.token}/>)}>
+
               </Route>
-              <Route path="/question/:id">
-                <QuestionDetails />
+              <Route path="/question/:id" component={() =>(<QuestionDetails post={{}}/>)}>
+
               </Route>
               <Route path="/" component={() =>(<Home basePosts={this.state.posts} availableTags={this.state.availableTags}/>)}>
                 

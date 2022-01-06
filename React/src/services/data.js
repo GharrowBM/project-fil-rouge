@@ -13,7 +13,7 @@ export const getUser = (id) => {
 }
 
 export const postUser = (user) => {
-    return axios.post(baseUrl + '/User', {...user}, config)
+    return axios.post(baseUrl + '/User', {...user})
 }
 
 export const updateUser = (id, user) => {
@@ -25,7 +25,7 @@ export const deleteUser = (id) => {
 }
 
 export const getAllTags = () => {
-    return axios.get(baseUrl + '/Tag', config)
+    return axios.get(baseUrl + '/Tag')
 }
 
 export const getTag = (id) => {
@@ -45,7 +45,7 @@ export const deleteTag = (id) => {
 }
 
 export const getAllPosts = () => {
-    return axios.get(baseUrl + '/Post', config)
+    return axios.get(baseUrl + '/Post')
 }
 
 export const getPost = (id) => {

@@ -18,7 +18,6 @@ namespace FilRouge.API.Controllers
 {
     [Route("api/[controller]")]
     [EnableCors("allConnections")]
-    [Authorize(Policy = "protected")]
     [ApiController]
     public class UserController : ControllerBase
     {
@@ -52,6 +51,7 @@ namespace FilRouge.API.Controllers
             return NotFound(new {Message = "Cannot GET this user..."});
         }
 
+        
         [HttpPost]
         public IActionResult Post([FromForm] IFormFile file, [FromForm] string username, [FromForm] string password, [FromForm] string lastname, [FromForm] string firstname, [FromForm] string email)
         {
@@ -118,6 +118,7 @@ namespace FilRouge.API.Controllers
         }
 
         // PUT api/<APIController>/5
+        [Authorize(Policy = "admin")]
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] User user)
         {

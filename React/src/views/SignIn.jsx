@@ -7,7 +7,9 @@ class SignIn extends React.PureComponent {
         super(props)
         this.state = {
             username: "",
-            password: ""
+            password: "",
+            isLoggedIn: props.isLoggedIn,
+            token: props.token
         }
     }
 
@@ -33,7 +35,8 @@ class SignIn extends React.PureComponent {
             console.log(formdata["username"])
 
             loginUser(formdata).then(res => {
-                console.log(res.data)
+                this.setState({token: res.data, isLoggedIn: true})
+                console.log(this.state.token)
             })
         }
     }
