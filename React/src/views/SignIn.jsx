@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../components/Header'
-import { loginUser } from '../services/data'
+import { loginUser } from '../services/dataService'
 
 class SignIn extends React.PureComponent {
     constructor(props) {

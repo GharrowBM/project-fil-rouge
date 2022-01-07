@@ -1,5 +1,5 @@
 import React from "react"
-import {postPost, postUserData} from "../services/data";
+import {postPost, postUserData} from "../services/dataService";
 import Header from "../components/Header";
 
 class PostQuestionForm extends React.PureComponent {

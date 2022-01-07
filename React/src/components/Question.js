@@ -7,7 +7,7 @@ class Question extends React.PureComponent {
     constructor(props) {
         super(props)
         this.index = props.index
-        this.post = props.forum
+        this.post = props.post
     }
 
     getAvatar(user) {

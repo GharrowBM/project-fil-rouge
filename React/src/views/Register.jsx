@@ -1,6 +1,6 @@
 import React from 'react'
 import Header from '../components/Header'
-import {postUserData} from "../services/data";
+import {postUserData} from "../services/dataService";
 
 class Register extends React.PureComponent {
 

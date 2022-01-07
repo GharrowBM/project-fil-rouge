@@ -10,8 +10,9 @@ import QuestionDetails from './views/QuestionDetails'
 import Register from './views/Register'
 import SignIn from "./views/SignIn";
 import About from "./views/About";
-import {getAllPosts, getAllTags} from "./services/data";
 import PostQuestionForm from "./views/PostQuestionForm";
+import {connect} from "react-redux";
+import {fetchPosts} from "./store/actions/postsActions";
 
 
 
@@ -38,15 +39,9 @@ import PostQuestionForm from "./views/PostQuestionForm";
 
 
     componentDidMount(){
-      getAllPosts().then(res => {
-      const posts = res.data;
-
-      console.log(posts)
-      getAllTags().then(res => {
-        this.setState({availableTags: [...res.data], posts: [...posts] })
-      })
-    })
+        this.props.fetchPosts();
   }
+
     render(){
       return (
         <Router>
@@ -58,13 +53,25 @@ import PostQuestionForm from "./views/PostQuestionForm";
               <Route path="/register" component={() =>(<Register passConnectionToParent={this.passConnectionToParent}/>)}/>
                 <Route path="/question/add" component={() => (<PostQuestionForm currentUserId={this.state.currentUserId}/>)}/>
               <Route path="/question/:id" component={() =>(<QuestionDetails/>)}/>
-              <Route path="/" component={() =>(<Home basePosts={this.state.posts} availableTags={this.state.availableTags} isLoggedIn={this.state.isLoggedIn}/>)}/>
+              <Route path="/" component={() =>(<Home />)}/>
             </Switch>
         </Router>
       );
     }
-    
   }
 
+const mapStateToProps = (state) => {
+    return {
+        loading: state.postsStore.isLoading
+    }
+}
 
-export default App
+const mapActionToProps = (dispatch) => {
+    return {
+        fetchPosts: () => dispatch(fetchPosts())
+    }
+}
+
+
+
+export default connect(mapStateToProps, mapActionToProps)(App)

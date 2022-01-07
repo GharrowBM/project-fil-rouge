@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import Header from "../components/Header";
 import Answer from "../components/Answer";
 import BASEAVATAR from "../assets/baseAvatar2wCircle.svg";
-import { getPost } from "../services/data";
+import { getPost } from "../services/dataService";
 
 class QuestionDetails extends React.PureComponent {
   constructor(props) {
