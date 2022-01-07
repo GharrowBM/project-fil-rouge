@@ -23,7 +23,6 @@ namespace FilRouge.Classes
         public int UserId { get; set; }
 
         [ForeignKey("UserId")]
-        [JsonIgnore]
         public virtual User User { get; set; }
         public virtual List<Answer> Answers { get; set; }
         public virtual List<Tag> Tags { get; set; }

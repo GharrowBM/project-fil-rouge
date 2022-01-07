@@ -20,11 +20,9 @@ namespace FilRouge.Classes
 
         public int UserId { get; set; }
         [ForeignKey("UserId")]
-        [JsonIgnore]
         public virtual User User { get; set; }
         public int AnswerId { get; set; }
         [ForeignKey("AnswerId")]
-        [JsonIgnore]
         public virtual Answer Answer { get; set; }
     }
 }

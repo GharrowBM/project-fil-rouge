@@ -19,24 +19,7 @@ import {fetchPosts} from "./store/actions/postsActions";
   class App extends React.PureComponent {
     constructor(props) {
         super(props)
-        this.state = {
-            selectedTags: undefined,
-            availableTags: undefined,
-            currentUserId: undefined,
-            posts: undefined,
-            isLoggedIn: false,
-            token: undefined
-        }
     }
-
-    passConnectionToParent = (token, isLoggedIn, userID) => {
-        this.setState({token: token, isLoggedIn: isLoggedIn, currentUserId: userID})
-      }
-
-      passPostToParent = (post) => {
-        this.setState({currentPost: post})
-      }
-
 
     componentDidMount(){
         this.props.fetchPosts();

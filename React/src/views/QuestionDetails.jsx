@@ -4,27 +4,17 @@ import Header from "../components/Header";
 import Answer from "../components/Answer";
 import BASEAVATAR from "../assets/baseAvatar2wCircle.svg";
 import { getPost } from "../services/dataService";
+import {fetchPost, fetchPosts} from "../store/actions/postsActions";
+import {connect} from "react-redux";
 
 class QuestionDetails extends React.PureComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      post: undefined,
-  }
-    // this.question = props.questions[props.match.params.id];
-    // this.answers = props.questions[props.match.params.id].posts.filter(
-    //   (x) => x !== this.question.posts[props.match.params.id]
-    // );
   }
 
   componentDidMount() {
-    // console.log('QuestionDetails Component : this.currentQuestion')
-    // console.log(this.question)
-    // console.log('QuestionDetails Component : this.answers')
-    // console.log(this.answers)
-    getPost(this.props.match.params.id).then(res => {
-        this.setState({post: [...res.data] })
-    })
+    this.props.fetchPost(this.props.match.params.id)
+    console.log(this.props.post)
   }
 
    getAvatar(writer) {
@@ -47,27 +37,28 @@ class QuestionDetails extends React.PureComponent {
    }
 
   render() {
-    if (this.state.post) {
+    if (this.props.post !== undefined) {
+
       return (
           <>
             <Header />
             <div className="question">
               <div className="question-header">
-                <h1>{this.state.post.title}</h1>
+                <h1>{this.props.post.title}</h1>
                 <div className="question-details">
                   {/* {this.getAvatar(this.state.post.user)} */}
-                  <span>{this.state.post.user.username}</span>
-                  <span>Asked on: {this.state.post.createdAt}</span>
-                  <span>Viewed {this.state.post.score} times</span>
+                  <span>{this.props.post.user.username}</span>
+                  <span>Asked on: {this.props.post.createdAt}</span>
+                  <span>Viewed {this.props.post.score} times</span>
                 </div>
                 <hr />
               </div>
 
               <div className="question-body">
                 <div className="question-content">
-                  {this.state.post.content}
+                  {this.props.post.content}
                   <div className="question-tags">
-                    {this.state.post.tags.map((tag, index) => (
+                    {this.props.post.tags.map((tag, index) => (
                         <button key={index}>{tag}</button>
                     ))}
                   </div>
@@ -76,16 +67,16 @@ class QuestionDetails extends React.PureComponent {
 
                 <div className="answers">
               <span className="answers-nb">
-                {this.state.post.answers.length} Answers
+                {this.props.post.answers.length} Answers
               </span>
-                  {this.state.post.answers.map((answer, index) => (<>
+                  {this.props.post.answers.map((answer, index) => (<>
                     <Answer
                         key={index}
                         answer={answer}
                         getAvatar={this.getAvatar}
                         avatar={this.getAvatar(answer.writer)}
                     />
-                    {index < this.state.post.answers.length - 1 ? <hr /> : null}
+                    {index < this.props.post.answers.length - 1 ? <hr /> : null}
                   </>))}
                 </div>
               </div>
@@ -106,4 +97,17 @@ class QuestionDetails extends React.PureComponent {
   }
 }
 
-export default withRouter(QuestionDetails);
+const mapStateToProps = (state) => {
+  return {
+    loading: state.postsStore.isLoading,
+    post: state.postsStore.post
+  }
+}
+
+const mapActionToProps = (dispatch) => {
+  return {
+    fetchPost: (id) => dispatch(fetchPost(id))
+  }
+}
+
+export default connect(mapStateToProps, mapActionToProps)(withRouter(QuestionDetails))

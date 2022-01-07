@@ -20,11 +20,9 @@ namespace FilRouge.Classes
 
         public int UserId { get; set; }
         [ForeignKey("UserId")]
-        [JsonIgnore]
         public virtual User User { get; set; }
         public int PostId { get; set; }
         [ForeignKey("PostId")]
-        [JsonIgnore]
         public virtual Post Post { get; set; }
         public virtual List<Comment> Comments { get; set; }
     }
