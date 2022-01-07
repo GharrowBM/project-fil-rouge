@@ -1,49 +1,29 @@
 import React from 'react'
 import Header from '../components/Header'
-import { loginUser } from '../services/dataService'
+import { loginUserAction } from '../store/actions/usersActions'
+import {connect} from "react-redux";
 
 class SignIn extends React.PureComponent {
     constructor(props) {
         super(props)
         this.state = {
             username: "",
-            password: "",
-            isLoggedIn: props.isLoggedIn,
-            token: props.token
+            password: ""
         }
     }
-
-    // testSignin(username, pass) {
-
-    //     const tmpUser = baseUsers.find(x => x.username === username);
-    //     const loginError = document.querySelector(".loginerror")
-
-    //     tmpUser?.password === pass ? window.location = "/" : loginError.innerHTML = "Erreur"
-
-    //     console.log(tmpUser?.password === pass ? 'Login Successful' : 'Login Failed')
-    // }
 
     signInUser(e) {
 
         e.preventDefault()
 
         if (this.state.username !== undefined && this.state.password !== undefined) {
-            const formdata = new FormData()
-            formdata.append("username", this.state.username)
-            formdata.append("password", this.state.password)
-
-            loginUser(formdata).then(res => {
-                this.props.passConnectionToParent(res.data.token, true, res.data.userId)
-
-            })
+            const credentials = {
+                username: this.state.username,
+                password: this.state.password
+            }
+            this.props.loginUserAction(credentials)
         }
     }
-
-
-    handleSubmit() {
-
-    }
-
 
     render() {
         return(<>
@@ -65,4 +45,17 @@ class SignIn extends React.PureComponent {
     }
 }
 
-export default SignIn
+const mapStateToProps = (state) => {
+    return {
+      loading: state.postsStore.isLoading,
+      post: state.postsStore.post
+    }
+  }
+  
+  const mapActionToProps = (dispatch) => {
+    return {
+      loginUserAction: (credentials) => dispatch(loginUserAction(credentials))
+    }
+  }
+  
+  export default connect(mapStateToProps, mapActionToProps)(SignIn)

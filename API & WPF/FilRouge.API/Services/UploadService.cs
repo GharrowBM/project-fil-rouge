@@ -22,7 +22,7 @@ namespace FilRouge.API.Services
             Stream stream = System.IO.File.Create(path);
             file.CopyTo(stream);
             stream.Close();
-            return "annonces/" + fileName;
+            return "avatar/" + fileName;
         }
     }
 }

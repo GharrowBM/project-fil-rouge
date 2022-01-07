@@ -68,6 +68,6 @@ export const postUserData = (data) => {
     return axios.post(baseUrl + '/User', data, config)
 }
 
-export const loginUser = (data) => {
-    return axios.post(baseUrl + '/User/login', data, config)
+export const loginUser = (json) => {
+    return axios.post(baseUrl + '/User/login', {...json}, config)
 }

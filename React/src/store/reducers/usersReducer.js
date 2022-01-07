@@ -1,6 +1,7 @@
 const initialState = {
     isLoading: false,
     users: undefined,
+    user: undefined,
     error: undefined
 }
 
@@ -12,7 +13,7 @@ export const usersReducer = (state = initialState, action) => {
                 isLoading: action.value
             }
             break;
-        case 'END_FETCHING_DATA':
+        case 'END_FETCHING_USERS':
             return {
                 ...state,
                 isLoading: false,
@@ -20,13 +21,28 @@ export const usersReducer = (state = initialState, action) => {
                 error: undefined
             }
             break;
-        case 'ERROR_FETCHING_DATA':
+        case 'ERROR_FETCHING_USERS':
             return {
                 ...state,
                 isLoading: false,
                 error: action.error
             }
             break;
+            case 'END_FETCHING_USER':
+                return {
+                    ...state,
+                    isLoading: false,
+                    user: action.user,
+                    error: undefined
+                }
+                break;
+            case 'ERROR_FETCHING_USER':
+                return {
+                    ...state,
+                    isLoading: false,
+                    error: action.error
+                }
+                break;
         default:
             return {...initialState}
             break

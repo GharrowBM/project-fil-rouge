@@ -95,17 +95,29 @@ namespace FilRouge.API.Controllers
         }*/
 
         [HttpPost("login")]
-        public IActionResult Login([FromForm] string username, [FromForm] string password)
+        public IActionResult Login([FromBody] User user)
         {
-            User userToFind = _userRepository.Search(u => u.Username == username && u.Password == password);
+            User userToFind = _userRepository.Search(u => u.Username == user.Username && u.Password == user.Password);
             
             if (userToFind != null)
             {
-                List<Claim> claims = new List<Claim>()
+                List<Claim> claims;
+                if (userToFind.IsAdmin)
                 {
-                    new Claim(ClaimTypes.Name, username),                  
-                    new Claim(ClaimTypes.Role, "admin"),
-                };
+                    claims = new List<Claim>()
+                    {
+                        new Claim(ClaimTypes.Name, user.Username),
+                        new Claim(ClaimTypes.Role, "admin"),
+                    };
+                }
+                else
+                {
+                    claims = new List<Claim>()
+                    {
+                        new Claim(ClaimTypes.Name, user.Username),
+                        new Claim(ClaimTypes.Role, "user"),
+                    };
+                }
 
                 //Objet pour signer le token
                 SigningCredentials signingCredentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes("Bonjour, je suis la clé de cryptage!")), SecurityAlgorithms.HmacSha256);
@@ -113,7 +125,7 @@ namespace FilRouge.API.Controllers
 
                 //Créer notre jwt
                 JwtSecurityToken jwt = new JwtSecurityToken(issuer: "m2i", audience: "m2i", claims: claims, signingCredentials: signingCredentials, expires: DateTime.Now.AddDays(2));
-                return Ok(new {Token= new JwtSecurityTokenHandler().WriteToken(jwt), UserId= userToFind.Id});
+                return Ok(new {Token= new JwtSecurityTokenHandler().WriteToken(jwt), User = userToFind});
             }
 
             return NotFound(new {Message="Something went wrong"});
@@ -160,5 +172,6 @@ namespace FilRouge.API.Controllers
 
             return NotFound(new {Message = "User" + id + " cannot be deleted..."});
         }
+
     }
 }

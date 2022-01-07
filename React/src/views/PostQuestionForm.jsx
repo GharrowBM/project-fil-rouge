@@ -1,6 +1,7 @@
 import React from "react"
 import {postPost, postUserData} from "../services/dataService";
 import Header from "../components/Header";
+import {connect} from "react-redux";
 
 class PostQuestionForm extends React.PureComponent {
     constructor(props) {
@@ -11,6 +12,10 @@ class PostQuestionForm extends React.PureComponent {
         }
     }
 
+    componentDidMount(){
+        console.log(this.props.user.id)
+  }
+
     postPostFromForm(e) {
 
         e.preventDefault()
@@ -19,7 +24,7 @@ class PostQuestionForm extends React.PureComponent {
             const newPost = {
                 title: this.state.title,
                 content: this.state.content,
-                userId: this.props.currentUserId
+                userId: this.props.user.id
             }
 
             postPost(newPost).then(res => {
@@ -47,4 +52,17 @@ class PostQuestionForm extends React.PureComponent {
     }
 }
 
-export default PostQuestionForm
+const mapStateToProps = (state) => {
+    return {
+        loading: state.postsStore.isLoading,
+        user: state.usersStore.user
+    }
+}
+
+const mapActionToProps = (dispatch) => {
+    return {
+        
+    }
+}
+
+export default connect(mapStateToProps, mapActionToProps)(PostQuestionForm)

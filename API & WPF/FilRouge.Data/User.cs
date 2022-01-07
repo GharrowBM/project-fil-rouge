@@ -20,6 +20,8 @@ namespace FilRouge.Classes
         public string Email { get; set; }
         public DateTime RegisterAt { get; set; }
         public bool IsBlacklisted { get; set; }
+        public bool IsAdmin { get; set; }
+
         [JsonIgnore]
         public virtual List<Post> Posts { get; set; }
         [JsonIgnore]

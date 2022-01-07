@@ -13,6 +13,7 @@ import About from "./views/About";
 import PostQuestionForm from "./views/PostQuestionForm";
 import {connect} from "react-redux";
 import {fetchPosts} from "./store/actions/postsActions";
+import {fetchUsers} from "./store/actions/usersActions";
 
 
 
@@ -34,7 +35,7 @@ import {fetchPosts} from "./store/actions/postsActions";
               </Route>
               <Route path="/signin" component={() =>(<SignIn passConnectionToParent={this.passConnectionToParent}/>)}/>
               <Route path="/register" component={() =>(<Register passConnectionToParent={this.passConnectionToParent}/>)}/>
-                <Route path="/question/add" component={() => (<PostQuestionForm currentUserId={this.state.currentUserId}/>)}/>
+                <Route path="/question/add" component={() => (<PostQuestionForm/>)}/>
               <Route path="/question/:id" component={() =>(<QuestionDetails/>)}/>
               <Route path="/" component={() =>(<Home />)}/>
             </Switch>
@@ -51,7 +52,7 @@ const mapStateToProps = (state) => {
 
 const mapActionToProps = (dispatch) => {
     return {
-        fetchPosts: () => dispatch(fetchPosts())
+        fetchPosts: () => dispatch(fetchPosts()),
     }
 }
 
