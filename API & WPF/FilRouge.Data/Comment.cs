@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace FilRouge.Classes
@@ -19,9 +20,11 @@ namespace FilRouge.Classes
 
         public int UserId { get; set; }
         [ForeignKey("UserId")]
+        [JsonIgnore]
         public virtual User User { get; set; }
         public int AnswerId { get; set; }
         [ForeignKey("AnswerId")]
+        [JsonIgnore]
         public virtual Answer Answer { get; set; }
     }
 }

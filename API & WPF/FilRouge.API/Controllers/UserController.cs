@@ -95,9 +95,11 @@ namespace FilRouge.API.Controllers
         }*/
 
         [HttpPost("login")]
-        public string Login([FromForm] string username, [FromForm] string password)
+        public IActionResult Login([FromForm] string username, [FromForm] string password)
         {
-            if (_userRepository.GetAll().Find(u => u.Username == username && u.Password == password) != null)
+            User userToFind = _userRepository.Search(u => u.Username == username && u.Password == password);
+            
+            if (userToFind != null)
             {
                 List<Claim> claims = new List<Claim>()
                 {
@@ -111,10 +113,10 @@ namespace FilRouge.API.Controllers
 
                 //Créer notre jwt
                 JwtSecurityToken jwt = new JwtSecurityToken(issuer: "m2i", audience: "m2i", claims: claims, signingCredentials: signingCredentials, expires: DateTime.Now.AddDays(2));
-                return new JwtSecurityTokenHandler().WriteToken(jwt);
+                return Ok(new {Token= new JwtSecurityTokenHandler().WriteToken(jwt), UserId= userToFind.Id});
             }
 
-            return null;
+            return NotFound(new {Message="Something went wrong"});
         }
 
         // PUT api/<APIController>/5

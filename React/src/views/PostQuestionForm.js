@@ -18,7 +18,8 @@ class PostQuestionForm extends React.PureComponent {
         if (this.state.title && this.state.content) {
             const newPost = {
                 title: this.state.title,
-                content: this.state.content
+                content: this.state.content,
+                userId: this.props.currentUserId
             }
 
             postPost(newPost).then(res => {

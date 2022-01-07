@@ -21,16 +21,15 @@ import PostQuestionForm from "./views/PostQuestionForm";
         this.state = {
             selectedTags: undefined,
             availableTags: undefined,
-            currentUser: undefined,
+            currentUserId: undefined,
             posts: undefined,
             isLoggedIn: false,
-            token: undefined,
-            currentPost: undefined
+            token: undefined
         }
     }
 
-    passConnectionToParent = (token, isLoggedIn) => {
-        this.setState({token: token, isLoggedIn: isLoggedIn})
+    passConnectionToParent = (token, isLoggedIn, userID) => {
+        this.setState({token: token, isLoggedIn: isLoggedIn, currentUserId: userID})
       }
 
       passPostToParent = (post) => {
@@ -55,21 +54,11 @@ import PostQuestionForm from "./views/PostQuestionForm";
             <Route path="/about">
             <About />
               </Route>
-              <Route path="/signin" component={() =>(<SignIn passConnectionToParent={this.passConnectionToParent}/>)}>
-
-              </Route>
-              <Route path="/register" component={() =>(<Register passConnectionToParent={this.passConnectionToParent}/>)}>
-
-              </Route>
-                <Route path="/question/add" component={() => (<PostQuestionForm />)}>
-
-                </Route>
-              <Route path="/question/:id" component={() =>(<QuestionDetails post={this.state.currentPost}/>)}>
-
-              </Route>
-              <Route path="/" component={() =>(<Home basePosts={this.state.posts} availableTags={this.state.availableTags} isLoggedIn={this.state.isLoggedIn}/>)}>
-                
-              </Route>
+              <Route path="/signin" component={() =>(<SignIn passConnectionToParent={this.passConnectionToParent}/>)}/>
+              <Route path="/register" component={() =>(<Register passConnectionToParent={this.passConnectionToParent}/>)}/>
+                <Route path="/question/add" component={() => (<PostQuestionForm currentUserId={this.state.currentUserId}/>)}/>
+              <Route path="/question/:id" component={() =>(<QuestionDetails/>)}/>
+              <Route path="/" component={() =>(<Home basePosts={this.state.posts} availableTags={this.state.availableTags} isLoggedIn={this.state.isLoggedIn}/>)}/>
             </Switch>
         </Router>
       );
