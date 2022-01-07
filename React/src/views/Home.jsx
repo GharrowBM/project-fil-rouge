@@ -17,7 +17,7 @@ class Home extends React.PureComponent {
 
     render() {
         return (<>
-            <Header />
+            <Header isLoggedIn={this.props.isLoggedIn}/>
             <div className="tags-area">
                 <div>
                     <h2>Selected tags :</h2>

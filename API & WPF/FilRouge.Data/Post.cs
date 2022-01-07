@@ -28,6 +28,7 @@ namespace FilRouge.Classes
 
         public Post()
         {
+            Score = 0;
             CreatedAt = DateTime.Now;
             Answers = new List<Answer>();
             Tags = new List<Tag>();

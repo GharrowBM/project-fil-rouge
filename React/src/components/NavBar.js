@@ -21,8 +21,8 @@ class NavBar extends React.PureComponent {
                     <label className="search-label">root@{appName}$ </label>
                     <input type="text" name="search-input" id="search-input" placeholder="Rechercher..." value={this.inputValue} onChange={(e) => this.setState({inputValue: e.currentTarget.value})}/>
                     </div>
-                    <Link to="/signin">Se connecter</Link>
-                    <Link to="/register">S'enregistrer</Link>
+                {this.props.isLoggedIn ? <Link to="/">Déconnection</Link> : <Link to="/signin">Se connecter</Link>}
+                {this.props.isLoggedIn ? <Link to="/question/add">Ajouter une question</Link> : <Link to="/register">S'enregistrer</Link>}
                     <Link to="/about">A propos</Link>
             </nav>
         )

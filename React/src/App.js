@@ -11,6 +11,7 @@ import Register from './views/Register'
 import SignIn from "./views/SignIn";
 import About from "./views/About";
 import {getAllPosts, getAllTags} from "./services/data";
+import PostQuestionForm from "./views/PostQuestionForm";
 
 
 
@@ -24,8 +25,19 @@ import {getAllPosts, getAllTags} from "./services/data";
             posts: undefined,
             isLoggedIn: false,
             token: undefined,
+            currentPost: undefined
         }
     }
+
+    passConnectionToParent = (token, isLoggedIn) => {
+        this.setState({token: token, isLoggedIn: isLoggedIn})
+      }
+
+      passPostToParent = (post) => {
+        this.setState({currentPost: post})
+      }
+
+
     componentDidMount(){
       getAllPosts().then(res => {
       const posts = res.data;
@@ -43,16 +55,19 @@ import {getAllPosts, getAllTags} from "./services/data";
             <Route path="/about">
             <About />
               </Route>
-              <Route path="/signin" component={() =>(<SignIn isLoggedIn={this.state.isLoggedIn} token={this.state.token}/>)}>
+              <Route path="/signin" component={() =>(<SignIn passConnectionToParent={this.passConnectionToParent}/>)}>
 
               </Route>
-              <Route path="/register" component={() =>(<Register isLoggedIn={this.state.isLoggedIn} token={this.state.token}/>)}>
+              <Route path="/register" component={() =>(<Register passConnectionToParent={this.passConnectionToParent}/>)}>
 
               </Route>
-              <Route path="/question/:id" component={() =>(<QuestionDetails post={{}}/>)}>
+                <Route path="/question/add" component={() => (<PostQuestionForm />)}>
+
+                </Route>
+              <Route path="/question/:id" component={() =>(<QuestionDetails post={this.state.currentPost}/>)}>
 
               </Route>
-              <Route path="/" component={() =>(<Home basePosts={this.state.posts} availableTags={this.state.availableTags}/>)}>
+              <Route path="/" component={() =>(<Home basePosts={this.state.posts} availableTags={this.state.availableTags} isLoggedIn={this.state.isLoggedIn}/>)}>
                 
               </Route>
             </Switch>

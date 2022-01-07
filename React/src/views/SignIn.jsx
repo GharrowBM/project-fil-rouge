@@ -32,11 +32,9 @@ class SignIn extends React.PureComponent {
             formdata.append("username", this.state.username)
             formdata.append("password", this.state.password)
 
-            console.log(formdata["username"])
-
             loginUser(formdata).then(res => {
-                this.setState({token: res.data, isLoggedIn: true})
-                console.log(this.state.token)
+                this.props.passConnectionToParent(res.data, true)
+
             })
         }
     }
