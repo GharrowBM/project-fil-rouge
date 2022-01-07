@@ -11,6 +11,8 @@ class PostQuestionForm extends React.PureComponent {
         }
     }
 
+    // le changement c'est maintenant
+
     postPostFromForm(e) {
 
         e.preventDefault()
