@@ -38,7 +38,7 @@ class PostQuestionForm extends React.PureComponent {
                 </fieldset>
                 <fieldset>
                     <label htmlFor="content">content</label>
-                    <input type="text" name="content" id="content" value={this.state.content} onChange={(e) => this.setState({content: e.currentTarget.value})}/>
+                    <input type="textarea" name="content" id="content" value={this.state.content} onChange={(e) => this.setState({content: e.currentTarget.value})}/>
                 </fieldset>
 
                 <button onClick={(e) => this.postPostFromForm(e)}>Poster une question</button>
