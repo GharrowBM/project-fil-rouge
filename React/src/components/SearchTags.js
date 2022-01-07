@@ -1,9 +1,7 @@
 import React from 'react'
+import {connect} from "react-redux";
 
 class SearchTags extends React.PureComponent {
-    constructor(props) {
-        super(props)
-    }
 
     render() {
 
@@ -21,4 +19,11 @@ class SearchTags extends React.PureComponent {
     }
 }
 
-export default SearchTags
+const mapStateToProps = (state) => {
+    return {
+        loading: state.posts.isLoading,
+        tags: state.posts.allTags
+    }
+}
+
+export default connect(mapStateToProps, null)(SearchTags)

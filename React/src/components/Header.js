@@ -5,7 +5,7 @@ class Header extends React.PureComponent {
     render () {
         return(
             <header>
-                <NavBar isLoggedIn={this.props.isLoggedIn}/>
+                <NavBar />
             </header>
         )
     }

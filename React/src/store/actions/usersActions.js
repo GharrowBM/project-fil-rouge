@@ -1,53 +1,25 @@
-import {getAllUsers, getUser, loginUser, postUserData} from "../../services/dataService";
+import {loginUser, registerUser} from "../../services/dataService";
 
-export const IS_LOADING_USERS = 'IS_LOADING_USERS'
-export const END_FETCHING_USERS = 'END_FETCHING_USERS'
-export const ERROR_FETCHING_USERS = 'ERROR_FETCHING_USERS'
+export const IS_LOADING = "IS_LOADING"
+export const END_REGISTER_USER = "END_REGISTER_USER"
+export const ERROR_REGISTER_USER = "ERROR_REGISTER_USER"
+export const END_LOGIN_USER = "END_LOGIN_USER"
+export const ERROR_LOGIN_USER = "ERROR_LOGIN_USER"
 
-export const IS_LOADING_USER = 'IS_LOADING_USER'
-export const END_FETCHING_USER = 'END_FETCHING_USER'
-export const ERROR_FETCHING_USER = 'ERROR_FETCHING_USER'
-
-export const IS_REGISTERING = 'IS_REGISTERING'
-export const END_REGISTERING_USER = 'END_REGISTERING_USER'
-export const ERROR_REGISTERING_USER = 'ERROR_REGISTERING_USER'
-
-export const fetchUsers = () => {
+export const loginUserAction = (json) => {
     return (dispatch) => {
         dispatch({
-            type : IS_LOADING_USERS,
+            type: IS_LOADING,
             value: true
         })
-        getAllUsers().then(res => {
-            console.log(res.data)
+        loginUser(json).then(res => {
             dispatch({
-                type : END_FETCHING_USERS,
-                users: res.data
-            })
-        }).catch(error => {
-            dispatch({
-                type : ERROR_FETCHING_USERS,
-                error: error
-            })
-        })
-    }
-}
-
-export const loginUserAction = (credentials) => {
-    return (dispatch) => {
-        dispatch({
-            type : IS_LOADING_USER,
-            value: true
-        })
-        loginUser(credentials).then(res => {
-            console.log(res.data)
-            dispatch({
-                type : END_FETCHING_USER,
+                type: END_LOGIN_USER,
                 user: res.data.user
             })
         }).catch(error => {
             dispatch({
-                type : ERROR_FETCHING_USER,
+                type: ERROR_LOGIN_USER,
                 error: error
             })
         })
@@ -57,18 +29,17 @@ export const loginUserAction = (credentials) => {
 export const registerUserAction = (data) => {
     return (dispatch) => {
         dispatch({
-            type : IS_REGISTERING,
+            type: IS_LOADING,
             value: true
         })
-        postUserData(data).then(res => {
-            console.log(res.data)
+        registerUser(data).then(res => {
             dispatch({
-                type : END_REGISTERING_USER,
+                type: END_REGISTER_USER,
                 user: res.data.user
             })
         }).catch(error => {
             dispatch({
-                type : ERROR_REGISTERING_USER,
+                type: ERROR_REGISTER_USER,
                 error: error
             })
         })

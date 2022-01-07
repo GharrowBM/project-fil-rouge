@@ -23,7 +23,16 @@ namespace FilRouge.Classes
         public virtual User User { get; set; }
         public int PostId { get; set; }
         [ForeignKey("PostId")]
+        [JsonIgnore]
         public virtual Post Post { get; set; }
         public virtual List<Comment> Comments { get; set; }
+
+        public Answer()
+        {
+            CreatedAt = DateTime.Now;
+            EditedAt = DateTime.Now;
+            Score = 0;
+            Comments = new List<Comment>();
+        }
     }
 }

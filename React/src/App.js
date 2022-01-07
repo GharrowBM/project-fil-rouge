@@ -1,44 +1,37 @@
 import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
+    BrowserRouter as Router,
+    Switch,
+    Route,
 } from "react-router-dom";
 import React from "react";
-import Home from './views/Home';
+import Home from './containers/Home';
 import './App.css';
-import QuestionDetails from './views/QuestionDetails'
-import Register from './views/Register'
-import SignIn from "./views/SignIn";
-import About from "./views/About";
-import PostQuestionForm from "./views/PostQuestionForm";
+import QuestionDetails from './containers/QuestionDetails'
+import Register from './containers/Register'
+import SignIn from "./containers/SignIn";
+import About from "./containers/About";
+import PostQuestionForm from "./containers/PostQuestionForm";
 import Header from "./components/Header";
 
 
+class App extends React.PureComponent {
 
-  class App extends React.PureComponent {
-    constructor(props) {
-        super(props)
+    render() {
+        return (
+            <Router>
+                <Header/>
+                <Switch>
+                    <Route path="/about" component={() => <About/>}/>
+                    <Route path="/signin" component={() => (<SignIn/>)}/>
+                    <Route path="/register" component={() => (<Register/>)}/>
+                    <Route path="/question/add" component={() => (<PostQuestionForm/>)}/>
+                    <Route path="/question/:id" component={() => (<QuestionDetails/>)}/>
+                    <Route exact path="/" component={Home}/>
+                </Switch>
+            </Router>
+        );
     }
-
-    render(){
-      return (
-        <Router>
-          <Header />
-            <Switch>
-            <Route path="/about">
-            <About />
-              </Route>
-              <Route path="/signin" component={() =>(<SignIn />)}/>
-              <Route path="/register" component={() =>(<Register/>)}/>
-                <Route path="/question/add" component={() => (<PostQuestionForm/>)}/>
-              <Route path="/question/:id" component={() =>(<QuestionDetails/>)}/>
-              <Route path="/" component={Home}/>
-            </Switch>
-        </Router>
-      );
-    }
-  }
-
+}
 
 
 export default App

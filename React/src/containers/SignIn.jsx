@@ -46,8 +46,8 @@ class SignIn extends React.PureComponent {
 
 const mapStateToProps = (state) => {
     return {
-      loading: state.usersStore.isLoading,
-      user: state.usersStore.user
+      loading: state.users.isLoading,
+      currentUser: state.users.currentUser
     }
   }
   

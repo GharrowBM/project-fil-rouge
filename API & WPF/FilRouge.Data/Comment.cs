@@ -23,6 +23,14 @@ namespace FilRouge.Classes
         public virtual User User { get; set; }
         public int AnswerId { get; set; }
         [ForeignKey("AnswerId")]
+        [JsonIgnore]
         public virtual Answer Answer { get; set; }
+
+        public Comment()
+        {
+            CreatedAt = DateTime.Now;
+            EditedAt = DateTime.Now;
+            Score = 0;
+        }
     }
 }

@@ -80,6 +80,8 @@ namespace FilRouge.Repositories
                 p.User = entity.User;
                 p.EditedAt = entity.EditedAt;
                 p.UserId = entity.UserId;
+
+                _dataContext.Update(entity);
             }
 
             return _dataContext.SaveChanges() > 0;

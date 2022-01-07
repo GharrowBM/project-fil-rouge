@@ -1,6 +1,5 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import {baseUsers} from '../datas/baseData'
 import BASEAVATAR from '../assets/baseAvatar2wCircle.svg'
 
 class Question extends React.PureComponent {
@@ -15,6 +14,10 @@ class Question extends React.PureComponent {
          return BASEAVATAR
     }
 
+    formatDate(dateString) {
+        return `${dateString.substr(8,2)}/${dateString.substr(5,2)}/${dateString.substr(0,4)}`
+    }
+
     render() {
         return (<>
             <article className="forum-question">
@@ -27,7 +30,7 @@ class Question extends React.PureComponent {
                 <p>{this.post.content}</p>
             </section>
             <aside className="forum-poster">
-                <p className="forum-poster__asked">Asked : {this.post.createdAt}</p>
+                <p className="forum-poster__asked">Asked : {this.formatDate(this.post.createdAt)}</p>
                 <div className="forum-posterinfo">
                 <img src={this.getAvatar(this.post.user)} alt="writer avatar" className="forum-poster__avatar"/>
                     <div className="forum-poster__name">{this.post.user?.username}</div>

@@ -1,27 +1,26 @@
 import React from 'react'
+import {connect} from "react-redux";
 
 class SelectedTags extends React.PureComponent {
-    constructor(props) {
-        super(props)
-        this.state = {
-            currentUserId: props.currentUserId,
-            selectedTags: props.currentUserId?.favoriteTags
-        }
-    }
-
-
     render() {
-        if (this.state.selectedTags !== undefined) {
+        if (this.props.selectedTags !== undefined) {
             return(<div className='selected-tags'>
-                {this.state.selectedTags.map((tag,index) => <div key={index}>{tag}</div>)}
+                {this.props.selectedTags.map((tag,index) => <div key={index}>{tag.name}</div>)}
             </div>)
         } else {
             return(<div className='selected-tags'>
-                <p className="empty-div">Not Logged in...</p>
+                <p className="empty-div">Not Selected Tags...</p>
             </div>)
         }
 
     }
 }
 
-export default SelectedTags
+const mapStateToProps = (state) => {
+    return {
+        loading: state.posts.isLoading,
+        selectedTags: state.users.currentUser?.favoriteTags
+    }
+}
+
+export default connect(mapStateToProps, null)(SelectedTags)

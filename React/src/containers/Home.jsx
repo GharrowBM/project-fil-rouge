@@ -2,17 +2,13 @@ import React from 'react'
 import SearchTags from '../components/SearchTags'
 import SelectedTags from '../components/SelectedTags'
 import Question from '../components/Question'
-import {fetchInfos} from "../store/actions/infosActions";
+import {fetchAllPostsWithTags} from "../store/actions/postsActions";
 import {connect} from "react-redux";
 
 class Home extends React.PureComponent {
 
-    constructor(props) {
-        super(props)
-    }
-
     componentDidMount() {
-        this.props.fetchInfos()
+        this.props.fetchAllPostsWithTags()
     }
 
     render() {
@@ -25,13 +21,10 @@ class Home extends React.PureComponent {
                 </div>
                 <div>
                     <h2>Available tags :</h2>
-                    <SearchTags tags={this.props.tags} />
+                    <SearchTags />
                 </div>
             </div>
-            {/* {}
-            if (this.state.basePosts?.length > 0) {
-                {this.state.basePosts?.map((forum,index) => <Question key={index} forum={forum}/>)}
-            } */}
+
             {this.props.posts !== undefined ? this.props.posts?.map((post,index) => <Question key={index} post={post}/>) : <> </>}
             
         </>)
@@ -40,15 +33,15 @@ class Home extends React.PureComponent {
 
 const mapStateToProps = (state) => {
     return {
-        loading: state.infosStore.isLoading,
-        posts: state.infosStore.posts,
-        tags: state.infosStore.tags,
+        loading: state.posts.isLoading,
+        posts: state.posts.allPosts,
+        tags: state.posts.allTags
     }
 }
 
 const mapActionToProps = (dispatch) => {
     return {
-        fetchInfos: () => dispatch(fetchInfos())
+        fetchAllPostsWithTags: () => dispatch(fetchAllPostsWithTags())
     }
 }
 

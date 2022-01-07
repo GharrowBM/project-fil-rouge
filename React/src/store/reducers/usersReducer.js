@@ -1,7 +1,6 @@
 const initialState = {
     isLoading: false,
-    users: undefined,
-    user: undefined,
+    currentUser: undefined,
     error: undefined
 }
 
@@ -13,59 +12,36 @@ export const usersReducer = (state = initialState, action) => {
                 isLoading: action.value
             }
             break;
-        case 'END_FETCHING_USERS':
+        case 'END_REGISTER_USER':
             return {
                 ...state,
                 isLoading: false,
-                users: action.users,
+                currentUser: action.user,
                 error: undefined
             }
             break;
-        case 'ERROR_FETCHING_USERS':
+        case 'ERROR_REGISTER_USER':
             return {
                 ...state,
                 isLoading: false,
                 error: action.error
             }
             break;
-            case 'END_FETCHING_USER':
-                return {
-                    ...state,
-                    isLoading: false,
-                    user: action.user,
-                    error: undefined
-                }
-                break;
-            case 'ERROR_FETCHING_USER':
-                return {
-                    ...state,
-                    isLoading: false,
-                    error: action.error
-                }
-                break;
-                case 'IS_REGISTERING':
-                    return {
-                        ...state,
-                        isLoading: false,
-                        user: action.user,
-                        error: undefined
-                    }
-                    break;
-                case 'END_REGISTERING_USER':
-                    return {
-                        ...state,
-                        isLoading: false,
-                        user: action.user,
-                        error: undefined
-                    }
-                    break;
-                    case 'ERROR_REGISTERING_USER':
-                        return {
-                            ...state,
-                            isLoading: false,
-                            error: action.error
-                        }
-                        break;
+        case 'END_LOGIN_USER':
+            return {
+                ...state,
+                isLoading: false,
+                currentUser: action.user,
+                error: undefined
+            }
+            break;
+        case 'ERROR_LOGIN_USER':
+            return {
+                ...state,
+                isLoading: false,
+                error: action.error
+            }
+            break;
         default:
             return {...state}
             break

@@ -1,6 +1,6 @@
 import React from "react"
-import {postPost, postUserData} from "../services/dataService";
 import {connect} from "react-redux";
+import {submitNewPost} from "../store/actions/postsActions";
 
 class PostQuestionForm extends React.PureComponent {
     constructor(props) {
@@ -11,10 +11,6 @@ class PostQuestionForm extends React.PureComponent {
         }
     }
 
-    componentDidMount(){
-        console.log(this.props.user.id)
-  }
-
     postPostFromForm(e) {
 
         e.preventDefault()
@@ -23,12 +19,10 @@ class PostQuestionForm extends React.PureComponent {
             const newPost = {
                 title: this.state.title,
                 content: this.state.content,
-                userId: this.props.user.id
+                userId: this.props.currentUser.id
             }
 
-            postPost(newPost).then(res => {
-                console.log(res.data)
-            })
+            this.props.submitNewPost(newPost)
         }
     }
 
@@ -52,14 +46,14 @@ class PostQuestionForm extends React.PureComponent {
 
 const mapStateToProps = (state) => {
     return {
-        loading: state.postsStore.isLoading,
-        user: state.usersStore.user
+        loading: state.posts.isLoading,
+        currentUser: state.users.currentUser
     }
 }
 
 const mapActionToProps = (dispatch) => {
     return {
-        
+        submitNewPost: (post) => dispatch(submitNewPost(post))
     }
 }
 
