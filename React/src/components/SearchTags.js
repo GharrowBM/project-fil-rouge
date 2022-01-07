@@ -3,16 +3,13 @@ import React from 'react'
 class SearchTags extends React.PureComponent {
     constructor(props) {
         super(props)
-        this.state = {
-            availableTags: props.availableTags
-        }
     }
 
     render() {
 
-        if (this.state.availableTags !== undefined) {
+        if (this.props.tags !== undefined) {
             return(<div className="search-tags">
-                {this.state.availableTags.map((tag,index) => <div key={index}>{tag.name}</div>)}
+                {this.props.tags.map((tag,index) => <div key={index}>{tag.name}</div>)}
             </div>)
         }
         else {

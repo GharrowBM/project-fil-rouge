@@ -1,6 +1,5 @@
 import React from 'react'
 import Incrementals from '../components/Incrementals';
-import Header from '../components/Header';
 
 
 class About extends React.PureComponent {
@@ -50,7 +49,6 @@ class About extends React.PureComponent {
     render() {
         return (
         <article className="about">
-            <Header />
             <div className="forum-stats">
                 <div className="forum-most-active">
                     <h2>Utilisateur le plus actif</h2>

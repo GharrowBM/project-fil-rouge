@@ -1,6 +1,5 @@
 import React from "react"
 import {postPost, postUserData} from "../services/dataService";
-import Header from "../components/Header";
 import {connect} from "react-redux";
 
 class PostQuestionForm extends React.PureComponent {
@@ -35,7 +34,6 @@ class PostQuestionForm extends React.PureComponent {
 
     render() {
         return(<>
-            <Header />
             <form className="form-add-question">
                 <fieldset>
                     <label htmlFor="title">title</label>

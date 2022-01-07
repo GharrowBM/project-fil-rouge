@@ -1,5 +1,4 @@
 import React from 'react'
-import Header from '../components/Header'
 import { loginUserAction } from '../store/actions/usersActions'
 import {connect} from "react-redux";
 
@@ -27,7 +26,7 @@ class SignIn extends React.PureComponent {
 
     render() {
         return(<>
-            <Header />
+            
             <form className="form-signin">
             <fieldset>
                 <label htmlFor="username">username</label>
@@ -47,8 +46,8 @@ class SignIn extends React.PureComponent {
 
 const mapStateToProps = (state) => {
     return {
-      loading: state.postsStore.isLoading,
-      post: state.postsStore.post
+      loading: state.usersStore.isLoading,
+      user: state.usersStore.user
     }
   }
   

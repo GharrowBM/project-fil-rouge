@@ -1,10 +1,9 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import Header from "../components/Header";
 import Answer from "../components/Answer";
 import BASEAVATAR from "../assets/baseAvatar2wCircle.svg";
 import { getPost } from "../services/dataService";
-import {fetchPost, fetchPosts} from "../store/actions/postsActions";
+import {fetchPost} from "../store/actions/infosActions";
 import {connect} from "react-redux";
 
 class QuestionDetails extends React.PureComponent {
@@ -41,7 +40,6 @@ class QuestionDetails extends React.PureComponent {
 
       return (
           <>
-            <Header />
             <div className="question">
               <div className="question-header">
                 <h1>{this.props.post.title}</h1>
@@ -99,8 +97,8 @@ class QuestionDetails extends React.PureComponent {
 
 const mapStateToProps = (state) => {
   return {
-    loading: state.postsStore.isLoading,
-    post: state.postsStore.post
+    loading: state.infosStore.isLoading,
+    post: state.infosStore.post
   }
 }
 

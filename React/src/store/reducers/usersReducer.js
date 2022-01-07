@@ -43,8 +43,31 @@ export const usersReducer = (state = initialState, action) => {
                     error: action.error
                 }
                 break;
+                case 'IS_REGISTERING':
+                    return {
+                        ...state,
+                        isLoading: false,
+                        user: action.user,
+                        error: undefined
+                    }
+                    break;
+                case 'END_REGISTERING_USER':
+                    return {
+                        ...state,
+                        isLoading: false,
+                        user: action.user,
+                        error: undefined
+                    }
+                    break;
+                    case 'ERROR_REGISTERING_USER':
+                        return {
+                            ...state,
+                            isLoading: false,
+                            error: action.error
+                        }
+                        break;
         default:
-            return {...initialState}
+            return {...state}
             break
     }
 }

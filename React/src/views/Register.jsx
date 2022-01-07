@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from '../components/Header'
-import {postUserData} from "../services/dataService";
+import {registerUserAction} from "../store/actions/usersActions";
+import {connect} from "react-redux";
 
 class Register extends React.PureComponent {
 
@@ -34,10 +34,7 @@ class Register extends React.PureComponent {
             formdata.append('lastname', this.state.lastname)
             formdata.append('firstname', this.state.firstname)
 
-            postUserData(formdata).then(res => {
-                this.setState({token: res.data, isLoggedIn: true})
-                console.log(this.state.token)
-            })
+            this.props.registerUserAction(formdata);
         }
     }
 
@@ -47,7 +44,6 @@ class Register extends React.PureComponent {
 
     render() {
         return(<>
-            <Header />
             <form className="form-register">
                 <div className="website-conditions">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam cupiditate deserunt assumenda, blanditiis iure in impedit iusto fuga sapiente saepe provident ipsa eos quisquam voluptatum placeat quaerat nostrum veniam eaque!
@@ -115,4 +111,17 @@ class Register extends React.PureComponent {
     }
 }
 
-export default Register
+const mapStateToProps = (state) => {
+    return {
+      loading: state.usersStore.isLoading,
+      user: state.usersStore.user
+    }
+  }
+  
+  const mapActionToProps = (dispatch) => {
+    return {
+      registerUserAction: (data) => dispatch(registerUserAction(data))
+    }
+  }
+  
+  export default connect(mapStateToProps, mapActionToProps)(Register)

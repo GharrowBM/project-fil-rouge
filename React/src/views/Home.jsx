@@ -1,9 +1,8 @@
 import React from 'react'
-import Header from "../components/Header"
 import SearchTags from '../components/SearchTags'
 import SelectedTags from '../components/SelectedTags'
 import Question from '../components/Question'
-import {fetchPosts} from "../store/actions/postsActions";
+import {fetchInfos} from "../store/actions/infosActions";
 import {connect} from "react-redux";
 
 class Home extends React.PureComponent {
@@ -12,9 +11,13 @@ class Home extends React.PureComponent {
         super(props)
     }
 
+    componentDidMount() {
+        this.props.fetchInfos()
+    }
+
     render() {
         return (<>
-            <Header />
+            
             <div className="tags-area">
                 <div>
                     <h2>Selected tags :</h2>
@@ -22,7 +25,7 @@ class Home extends React.PureComponent {
                 </div>
                 <div>
                     <h2>Available tags :</h2>
-                    <SearchTags />
+                    <SearchTags tags={this.props.tags} />
                 </div>
             </div>
             {/* {}
@@ -37,14 +40,15 @@ class Home extends React.PureComponent {
 
 const mapStateToProps = (state) => {
     return {
-        loading: state.postsStore.isLoading,
-        posts: state.postsStore.posts
+        loading: state.infosStore.isLoading,
+        posts: state.infosStore.posts,
+        tags: state.infosStore.tags,
     }
 }
 
 const mapActionToProps = (dispatch) => {
     return {
-        fetchPosts: () => dispatch(fetchPosts())
+        fetchInfos: () => dispatch(fetchInfos())
     }
 }
 

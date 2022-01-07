@@ -32,15 +32,15 @@ class NavBar extends React.PureComponent {
 
 const mapStateToProps = (state) => {
     return {
-        loading: state.postsStore.isLoading,
+        loading: state.usersStore.isLoading,
         user: state.usersStore.user
     }
 }
 
-const mapActionToProps = (dispatch) => {
-    return {
+// const mapActionToProps = (dispatch) => {
+//     return {
         
-    }
-}
+//     }
+// }
 
-export default connect(mapStateToProps, mapActionToProps)(NavBar)
+export default connect(mapStateToProps, null)(NavBar)

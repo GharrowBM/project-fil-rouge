@@ -67,7 +67,7 @@ namespace FilRouge.API.Controllers
             
             if (_userRepository.Add(user))
             {
-                return Ok(new {Message = $"{user.Username} successfully added to database!"});
+                return Ok(new {Message = $"{user.Username} successfully added to database!", User = user});
             }
 
             return NotFound(new {Message = $"{user.Username} cannot be added to database..."});
