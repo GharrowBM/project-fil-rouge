@@ -45,11 +45,13 @@ class Answer extends React.PureComponent {
                     {this.props.answer.comments.map((comment, index) => <Comment key={index}
                                                                                  avatar={this.props.getAvatar(comment.writer)}
                                                                                  comment={comment}/>)}
-                    <input type="text" placeholder="Your comment here..."
-                           name={`new-comment-answer-${this.props.answer.id}`}
-                           id={`new-comment-answer-${this.props.answer.id}`} value={this.state.commentText}
-                           onChange={(e) => this.setState({commentText: e.currentTarget.value})}/>
-                    <button onClick={(e) => this.postComment(e, this.props.answer.id)}>Envoyer le commentaire</button>
+                    {this.props.currentUser ?                     <div>
+                        <input type="text" placeholder="Your comment here..."
+                               name={`new-comment-answer-${this.props.answer.id}`}
+                               id={`new-comment-answer-${this.props.answer.id}`} value={this.state.commentText}
+                               onChange={(e) => this.setState({commentText: e.currentTarget.value})}/>
+                        <button onClick={(e) => this.postComment(e, this.props.answer.id)}>Envoyer le commentaire</button>
+                    </div> : null}
                 </div>
             </div>
         </article>)

@@ -97,11 +97,11 @@ class QuestionDetails extends React.PureComponent {
                                     />
                                     {index < this.props.currentPost.answers.length - 1 ? <hr/> : null}
                                 </>))}
-                                <div className="new-answer-zone">
+                                {this.props.currentUser ? <div className="new-answer-zone">
                                     <input type="text" placeholder="Votre réponse..." value={this.state.answerText}
                                            onChange={(e) => this.setState({answerText: e.currentTarget.value})}/>
                                     <button onClick={(e) => this.postAnswer(e)}>Envoyer la réponse</button>
-                                </div>
+                                </div> : null}
                             </div>
                         </div>
 
