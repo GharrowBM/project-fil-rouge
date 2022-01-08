@@ -132,33 +132,27 @@ namespace FilRouge.API.Controllers
         }
 
         // PUT api/<APIController>/5
-        [Authorize(Policy = "admin")]
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] User user)
+        public IActionResult Put(int id, [FromForm] IFormFile file, [FromForm] string username, [FromForm] string lastname, [FromForm] string firstname, [FromForm] string password, [FromForm] string email)
         {
             User userToEdit = _userRepository.Get(id);
 
             if(userToEdit != null)
             {
-                userToEdit.FirstName = user.FirstName;
-                userToEdit.LastName = user.LastName;
-                userToEdit.Username = user.Username;
-                userToEdit.Password = user.Password;
-                userToEdit.AvatarPath = user.AvatarPath;
-                userToEdit.Email = user.Email;
-                userToEdit.IsBlacklisted = user.IsBlacklisted;
-                userToEdit.Posts = user.Posts;
-                userToEdit.Answers = user.Answers;
-                userToEdit.Comments = user.Comments;
-                userToEdit.FavoriteTags = user.FavoriteTags;
+                userToEdit.FirstName = firstname;
+                userToEdit.LastName = lastname;
+                userToEdit.Username = username;
+                userToEdit.Password = password;
+                userToEdit.AvatarPath = _uploadService.Upload(file);
+                userToEdit.Email = email;
                 
                 if (_userRepository.Update(id, userToEdit))
                 {
-                    return Ok(new {Message=$"{user.Username} successfully edited!"});
+                    return Ok(new {Message=$"{username} successfully edited!"});
                 }
             }
             
-            return NotFound(new {Message = $"{user.Username} cannot be edited..."});
+            return NotFound(new {Message = $"{username} cannot be edited..."});
         }
 
         // DELETE api/<APIController>/5

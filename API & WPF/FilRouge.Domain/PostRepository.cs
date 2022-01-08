@@ -27,6 +27,7 @@ namespace FilRouge.Repositories
         public List<Post> GetAll()
         {
             return _dataContext.Posts
+                .AsNoTracking()
                 .Include(p => p.Answers)
                 .ThenInclude(a=>a.Comments)
                 .Include(p => p.User)

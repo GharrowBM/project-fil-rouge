@@ -12,7 +12,7 @@ class Incrementals extends React.PureComponent {
 
     componentDidMount() {
         this.interval = setInterval(() => {
-            if (this.state.currentValue <= this.props.children) {
+            if (this.state.currentValue < this.props.children) {
                 this.setState({currentValue: this.state.currentValue+1});
             }},100)
     }

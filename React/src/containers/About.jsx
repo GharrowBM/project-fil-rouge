@@ -1,6 +1,5 @@
 import React from 'react'
 import Incrementals from '../components/Incrementals';
-import {submitNewPost} from "../store/actions/postsActions";
 import {connect} from "react-redux";
 
 
@@ -11,20 +10,27 @@ class About extends React.PureComponent {
     }
 
     render() {
-        return (
+        return (<>
         <article className="about">
-            <div className="forum-stats">
-                <div className="forum-post-number">
-                    <h2>Nombre de questions posées</h2>
-                    <Incrementals>{this.props.allPosts?.length-1}</Incrementals>
-                </div>
-
-                <div className="forum-tags-number">
-                    <h2>Nombre total de tags</h2>
-                    <Incrementals>{this.props.allTags?.length-1}</Incrementals>
-                </div>
+        <div className="forum-stats">
+            <div className="forum-post-number">
+                <h2>Nombre de questions posées</h2>
+                <Incrementals>{this.props.allPosts?.length}</Incrementals>
             </div>
+            <div className="forum-users-number">
+                <h2>Nombre total d'utilisateurs</h2>
+                <Incrementals>{this.props.nbOfUsers}</Incrementals>
+            </div>
+            <div className="forum-tags-number">
+                <h2>Nombre total de tags</h2>
+                <Incrementals>{this.props.allTags?.length}</Incrementals>
+            </div>
+        </div>
         </article>
+        {this.props.currentUser ? <article className="about-user">
+
+        </article> : null}
+        </>
         )
     }
 }
@@ -33,7 +39,8 @@ const mapStateToProps = (state) => {
     return {
         loading: state.posts.isLoading,
         allPosts: state.posts.allPosts,
-        allTags: state.posts.allTags
+        allTags: state.posts.allTags,
+        nbOfUsers: state.posts.nbOfUsers
     }
 }
 

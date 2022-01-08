@@ -12,6 +12,7 @@ import SignIn from "./containers/SignIn";
 import About from "./containers/About";
 import PostQuestionForm from "./containers/PostQuestionForm";
 import Header from "./components/Header";
+import AccountDetails from "./containers/AccountDetails";
 
 
 class App extends React.PureComponent {
@@ -21,13 +22,14 @@ class App extends React.PureComponent {
             <Router>
                 <Header/>
                 <Switch>
-                    <Route path="/about" component={() => <About/>}/>
                     <Route path="/signin" component={() => (<SignIn/>)}/>
                     <Route path="/register" component={() => (<Register/>)}/>
                     <Route path="/question/add" component={() => (<PostQuestionForm/>)}/>
                     <Route path="/question/:id" component={() => (<QuestionDetails/>)}/>
+                    <Route path="/accountdetails" component={() => <AccountDetails />}/>
                     <Route exact path="/" component={Home}/>
                 </Switch>
+                <About />
             </Router>
         );
     }

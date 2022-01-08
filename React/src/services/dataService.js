@@ -48,6 +48,10 @@ export const getAllPosts = () => {
     return axios.get(baseUrl + '/Post')
 }
 
+export const searchPostWithString = (string) => {
+    return axios.get( baseUrl + '/Post/search'+ string)
+}
+
 export const getPost = (id) => {
     return axios.get(baseUrl + '/Post/' + id, config)
 }

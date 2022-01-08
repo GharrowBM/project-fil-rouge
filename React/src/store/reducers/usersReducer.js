@@ -42,6 +42,20 @@ export const usersReducer = (state = initialState, action) => {
                 error: action.error
             }
             break;
+        case 'END_UPDATING_USER':
+            return {
+                ...state,
+                isLoading: false,
+                error: undefined
+            }
+            break;
+        case 'ERROR_UPDATING_USER':
+            return {
+                ...state,
+                isLoading: false,
+                error: action.error
+            }
+            break;
         default:
             return {...state}
             break

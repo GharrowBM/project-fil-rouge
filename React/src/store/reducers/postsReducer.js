@@ -3,6 +3,7 @@ const initialState = {
     allPosts: undefined,
     currentPost: undefined,
     allTags: undefined,
+    nbOfUsers: undefined,
     error: undefined
 }
 
@@ -20,6 +21,7 @@ export const postsReducer = (state = initialState, action) => {
                 isLoading: false,
                 allPosts: action.posts,
                 allTags: action.tags,
+                nbOfUsers: action.nbOfUsers,
                 error: undefined
             }
             break;
@@ -73,6 +75,20 @@ export const postsReducer = (state = initialState, action) => {
                 error: action.error
             }
             break;
+        case 'END_SEARCHING_POST_WITH_QUERY':
+            return {
+                ...state,
+                isLoading: false,
+                allPosts: action.posts,
+                error: undefined
+            }
+            break;
+        case 'ERROR_SEARCHING_POST_WITH_QUERY':
+            return {
+                ...state,
+                isLoading: false,
+                error: action.error
+            }
         default:
             return {...state}
             break

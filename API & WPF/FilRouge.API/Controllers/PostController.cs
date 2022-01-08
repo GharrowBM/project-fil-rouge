@@ -42,6 +42,22 @@ namespace FilRouge.API.Controllers
             return NotFound(new {Message = "Cannot GET this post..."});
         }
 
+        [HttpGet("search{searchStr}")]
+        public IActionResult Search(string searchStr)
+        {
+            var postList = _postRepository.SearchAll(p =>
+                p.Title.Contains(searchStr) || p.Content.Contains(searchStr) || p.User.Username.Contains(searchStr) || p.Tags.Find(t => t.Name == searchStr) != null);
+
+            if (postList.Count > 0)
+            {
+                return Ok(postList);
+            }
+            else
+            {
+                return NotFound(new {Message = "There is no post meeting this specific search query"});
+            }
+        }
+
         // POST api/<APIController>
         [HttpPost]
         public IActionResult Post([FromBody] Post post)

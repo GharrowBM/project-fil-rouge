@@ -14,9 +14,7 @@ class Register extends React.PureComponent {
             passwordVerif: "",
             firstname: "",
             lastname: "",
-            avatar: "",
-            isLoggedIn: props.isLoggedIn,
-            token: props.token
+            avatar: undefined
         }
     }
 

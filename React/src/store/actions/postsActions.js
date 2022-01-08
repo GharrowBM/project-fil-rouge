@@ -1,4 +1,12 @@
-import {getAllPosts, getAllTags, getPost, postPost, updatePost} from "../../services/dataService";
+import {
+    getAllPosts,
+    getAllTags,
+    getAllUsers,
+    getPost,
+    postPost,
+    searchPostWithString,
+    updatePost
+} from "../../services/dataService";
 
 export const IS_LOADING = "IS_LOADING"
 export const END_GETTING_ALL_POSTS_WITH_TAGS = "END_GETTING_ALL_POSTS_WITH_TAGS"
@@ -9,6 +17,8 @@ export const END_ADDING_NEW_POST = "END_ADDING_NEW_POST"
 export const ERROR_ADDING_NEW_POST = "ERROR_ADDING_NEW_POST"
 export const END_UPDATING_POST = "END_UPDATING_POST"
 export const ERROR_UPDATING_POST = "ERROR_UPDATING_POST"
+export const END_SEARCHING_POST_WITH_QUERY = "END_SEARCHING_POST_WITH_QUERY"
+export const ERROR_SEARCHING_POST_WITH_QUERY = "ERROR_SEARCHING_POST_WITH_QUERY"
 
 export const fetchAllPostsWithTags = () => {
     return (dispatch) => {
@@ -19,10 +29,16 @@ export const fetchAllPostsWithTags = () => {
         getAllPosts().then(res => {
             const posts = res.data
             getAllTags().then(res => {
-                dispatch({
-                    type: END_GETTING_ALL_POSTS_WITH_TAGS,
-                    posts: posts,
-                    tags: res.data
+                const tags = res.data
+
+                getAllUsers().then(res => {
+                    console.log(res.data)
+                    dispatch({
+                        type: END_GETTING_ALL_POSTS_WITH_TAGS,
+                        posts: posts,
+                        tags: tags,
+                        nbOfUsers: res.data.length
+                    })
                 })
             })
         }).catch(error => {
@@ -48,6 +64,27 @@ export const fetchPostWithId = (id) => {
         }).catch(error => {
             dispatch({
                 type: ERROR_GETTING_POST_WITH_ID,
+                error: error
+            })
+        })
+    }
+}
+
+export const searchPosts = (searchString) => {
+    return (dispatch) => {
+        dispatch({
+            type : IS_LOADING,
+            value: true
+        })
+        searchPostWithString(searchString).then(res => {
+            dispatch({
+                type: END_SEARCHING_POST_WITH_QUERY,
+                isLoading: false,
+                posts: res.data
+            })
+        }).catch(error => {
+            dispatch({
+                type: ERROR_SEARCHING_POST_WITH_QUERY,
                 error: error
             })
         })
