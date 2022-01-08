@@ -1,4 +1,5 @@
 import React from "react";
+import '../styles/components/Incrementals.css';
 
 class Incrementals extends React.PureComponent {
 

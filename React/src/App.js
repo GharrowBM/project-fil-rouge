@@ -22,12 +22,12 @@ class App extends React.PureComponent {
             <Router>
                 <Header/>
                 <Switch>
-                    <Route path="/signin" component={() => (<SignIn/>)}/>
-                    <Route path="/register" component={() => (<Register/>)}/>
-                    <Route path="/question/add" component={() => (<PostQuestionForm/>)}/>
-                    <Route path="/question/:id" component={() => (<QuestionDetails/>)}/>
-                    <Route path="/accountdetails" component={() => <AccountDetails />}/>
-                    <Route exact path="/" component={Home}/>
+                    <Route path="/signin" component={() => (<SignIn className="signIn"/>)}/>
+                    <Route path="/register" component={() => (<Register className="register" />)}/>
+                    <Route path="/question/add" component={() => (<PostQuestionForm className="postQuestionForm"/>)}/>
+                    <Route path="/question/:id" component={() => (<QuestionDetails className="questionDetails"/>)}/>
+                    <Route path="/accountdetails" component={() => <AccountDetails className="accountDetails" />}/>
+                    <Route exact path="/" component={() => <Home className="home" />}/>
                 </Switch>
                 <About />
             </Router>

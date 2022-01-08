@@ -1,6 +1,7 @@
 import React from 'react'
 import {registerUserAction} from "../store/actions/usersActions";
 import {connect} from "react-redux";
+import '../styles/containers/Register.css';
 
 class Register extends React.PureComponent {
 

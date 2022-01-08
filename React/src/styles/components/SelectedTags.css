@@ -1,0 +1,27 @@
+.selected-tags {
+    background-color: var(--main-bg-color);
+    border: var(--text--color-active) 1px solid;
+    border-radius: 25px;
+    padding: 10px;
+    display: grid;
+    grid-template: repeat(5, 1fr) / 1fr;
+    row-gap: 10px;
+    justify-content: center;   
+}
+
+.selected-tags div {
+    border: none;
+    border-radius: 25px;
+    color: white;
+    margin: 5px auto;
+    padding: 2px 5px;
+    min-width: 80px;
+    background-color: var(--text--color-active);
+    color: black;
+} 
+
+.selected-tags div:hover {
+    transform: scale(1.05);
+    font-weight: bold;
+    cursor: pointer;
+}

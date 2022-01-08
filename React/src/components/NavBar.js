@@ -2,6 +2,7 @@ import {Link} from "react-router-dom"
 import React from 'react'
 import {connect} from "react-redux";
 import {searchPosts} from "../store/actions/postsActions";
+import '../styles/components/NavBar.css';
 
 class NavBar extends React.PureComponent {
 
@@ -28,7 +29,7 @@ class NavBar extends React.PureComponent {
                     <div className="search-area">
                     <label className="search-label">root@fil-rouge</label>
                     <input type="text" name="search-input" id="search-input" placeholder="Rechercher..." value={this.inputValue} onChange={(e) => this.setState({inputValue: e.currentTarget.value})}/>
-                    <button onClick={(e) => this.searchPosts(e)}>Search...</button>
+                    <button className="search-submit" onClick={(e) => this.searchPosts(e)}>Search</button>
                     </div>
                 {this.props.currentUser ? <Link to="/">Déconnection</Link> : <Link to="/signin">Se connecter</Link>}
                 {this.props.currentUser ? <Link to="/question/add">Ajouter une question</Link> : <Link to="/register">S'enregistrer</Link>}

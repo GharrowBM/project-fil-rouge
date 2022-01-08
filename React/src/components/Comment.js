@@ -1,4 +1,6 @@
 import React from "react";
+import '../styles/components/Comment.css';
+
 
 class Comment extends React.PureComponent {
   render() {

@@ -1,0 +1,55 @@
+.form-signin {
+    color: white;
+}
+
+.form-signin {
+    background-color: var(--main-color-1);
+    border-radius: 10px;
+    margin: auto;
+    padding: 25px 10px;
+    text-align: right;
+    width: 40%;
+}
+
+.form-signin fieldset {
+    background-color: var(--main-bg-color);
+    border: var(--text--color-active) solid 1px;
+    display: flex;
+    align-items: center;
+    font-family: var(--main-text-font);
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: var(--text--color-active);
+}
+
+.form-signin fieldset input {
+    width: 100%;
+    height: 100%;
+    padding-left: 20px;
+    border: none;
+    color: white;
+    font-family: var(--main-text-font);
+    font-size: 15px;
+    background-color: var(--main-bg-color);
+}
+
+.form-signin fieldset input:focus {
+    outline: none;
+}
+
+.form-signin button {
+    margin-right: 10px;
+    appearance: none;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--main-bg-color);
+    color: white;
+    padding: 5px 10px;
+}
+
+.form-signin button:hover {
+    background-color: var(--text--color-active);
+    color: var(--main-bg-color);
+    cursor: pointer;
+    transform: scale(1.02);
+}

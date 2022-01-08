@@ -1,0 +1,90 @@
+.form-register {
+    color: white;
+}
+
+.form-register {
+    background-color: var(--main-color-1);
+    border-radius: 10px;
+    margin: auto;
+    padding: 25px 10px;
+    text-align: right;
+}
+
+.form-register {
+    width: 60%;
+}
+
+.form-register fieldset {
+    background-color: var(--main-bg-color);
+    border: var(--text--color-active) solid 1px;
+    display: flex;
+    align-items: center;
+    font-family: var(--main-text-font);
+    font-size: 15px;
+    margin-bottom: 10px;
+    color: var(--text--color-active);
+}
+
+.form-register fieldset input {
+    width: 100%;
+    height: 100%;
+    padding-left: 20px;
+    border: none;
+    color: white;
+    font-family: var(--main-text-font);
+    font-size: 15px;
+    background-color: var(--main-bg-color);
+}
+
+.form-register fieldset input:focus{
+    outline: none;
+}
+
+.form-register button {
+    margin-right: 10px;
+    appearance: none;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--main-bg-color);
+    color: white;
+    padding: 5px 10px;
+}
+
+.form-register button:hover {
+    background-color: var(--text--color-active);
+    color: var(--main-bg-color);
+    cursor: pointer;
+    transform: scale(1.02);
+}
+
+.form-register .website-conditions {
+    text-align: justify;
+    max-height: 250px;
+    overflow: scroll;
+    padding: 20px;
+    background-color: var(--main-bg-color);
+    margin-bottom: 10px;
+    border: solid 1px var(--text--color-active);
+}
+
+.form-register .website-conditions::-webkit-scrollbar {
+    width: 5px;
+}
+
+.form-register .website-conditions::-webkit-scrollbar-track {
+    background-color: var(--main-bg-color);
+}
+
+.form-register .website-conditions::-webkit-scrollbar-thumb {
+    background-color: var(--text--color-active);
+    border-radius: 3px;
+}
+
+.form-register .website-conditions::-webkit-scrollbar-corner {
+    display: none;
+}
+
+.website-conditions, html {
+    scrollbar-width: thin;
+    scrollbar-color: greenyellow transparent;
+}

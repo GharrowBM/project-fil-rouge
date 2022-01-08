@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import BASEAVATAR from '../assets/baseAvatar2wCircle.svg'
+import '../styles/components/Question.css';
 
 class Question extends React.PureComponent {
     constructor(props) {

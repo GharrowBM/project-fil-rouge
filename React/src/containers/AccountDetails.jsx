@@ -1,6 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {updateUserAction} from "../store/actions/usersActions";
+import '../styles/containers/AccountDetails.css';
 
 class AccountDetails extends React.PureComponent {
     constructor(props) {
@@ -37,8 +38,9 @@ class AccountDetails extends React.PureComponent {
     }
 
     render() {
-        return (<>
-            <form>
+        return (
+            <section className="accountDetails">
+            <form className="form-accountDetails">
                 <fieldset>
                     <label htmlFor={"username"}>username</label>
                     <input type={"text"} value={this.state.username} placeholder={"Username"} name={"username"} onChange={(e) => this.setState({username: e.currentTarget.value})}/>
@@ -65,7 +67,7 @@ class AccountDetails extends React.PureComponent {
                 </fieldset>
                 <button onClick={(e) => this.updateUserInfos(e)}>Modifier les informations utilisateur</button>
             </form>
-        </>)
+            </section>)
     }
 }
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from "react-redux";
+import '../styles/components/SelectedTags.css';
 
 class SelectedTags extends React.PureComponent {
     render() {

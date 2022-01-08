@@ -3,6 +3,7 @@ import Comment from './Comment'
 import {fetchPostWithId, updatePostAction} from "../store/actions/postsActions";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
+import '../styles/components/Answer.css';
 
 class Answer extends React.PureComponent {
     constructor(props) {

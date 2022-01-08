@@ -1,4 +1,5 @@
 import React from 'react'
+import '../styles/components/User.css';
 
 class User extends React.PureComponent {
     constructor(props) {

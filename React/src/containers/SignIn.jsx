@@ -1,6 +1,7 @@
 import React from 'react'
 import { loginUserAction } from '../store/actions/usersActions'
 import {connect} from "react-redux";
+import '../styles/containers/SignIn.css';
 
 class SignIn extends React.PureComponent {
     constructor(props) {

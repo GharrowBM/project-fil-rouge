@@ -1,6 +1,7 @@
 import React from 'react'
 import Incrementals from '../components/Incrementals';
 import {connect} from "react-redux";
+import '../styles/containers/About.css';
 
 
 class About extends React.PureComponent {

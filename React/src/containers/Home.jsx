@@ -4,6 +4,7 @@ import SelectedTags from '../components/SelectedTags'
 import Question from '../components/Question'
 import {fetchAllPostsWithTags} from "../store/actions/postsActions";
 import {connect} from "react-redux";
+import '../styles/containers/Home.css';
 
 class Home extends React.PureComponent {
 
@@ -12,7 +13,7 @@ class Home extends React.PureComponent {
     }
 
     render() {
-        return (<>
+        return (<section className="home">
             
             <div className="tags-area">
                 <div>
@@ -27,7 +28,7 @@ class Home extends React.PureComponent {
 
             {this.props.posts !== undefined ? this.props.posts?.map((post,index) => <Question key={index} post={post}/>) : <> </>}
             
-        </>)
+            </section>)
     }
 }
 

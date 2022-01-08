@@ -1,6 +1,7 @@
 import React from "react"
 import {connect} from "react-redux";
 import {submitNewPost} from "../store/actions/postsActions";
+import '../styles/containers/PostQuestionForm.css';
 
 class PostQuestionForm extends React.PureComponent {
     constructor(props) {

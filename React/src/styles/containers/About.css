@@ -1,0 +1,20 @@
+.about {
+    width: 100%;
+}
+
+.forum-stats {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.forum-stats h2 {
+    font-size: 36px;
+    color: var(--text--color-active);
+}
+
+.forum-stats p {
+    font-size: 28px;
+    color: var(--main-color-3);
+    text-align: center;
+}

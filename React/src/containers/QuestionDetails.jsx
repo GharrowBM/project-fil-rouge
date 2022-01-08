@@ -4,6 +4,7 @@ import Answer from "../components/Answer";
 import BASEAVATAR from "../assets/baseAvatar2wCircle.svg";
 import {fetchPostWithId, updatePostAction} from "../store/actions/postsActions";
 import {connect} from "react-redux";
+import '../styles/containers/QuestionDetails.css';
 
 class QuestionDetails extends React.PureComponent {
 
@@ -65,10 +66,14 @@ class QuestionDetails extends React.PureComponent {
                         <div className="question-header">
                             <h1>{this.props.currentPost.title}</h1>
                             <div className="question-details">
-                                {this.getAvatar(this.props.currentPost.user.username)}
-                                <span>{this.props.currentPost.user.username}</span>
-                                <span>Asked on: {this.formatDate(this.props.currentPost.createdAt)}</span>
-                                <span>Viewed {this.props.currentPost.score} times</span>
+                                <div className="question-poster">
+                                    {this.getAvatar(this.props.currentPost.user.username)}
+                                    <span className="question-poster__name">{this.props.currentPost.user.username}</span>
+                                </div>
+                                <div className="question-infos">
+                                    <div className="question-date">Asked on: {this.formatDate(this.props.currentPost.createdAt)}</div>
+                                    <div className="question-views">Viewed {this.props.currentPost.score} times</div>
+                                </div>
                             </div>
                             <hr/>
                         </div>
