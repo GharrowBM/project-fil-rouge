@@ -25,7 +25,7 @@ class Incrementals extends React.PureComponent {
 
     render() {
         return (
-          <p>{this.state.currentValue}</p>
+          <div>{this.state.currentValue}</div>
         )
     }
 }

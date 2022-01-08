@@ -73,10 +73,10 @@ class Answer extends React.PureComponent {
                                                                                  avatar={this.props.getAvatar(comment.writer)}
                                                                                  comment={comment}/>)}
                     {this.props.currentUser ?                     <div>
-                        <input type="text" placeholder="Your comment here..."
+                        <textarea type="text" placeholder="Your comment here..."
                                name={`new-comment-answer-${this.props.answer.id}`}
                                id={`new-comment-answer-${this.props.answer.id}`} value={this.state.commentText}
-                               onChange={(e) => this.setState({commentText: e.currentTarget.value})}/>
+                               onChange={(e) => this.setState({commentText: e.currentTarget.value})}></textarea>
                         <button onClick={(e) => this.postComment(e, this.props.answer.id)}>Envoyer le commentaire</button>
                     </div> : null}
                 </div>

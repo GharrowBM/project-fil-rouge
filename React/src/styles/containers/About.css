@@ -1,20 +1,19 @@
 .about {
     width: 100%;
+    color: var(--answer-bg-color);
+    margin-bottom: 30px;
 }
 
 .forum-stats {
-    width: 100%;
+    height: 40px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
 }
 
-.forum-stats h2 {
-    font-size: 36px;
-    color: var(--text--color-active);
-}
-
-.forum-stats p {
-    font-size: 28px;
-    color: var(--main-color-3);
+.forum-stats div {
     text-align: center;
+    font-size: 14px;
+    margin-left: 20px;
+    margin-right: 20px;
 }

@@ -21,6 +21,7 @@ class App extends React.PureComponent {
         return (
             <Router>
                 <Header/>
+                <About />
                 <Switch>
                     <Route path="/signin" component={() => (<SignIn className="signIn"/>)}/>
                     <Route path="/register" component={() => (<Register className="register" />)}/>
@@ -29,7 +30,6 @@ class App extends React.PureComponent {
                     <Route path="/accountdetails" component={() => <AccountDetails className="accountDetails" />}/>
                     <Route exact path="/" component={() => <Home className="home" />}/>
                 </Switch>
-                <About />
             </Router>
         );
     }

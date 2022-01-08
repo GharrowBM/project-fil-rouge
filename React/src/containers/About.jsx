@@ -15,15 +15,15 @@ class About extends React.PureComponent {
         <article className="about">
         <div className="forum-stats">
             <div className="forum-post-number">
-                <h2>Nombre de questions posées</h2>
+                <div>Questions</div>
                 <Incrementals>{this.props.allPosts?.length}</Incrementals>
             </div>
             <div className="forum-users-number">
-                <h2>Nombre total d'utilisateurs</h2>
+                <div>Utilisateurs</div>
                 <Incrementals>{this.props.nbOfUsers}</Incrementals>
             </div>
             <div className="forum-tags-number">
-                <h2>Nombre total de tags</h2>
+                <div>Tags</div>
                 <Incrementals>{this.props.allTags?.length}</Incrementals>
             </div>
         </div>
