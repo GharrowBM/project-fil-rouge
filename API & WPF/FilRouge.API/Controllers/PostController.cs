@@ -46,8 +46,19 @@ namespace FilRouge.API.Controllers
         public IActionResult Search(string searchStr)
         {
             var postList = _postRepository.SearchAll(p =>
-                p.Title.Contains(searchStr) || p.Content.Contains(searchStr) || p.User.Username.Contains(searchStr) || p.Tags.Find(t => t.Name == searchStr) != null);
+                p.Title.Contains(searchStr) || p.Content.Contains(searchStr) || p.User.Username.Contains(searchStr));
 
+            for (int i = 0; i < postList.Count; i++)
+            {
+                if (postList[i].Tags.Count > 0)
+                {
+                    if(postList[i].Tags.Find(p=>p.Name == searchStr) == null)
+                    {
+                        postList.RemoveAt(i);
+                    }
+                }
+            }
+            
             if (postList.Count > 0)
             {
                 return Ok(postList);
