@@ -57,7 +57,7 @@ export const updateUserAction = (id, data) => {
         updateUser(id, data).then(res => {
             dispatch({
                 type: END_UPDATING_USER,
-                newUser: res.data.newDatas
+                newUser: res.data.newCurrentUser
             })
         }).catch(error => {
             dispatch({

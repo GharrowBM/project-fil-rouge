@@ -48,7 +48,7 @@ class Answer extends React.PureComponent {
         return (<article className="answer">
             <div className="answer-writer">
                 {this.props.avatar}
-                <span>{this.props.answer.user.username}</span>
+                <span>{this.props.answer.user?.username}</span>
             </div>
             <div className="answer-date">
                 <span>Answered {this.formatDate(this.props.answer.createdAt)}</span>

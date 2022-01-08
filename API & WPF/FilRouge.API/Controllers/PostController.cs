@@ -87,21 +87,12 @@ namespace FilRouge.API.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] Post post)
         {
-            Post postToEdit = _postRepository.Get(id);
-
-            if (postToEdit != null)
+            if (_postRepository.Update(id, post))
             {
-                postToEdit.Title = post.Title;
-                postToEdit.Content = post.Content;
-                postToEdit.EditedAt = DateTime.Now;
-                postToEdit.Score = post.Score;
-                postToEdit.Answers = post.Answers;
-                postToEdit.Tags = post.Tags;
+                var newAllPostsList = _postRepository.GetAll();
+                var newPost = _postRepository.Get(id);
                 
-                if (_postRepository.Update(id, postToEdit))
-                {
-                    return Ok(new {Message = $"{post.Title} modified with success!", newPost=postToEdit});
-                }
+                return Ok(new {Message = $"{post.Title} modified with success!", newAllPosts=newAllPostsList, newCurrentPost=newPost});
             }
             
             return NotFound(new {Message = $"{post.Title} cannot be modified..."});

@@ -119,7 +119,8 @@ export const updatePostAction = (id, post) => {
         updatePost(id, post).then(res => {
             dispatch({
                 type: END_UPDATING_POST,
-                newPost: res.data.newPost
+                newAllPost: res.data.newAllPosts,
+                newCurrentPost: res.data.newCurrentPost
             })
         }).catch(error => {
             dispatch({

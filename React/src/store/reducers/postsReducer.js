@@ -65,7 +65,8 @@ export const postsReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                currentPost: action.newPost,
+                currentPost: action.newCurrentPost,
+                allPosts: action.newAllPosts,
                 error: undefined
             }
             break;

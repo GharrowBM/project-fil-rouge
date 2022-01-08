@@ -85,8 +85,6 @@ namespace FilRouge.Repositories
                 u.RegisterAt = entity.RegisterAt;
                 u.AvatarPath = entity.AvatarPath;
                 u.Password = entity.Password;
-
-                _dataContext.Users.Update(u);
             }
 
             return _dataContext.SaveChanges() > 0;

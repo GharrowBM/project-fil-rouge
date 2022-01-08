@@ -27,7 +27,6 @@ namespace FilRouge.Repositories
         public List<Post> GetAll()
         {
             return _dataContext.Posts
-                .AsNoTracking()
                 .Include(p => p.Answers)
                 .ThenInclude(a=>a.Comments)
                 .Include(p => p.User)
@@ -69,22 +68,6 @@ namespace FilRouge.Repositories
 
         public bool Update(int id, Post entity)
         {
-            Post p = Get(id);
-
-            if (p != null)
-            {
-                p.Answers = entity.Answers;
-                p.Content = entity.Content;
-                p.Score = entity.Score;
-                p.Tags = entity.Tags;
-                p.Title = entity.Title;
-                p.User = entity.User;
-                p.EditedAt = entity.EditedAt;
-                p.UserId = entity.UserId;
-
-                _dataContext.Update(entity);
-            }
-
             return _dataContext.SaveChanges() > 0;
         }
     }
