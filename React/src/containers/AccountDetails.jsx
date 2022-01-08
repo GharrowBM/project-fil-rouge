@@ -2,6 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {updateUserAction} from "../store/actions/usersActions";
 import '../styles/containers/AccountDetails.css';
+import Incrementals from "../components/Incrementals";
 
 class AccountDetails extends React.PureComponent {
     constructor(props) {
@@ -26,9 +27,6 @@ class AccountDetails extends React.PureComponent {
         formdata.append('password', this.state.password)
         formdata.append('lastname', this.state.lastName)
         formdata.append('firstname', this.state.firstName)
-
-        console.log(this.state)
-        console.log(formdata)
 
         this.props.updateUserAction(this.props.currentUser.id, formdata)
     }
@@ -81,7 +79,7 @@ const mapStateToProps = (state) => {
 
 const mapActionToProps = (dispatch) => {
     return {
-        updateUserAction: (id, user) => dispatch(updateUserAction(id, user))
+        updateUserAction: (id, data) => dispatch(updateUserAction(id, data))
     }
 }
 

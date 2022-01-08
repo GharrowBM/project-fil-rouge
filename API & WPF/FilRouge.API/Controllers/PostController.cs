@@ -100,7 +100,7 @@ namespace FilRouge.API.Controllers
                 
                 if (_postRepository.Update(id, postToEdit))
                 {
-                    return Ok(new {Message = $"{post.Title} modified with success!"});
+                    return Ok(new {Message = $"{post.Title} modified with success!", newPost=postToEdit});
                 }
             }
             

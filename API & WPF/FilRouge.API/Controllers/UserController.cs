@@ -148,7 +148,7 @@ namespace FilRouge.API.Controllers
                 
                 if (_userRepository.Update(id, userToEdit))
                 {
-                    return Ok(new {Message=$"{username} successfully edited!"});
+                    return Ok(new {Message=$"{username} successfully edited!", newDatas=userToEdit});
                 }
             }
             

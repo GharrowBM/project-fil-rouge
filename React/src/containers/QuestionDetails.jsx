@@ -93,9 +93,9 @@ class QuestionDetails extends React.PureComponent {
               <span className="answers-nb">
                 {this.props.currentPost.answers.length} Answers
               </span>
-                                {this.props.currentPost.answers.map((answer, index) => (<>
+                                {this.props.currentPost.answers?.map((answer,index) => (<>
                                     <Answer
-                                        key={index}
+                                        key={answer.id}
                                         answer={answer}
                                         getAvatar={this.getAvatar}
                                         avatar={this.getAvatar(answer.writer)}
@@ -109,12 +109,6 @@ class QuestionDetails extends React.PureComponent {
                                 </div> : null}
                             </div>
                         </div>
-
-
-                        <aside className="question-side">
-                            <h2>Linked</h2>
-                            <h2>Related</h2>
-                        </aside>
                     </div>
                 </>
             )

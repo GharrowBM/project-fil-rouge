@@ -4,13 +4,20 @@ import {fetchPostWithId, updatePostAction} from "../store/actions/postsActions";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import '../styles/components/Answer.css';
+import answer from "./Answer";
 
 class Answer extends React.PureComponent {
     constructor(props) {
         super(props)
         this.state = {
-            commentText: ""
+            commentText: "",
+            answerText: this.props.answer.content,
+            isEditingAnswer: false
         }
+    }
+
+    formatDate(dateString) {
+        return `${dateString.substr(8, 2)}/${dateString.substr(5, 2)}/${dateString.substr(0, 4)} at ${dateString.substr(11, 8)}`
     }
 
     postComment(e, answerId) {
@@ -23,7 +30,16 @@ class Answer extends React.PureComponent {
         }
 
         const postToEdit = this.props.currentPost
-        postToEdit.answers.find(a => a.id == answerId).comments.push(newComment)
+        postToEdit.answers.find(a => a.id == answerId).comments?.push(newComment)
+
+        this.props.updatePostAction(this.props.currentPost.id, postToEdit)
+    }
+
+    editAnswer(e) {
+        e.preventDefault()
+
+        const postToEdit = this.props.currentPost
+        postToEdit.answers.find(a => a.id == this.props.answer.id).content = this.state.answerText
 
         this.props.updatePostAction(this.props.currentPost.id, postToEdit)
     }
@@ -32,18 +48,28 @@ class Answer extends React.PureComponent {
         return (<article className="answer">
             <div className="answer-writer">
                 {this.props.avatar}
-                <span>{this.props.answer.writer}</span>
+                <span>{this.props.answer.user.username}</span>
             </div>
             <div className="answer-date">
-                <span>Answered {this.props.answer.date}</span>
+                <span>Answered {this.formatDate(this.props.answer.createdAt)}</span>
             </div>
             <div className="answer-score">
-                {this.props.answer.score}
+                Score: {this.props.answer.score}
             </div>
             <div className="answer-content">
-                {this.props.answer.content}
+                {this.state.isEditingAnswer ?
+                    <div>
+                        <input type="text" value={this.state.answerText} onChange={(e) => this.setState({answerText: e.currentTarget.value})}/>
+                        <button onClick={(e) =>this.editAnswer(e)}>Submit</button>
+                    </div>
+                    : this.props.currentUser?.id == this.props.answer.user.id ?
+                        <div>
+                            {this.props.answer.content}
+                            <button onClick={() => this.setState({isEditingAnswer: !this.state.isEditingAnswer})}>Edit</button>
+                        </div>
+                        :  this.props.answer.content}
                 <div className="answer-comments">
-                    {this.props.answer.comments.map((comment, index) => <Comment key={index}
+                    {this.props.answer.comments?.map((comment,index) => <Comment key={comment.id}
                                                                                  avatar={this.props.getAvatar(comment.writer)}
                                                                                  comment={comment}/>)}
                     {this.props.currentUser ?                     <div>

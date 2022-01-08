@@ -46,6 +46,7 @@ export const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
+                currentUser: action.newUser,
                 error: undefined
             }
             break;

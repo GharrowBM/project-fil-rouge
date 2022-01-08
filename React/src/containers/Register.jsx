@@ -33,6 +33,8 @@ class Register extends React.PureComponent {
             formdata.append('lastname', this.state.lastname)
             formdata.append('firstname', this.state.firstname)
 
+            console.log(formdata)
+
             this.props.registerUserAction(formdata);
         }
     }

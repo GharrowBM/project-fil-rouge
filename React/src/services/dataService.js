@@ -17,7 +17,7 @@ export const postUser = (user) => {
 }
 
 export const updateUser = (id, user) => {
-    return axios.put(baseUrl + '/User/'+ id, {...user}, config)
+    return axios.put(baseUrl + '/User/'+ id, user, config)
 }
 
 export const deleteUser = (id) => {

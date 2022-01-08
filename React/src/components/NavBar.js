@@ -1,4 +1,4 @@
-import {Link} from "react-router-dom"
+import {Link, Redirect} from "react-router-dom"
 import React from 'react'
 import {connect} from "react-redux";
 import {searchPosts} from "../store/actions/postsActions";
@@ -19,6 +19,7 @@ class NavBar extends React.PureComponent {
         console.log(`searchQuery: ${this.state.inputValue}`)
 
         this.props.searchPosts(this.state.inputValue)
+        return (<Redirect to={'/'}/>)
     }
 
     render () {
