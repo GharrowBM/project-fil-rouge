@@ -40,6 +40,7 @@ class AccountDetails extends React.PureComponent {
     render() {
         return (
             <section className="accountDetails">
+                <h1>View and update your personal information</h1>
             <form className="form-accountDetails">
                 <fieldset>
                     <label htmlFor={"username"}>username</label>
@@ -65,7 +66,7 @@ class AccountDetails extends React.PureComponent {
                     <label htmlFor={"avatar"}>avatar</label>
                     <input type={"file"} name={"avatar"} onChange={this.onChangeFile}/>
                 </fieldset>
-                <button onClick={(e) => this.updateUserInfos(e)}>Modifier les informations utilisateur</button>
+                <button onClick={(e) => this.updateUserInfos(e)}>Update info</button>
             </form>
             </section>)
     }

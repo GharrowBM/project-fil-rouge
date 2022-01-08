@@ -1,3 +1,7 @@
+.accountDetails h1 {
+    text-align: center;
+}
+
 .form-accountDetails {
     color: white;
 }
