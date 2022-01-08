@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 
 namespace FilRouge.Repositories
 {
@@ -12,7 +13,9 @@ namespace FilRouge.Repositories
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionBuilder)
         {
-            optionBuilder.UseSqlServer(@"Data Source=(LocalDb)\MSSQLLocalDB; Initial Catalog=M2i_FilRouge;");
+            optionBuilder.UseSqlServer(@"Data Source=(LocalDb)\MSSQLLocalDB; Initial Catalog=M2i_FilRouge;")
+                .LogTo(Console.WriteLine, new []{ DbLoggerCategory.Database.Command.Name}, LogLevel.Information)
+                .EnableSensitiveDataLogging();
         }
 
         public DbSet<User> Users { get; set; }

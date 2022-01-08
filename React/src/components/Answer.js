@@ -89,7 +89,8 @@ const mapStateToProps = (state) => {
     return {
         loading: state.posts.isLoading,
         currentPost: state.posts.currentPost,
-        currentUser: state.users.currentUser
+        currentUser: state.users.currentUser,
+        allPosts: state.posts.allPosts
     }
 }
 
