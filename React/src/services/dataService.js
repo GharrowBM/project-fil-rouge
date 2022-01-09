@@ -40,7 +40,8 @@ export const postPost = (post) => {
 }
 
 export const postAnswer = (answer) => {
-    return axios.post(baseUrl + '/Answer', {...answer}, makeConfig())
+    console.log(answer);
+    return axios.post(baseUrl + '/Answers', {...answer}, makeConfig())
 }
 
 export const postComment = (comment) => {
@@ -52,7 +53,7 @@ export const updatePost = (id, post) => {
 }
 
 export const updateAnswer = (id, answer) => {
-    return axios.put(baseUrl + '/Answer/'+ id, {...answer}, makeConfig())
+    return axios.put(baseUrl + '/Answers/'+ id, {...answer}, makeConfig())
 }
 
 export const updateComment = (id, comment) => {

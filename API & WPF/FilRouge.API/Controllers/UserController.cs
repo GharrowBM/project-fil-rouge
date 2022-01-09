@@ -143,8 +143,12 @@ namespace FilRouge.API.Controllers
                 userToEdit.LastName = lastname;
                 userToEdit.Username = username;
                 userToEdit.Password = password;
-                userToEdit.AvatarPath = _uploadService.Upload(file);
                 userToEdit.Email = email;
+
+                if (file != null)
+                {
+                    userToEdit.AvatarPath = _uploadService.Upload(file);
+                }
                 
                 if (_userRepository.Update(id, userToEdit))
                 {

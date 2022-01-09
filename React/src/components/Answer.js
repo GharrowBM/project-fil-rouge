@@ -95,7 +95,7 @@ const mapStateToProps = (state) => {
 const mapActionToProps = (dispatch) => {
     return {
         /*submitNewComment: (comment) => dispatch(submitNewComment(comment)),*/
-        updateAnswerContent: (id, answer) => dispatch(updateAnswerAction(id, answer))
+        updateAnswerAction: (id, answer) => dispatch(updateAnswerAction(id, answer))
     }
 }
 

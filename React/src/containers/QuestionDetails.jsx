@@ -24,8 +24,9 @@ class QuestionDetails extends React.PureComponent {
         return `${dateString.substr(8, 2)}/${dateString.substr(5, 2)}/${dateString.substr(0, 4)} at ${dateString.substr(11, 8)}`
     }
 
-    postAnswer(e) {
+    submitAnswer(e) {
         e.preventDefault()
+        alert('submitAnswer')
 
         if (this.state.answerText.length > 0) {
 
@@ -35,7 +36,9 @@ class QuestionDetails extends React.PureComponent {
                 content: this.state.answerText
             }
 
-            this.props.addNewAnswer(newAnswer)
+            console.log(newAnswer);
+
+            this.props.submitNewAnswer(newAnswer)
         }
     }
 
@@ -106,7 +109,7 @@ class QuestionDetails extends React.PureComponent {
                                 {this.props.currentUser ? <div className="new-answer-zone">
                                     <textarea placeholder="Votre réponse..." value={this.state.answerText}
                                            onChange={(e) => this.setState({answerText: e.currentTarget.value})}></textarea>
-                                    <button onClick={(e) => this.postAnswer(e)}>Envoyer la réponse</button>
+                                    <button onClick={(e) => this.submitAnswer(e)}>Envoyer la réponse</button>
                                 </div> : null}
                             </div>
                         </div>
@@ -131,7 +134,7 @@ const mapActionToProps = (dispatch) => {
     return {
         fetchPostWithId: (id) => dispatch(fetchPostWithId(id)),
         updatePostAction: (id, post) => dispatch(updatePostAction(id, post)),
-        addNewAnswer: (answer) => dispatch(submitNewAnswer(answer))
+        submitNewAnswer: (answer) => dispatch(submitNewAnswer(answer))
     }
 }
 
