@@ -80,9 +80,20 @@ namespace FilRouge.WPFApp.ViewModel
             SearchText = "";
         }
 
-        private void FilterListOfPosts()
+        public async Task<List<Post>> FilterListOfPosts(string searchQuery)
         {
+            List<Post> newList = new List<Post>();
+            
+            string url = "https://localhost:5001/api";
+            
+            using HttpClient client = new HttpClient();
+            
+            var responseOfGetAll = await client.GetAsync(url + $"/Post/search{searchQuery}");
+            var json = await responseOfGetAll.Content.ReadAsStringAsync();
+            
+            newList = JsonConvert.DeserializeObject<List<Post>>(json);
 
+            return newList;
         }
 
         private void OnPropertyChanged(string property)
