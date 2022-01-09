@@ -27,7 +27,8 @@ namespace FilRouge.WPFApp.View
         public PostsWindow()
         {
             PVm = new PostsVM();
-
+            DataContext = PVm;
+            
             InitializeComponent();
         }
 

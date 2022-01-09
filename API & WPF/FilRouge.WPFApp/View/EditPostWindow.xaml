@@ -7,14 +7,7 @@
         xmlns:local="clr-namespace:FilRouge.WPFApp.View"
         mc:Ignorable="d"
         Title="EditPostWindow" Height="400" Width="800">
-
-    <Window.Resources>
-        <ResourceDictionary>
-            <vm:EditPostVM x:Key="EPvm"/>
-        </ResourceDictionary>
-    </Window.Resources>
-
-    <Grid Margin="10" DataContext="{StaticResource EPvm}">
+    <Grid Margin="10">
         <StackPanel>
             <TextBlock Text="Post title" />
             <TextBox Text="{Binding SelectedPost.Title}"/>

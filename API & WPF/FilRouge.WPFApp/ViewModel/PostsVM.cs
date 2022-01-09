@@ -152,8 +152,7 @@ namespace FilRouge.WPFApp.ViewModel
 
         public void ShowEditPostWindow()
         {
-            EditPostVM editPostVM = new EditPostVM(SelectedPost);
-            EditPostWindow editPostWindow = new EditPostWindow(editPostVM);
+            EditPostWindow editPostWindow = new EditPostWindow(SelectedPost);
             editPostWindow.Show();
         }
     }

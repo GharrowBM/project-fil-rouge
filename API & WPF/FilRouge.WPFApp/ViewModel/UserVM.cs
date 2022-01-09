@@ -105,7 +105,7 @@ namespace FilRouge.WPFApp.ViewModel
 
         public void ShowEditUserWindow()
         {
-            EditUserWindow editUserWin = new EditUserWindow();
+            EditUserWindow editUserWin = new EditUserWindow(SelectedUser);
             editUserWin.Show();
         }
     }

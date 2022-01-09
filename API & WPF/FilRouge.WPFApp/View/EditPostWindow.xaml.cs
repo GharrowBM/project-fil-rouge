@@ -24,9 +24,10 @@ namespace FilRouge.WPFApp.View
         public EditPostVM EPvm { get; set; }
 
 
-        public EditPostWindow(EditPostVM _editPostVm)
+        public EditPostWindow(Post post)
         {
-            EPvm = _editPostVm;
+            EPvm = new EditPostVM(post);
+            DataContext = EPvm;
             
             InitializeComponent();
         }

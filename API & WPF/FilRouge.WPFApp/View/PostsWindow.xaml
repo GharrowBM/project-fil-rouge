@@ -8,14 +8,8 @@
         xmlns:local="clr-namespace:FilRouge.WPFApp.View"
         mc:Ignorable="d"
         Title="Gestion des Posts" Height="450" Width="1200" Background="{StaticResource BG-1}">
-
-    <Window.Resources>
-        <ResourceDictionary>
-            <vm:PostsVM x:Key="pVm" />
-        </ResourceDictionary>
-    </Window.Resources>
-
-    <DockPanel DataContext="{StaticResource pVm}" Loaded="FrameworkElement_OnLoaded">
+    
+    <DockPanel Loaded="FrameworkElement_OnLoaded">
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Edition">
                 <MenuItem Header="Supprimer le Post..."

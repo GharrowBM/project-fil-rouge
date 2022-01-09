@@ -9,6 +9,7 @@ namespace FilRouge.WPFApp.View
         public UsersWindow()
         {
             UVM = new UserVM();
+            DataContext = UVM;
             
             InitializeComponent();
         }
