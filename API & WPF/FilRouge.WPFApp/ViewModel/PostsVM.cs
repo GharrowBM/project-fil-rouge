@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using FilRouge.Repositories;
 using FilRouge.Repositories.Interfaces;
 using Newtonsoft.Json;
+using FilRouge.WPFApp.View;
 
 namespace FilRouge.WPFApp.ViewModel
 {
@@ -145,6 +146,12 @@ namespace FilRouge.WPFApp.ViewModel
             newList = JsonConvert.DeserializeObject<List<Post>>(json);
 
             Posts = newList;
+        }
+
+        public void ShowEditPostWindow()
+        {
+            EditPostWindow EPw = new EditPostWindow(SelectedPost);
+            EPw.Show();
         }
     }
 }

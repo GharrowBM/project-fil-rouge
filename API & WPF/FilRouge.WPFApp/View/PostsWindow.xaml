@@ -7,7 +7,7 @@
         xmlns:vm="clr-namespace:FilRouge.WPFApp.ViewModel"
         xmlns:local="clr-namespace:FilRouge.WPFApp.View"
         mc:Ignorable="d"
-        Title="Gestion des Posts" Height="450" Width="800" Background="{StaticResource BG-1}">
+        Title="Gestion des Posts" Height="450" Width="1200" Background="{StaticResource BG-1}">
 
     <Window.Resources>
         <ResourceDictionary>
@@ -21,8 +21,9 @@
                 <MenuItem Header="Supprimer le Post..."
                           Command="{Binding DeletePostCommand}"
                           CommandParameter="{Binding SelectedPost, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <MenuItem Header="Voir le contenu du Post..."/>
-                <MenuItem Header="Voir l'auteur du Post..."/>
+                <MenuItem Header="Voir le contenu du Post..."
+                          Command="{Binding EditPostCommand}"
+                          CommandParameter="{Binding SelectedPost, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </MenuItem>
         </Menu>
         <Grid Margin="10">
