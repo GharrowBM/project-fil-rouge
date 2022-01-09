@@ -1,4 +1,4 @@
-﻿<Window x:Class="FilRouge.WPFApp.View.PostsWindow"
+﻿<Window x:Class="FilRouge.WPFApp.View.UsersWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -7,23 +7,23 @@
         xmlns:vm="clr-namespace:FilRouge.WPFApp.ViewModel"
         xmlns:local="clr-namespace:FilRouge.WPFApp.View"
         mc:Ignorable="d"
-        Title="Gestion des Posts" Height="450" Width="1200" Background="{StaticResource BG-1}">
+        Title="Gestion des Utilisateurs" Height="450" Width="1200" Background="{StaticResource BG-1}">
 
     <Window.Resources>
         <ResourceDictionary>
-            <vm:PostsVM x:Key="pVm" />
+            <vm:UserVM x:Key="uVm" />
         </ResourceDictionary>
     </Window.Resources>
 
-    <DockPanel DataContext="{StaticResource pVm}" Loaded="FrameworkElement_OnLoaded">
+    <DockPanel DataContext="{StaticResource uVm}" Loaded="FrameworkElement_OnLoaded">
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Edition">
-                <MenuItem Header="Supprimer le Post..."
-                          Command="{Binding DeletePostCommand}"
-                          CommandParameter="{Binding SelectedPost, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                <MenuItem Header="Voir le contenu du Post..."
-                          Command="{Binding ShowEditPostWindowCommand}"
-                          CommandParameter="{Binding SelectedPost, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <MenuItem Header="Supprimer l' Utilisateur..."
+                          Command="{Binding DeleteUserCommand}"
+                          CommandParameter="{Binding SelectedUser, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <MenuItem Header="Voir l'Utilisateur..."
+                          Command="{Binding ShowEditUserCommand}"
+                          CommandParameter="{Binding SelectedUser, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
             </MenuItem>
         </Menu>
         <Grid Margin="10">
@@ -35,23 +35,16 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
-            <TextBox x:Name="searchPostTextBox"
+            <TextBox x:Name="searchUserTextBox" Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
             Margin="0 5"
                  Background="{StaticResource BG-2}"
                  Foreground="{StaticResource TXT-1}"
-                 Text="{Binding SearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  BorderBrush="{StaticResource BG-3}"
                  FontSize="15"/>
-            <ComboBox x:Name="filterByComboBox"
-                  Style="{StaticResource COMBO-1}"
-                  SelectedItem="{Binding SelectedFilter, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                  ItemsSource="{Binding TypeOfFilters}"
-                  Width="100"
-                  Grid.Column="1"/>
-            <ListView x:Name="postListView"
+            <ListView x:Name="userListView"
                   Background="{StaticResource BG-3}"
-                  ItemsSource="{Binding FilteredPosts}"
-                  SelectedItem="{Binding SelectedPost}"
+                  ItemsSource="{Binding Users, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding SelectedUser}"
                   Grid.Row="1"
                   Grid.ColumnSpan="2">
                 <ListView.ItemContainerStyle>
@@ -61,17 +54,16 @@
                 </ListView.ItemContainerStyle>
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <custC:PostControl Post="{Binding}">
-                            <custC:PostControl.ContextMenu>
+                        <custC:ForumUsersControl User="{Binding}">
+                            <custC:ForumUsersControl.ContextMenu>
                                 <ContextMenu>
                                     <MenuItem Header="Supprimer le Post..."
-                                              Command="{Binding DeletePostCommand}"
-                                              CommandParameter="{Binding SelectedPost, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-                                    <MenuItem Header="Voir le contenu du Post..."/>
-                                    <MenuItem Header="Voir l'auteur du Post..."/>
+                                              Command="{Binding DeleteUserCommand}"
+                                              CommandParameter="{Binding SelectedUser, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                                    <MenuItem Header="Voir l'Utilisateur..."/>
                                 </ContextMenu>
-                            </custC:PostControl.ContextMenu>
-                        </custC:PostControl>
+                            </custC:ForumUsersControl.ContextMenu>
+                        </custC:ForumUsersControl>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

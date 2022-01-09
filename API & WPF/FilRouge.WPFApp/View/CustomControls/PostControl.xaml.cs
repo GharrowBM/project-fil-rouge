@@ -22,7 +22,6 @@ namespace FilRouge.WPFApp.View.CustomControls
     /// </summary>
     public partial class PostControl : UserControl
     {
-        private static DataContext context = new DataContext();
 
         public Post Post
         {

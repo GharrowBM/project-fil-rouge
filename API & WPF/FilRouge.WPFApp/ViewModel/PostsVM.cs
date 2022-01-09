@@ -19,7 +19,7 @@ namespace FilRouge.WPFApp.ViewModel
 {
     public class PostsVM : INotifyPropertyChanged
     {
-        private string _searchText = "a";
+        private string _searchText;
         private List<Post> posts;
         private List<Post> filteredPosts;
         private TypeOfFilterEnum selectedFilter;
@@ -80,6 +80,7 @@ namespace FilRouge.WPFApp.ViewModel
         }
 
         public DeletePostCommand DeletePostCommand { get; set; }
+        public ShowEditPostWindowCommand ShowEditPostWindowCommand { get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -87,6 +88,7 @@ namespace FilRouge.WPFApp.ViewModel
         {
 
             DeletePostCommand = new DeletePostCommand(this);
+            ShowEditPostWindowCommand = new ShowEditPostWindowCommand(this);
             Posts = new List<Post>();
             SearchText = "";
         }
@@ -150,8 +152,9 @@ namespace FilRouge.WPFApp.ViewModel
 
         public void ShowEditPostWindow()
         {
-            EditPostWindow EPw = new EditPostWindow(SelectedPost);
-            EPw.Show();
+            EditPostVM editPostVM = new EditPostVM(SelectedPost);
+            EditPostWindow editPostWindow = new EditPostWindow(editPostVM);
+            editPostWindow.Show();
         }
     }
 }

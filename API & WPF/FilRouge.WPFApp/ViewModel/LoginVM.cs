@@ -102,15 +102,19 @@ namespace FilRouge.WPFApp.ViewModel
             using HttpClient client = new HttpClient();
 
             var response = await client.GetAsync(url);
-            string json = await response.Content.ReadAsStringAsync();
-
-            var listOfUsers = JsonConvert.DeserializeObject<List<User>>(json);
-            
-            if (listOfUsers.Find(u=>u.IsAdmin == true && u.Username == username && u.Password == password) != null)
+            if (response.IsSuccessStatusCode)
             {
-                PostsWindow postWindow = new PostsWindow();
-                postWindow.Show();
+                string json = await response.Content.ReadAsStringAsync();
+
+                var listOfUsers = JsonConvert.DeserializeObject<List<User>>(json);
+            
+                if (listOfUsers.Find(u=>u.IsAdmin == true && u.Username == username && u.Password == password) != null)
+                {
+                    MenuWindow menuW = new MenuWindow();
+                    menuW.Show();
+                }
             }
+            
         }
     }
 }
