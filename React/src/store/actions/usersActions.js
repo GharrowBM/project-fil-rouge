@@ -4,7 +4,6 @@ export const IS_LOADING = "IS_LOADING"
 export const END_REGISTER_USER = "END_REGISTER_USER"
 export const ERROR_REGISTER_USER = "ERROR_REGISTER_USER"
 export const END_LOGIN_USER = "END_LOGIN_USER"
-export const END_LOGOUT_USER = "END_LOGOUT_USER"
 export const ERROR_LOGIN_USER = "ERROR_LOGIN_USER"
 export const END_UPDATING_USER = "END_UPDATING_USER"
 export const ERROR_UPDATING_USER = "ERROR_UPDATING_USER"
@@ -32,20 +31,6 @@ export const loginUserAction = (json) => {
     }
 }
 
-export const logoutUserAction = () => {
-    return dispatch => {
-        dispatch({
-            type: IS_LOADING,
-            value: true
-        })
-
-        localStorage.setItem('connectionToken', undefined)
-
-        dispatch({
-            type: END_LOGOUT_USER
-        })
-    }
-}
 
 export const registerUserAction = (data) => {
     return (dispatch) => {
