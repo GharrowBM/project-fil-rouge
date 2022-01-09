@@ -3,9 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using FilRouge.Classes;
+using FilRouge.WPFApp.View;
+using Newtonsoft.Json;
 
 namespace FilRouge.WPFApp.ViewModel
 {
@@ -13,6 +17,8 @@ namespace FilRouge.WPFApp.ViewModel
     {
         private Visibility loginVisibility;
         private Visibility registerVisibility;
+        private string username;
+        private string password;
         private bool isShowningRegister = false;
 
         public Visibility LoginVisibility
@@ -34,8 +40,29 @@ namespace FilRouge.WPFApp.ViewModel
                 OnPropertyChanged("RegisterVisibility");
             }
         }
+        
+        public string Username
+        {
+            get { return username; }
+            set 
+            { 
+                username = value;
+                OnPropertyChanged("Username");
+            }
+        }
+        
+        public string Password
+        {
+            get { return password; }
+            set 
+            { 
+                password = value;
+                OnPropertyChanged("Password");
+            }
+        }
 
         public SwitchLoginRegisterCommand SwitchLoginRegisterCommand { get; set; }
+        public LoginVerificationCommand LoginVerificationCommand { get; set; }
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -44,6 +71,7 @@ namespace FilRouge.WPFApp.ViewModel
             LoginVisibility = Visibility.Visible;
             RegisterVisibility = Visibility.Collapsed;
 
+            LoginVerificationCommand = new LoginVerificationCommand(this);
             SwitchLoginRegisterCommand = new SwitchLoginRegisterCommand(this);
         }
 
@@ -64,6 +92,24 @@ namespace FilRouge.WPFApp.ViewModel
             {
                 RegisterVisibility = Visibility.Collapsed;
                 LoginVisibility = Visibility.Visible;
+            }
+        }
+
+        public async void LogUserTest()
+        {
+            string url = "https://localhost:5001/api/User";
+
+            using HttpClient client = new HttpClient();
+
+            var response = await client.GetAsync(url);
+            string json = await response.Content.ReadAsStringAsync();
+
+            var listOfUsers = JsonConvert.DeserializeObject<List<User>>(json);
+            
+            if (listOfUsers.Find(u=>u.IsAdmin == true && u.Username == username && u.Password == password) != null)
+            {
+                PostsWindow postWindow = new PostsWindow();
+                postWindow.Show();
             }
         }
     }
