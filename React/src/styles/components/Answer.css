@@ -7,15 +7,18 @@
     cursor: pointer;
     height: 100%;
     font-size: 16px;
-    border-radius: 5px;
     padding: 3px;
-    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.answer-content__toDisplay {
+    display: flex;
+    flex-direction: column;
 }
 
 .answer-content__toEdit textarea {
     margin: 20px 0;
-    width: 100%;
-    border-radius: 10px;
+    width: 98%;
     padding-left: 10px;
     background-color: var(--main-bg-color);
     font-family: var(--main-text-font);
@@ -33,7 +36,6 @@
     cursor: pointer;
     height: 100%;
     font-size: 16px;
-    border-radius: 5px;
     padding: 5px;
 }
 
@@ -47,7 +49,6 @@
     padding: 5px 10px;
     color: var(--text--color-active);
     background-color: var(--main-bg-color);
-    border-radius: 12px;
     margin-right: 10px;
     font-size: 20px;
     font-family: var(--main-text-font);
@@ -102,8 +103,7 @@
 
 .answer-comments textarea, .new-answer-zone textarea {
     margin: 20px 0;
-    width: 100%;
-    border-radius: 10px;
+    width: 98%;
     padding-left: 10px;
     background-color: var(--main-bg-color);
     font-family: var(--main-text-font);
@@ -120,7 +120,6 @@
     font-family: var(--main-text-font);
     cursor: pointer;
     font-size: 16px;
-    border-radius: 5px;
     padding: 5px;
 }
 

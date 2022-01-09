@@ -34,12 +34,12 @@ class NavBar extends React.PureComponent {
             <nav className="header-navbar">
                     <Link to="/">Home</Link>
                     <div className="search-area">
-                    <label className="search-label">root@fil-rouge</label>
-                    <input type="text" name="search-input" id="search-input" placeholder="Your search..." value={this.inputValue} onChange={(e) => this.setState({inputValue: e.currentTarget.value})}/>
+                    <label className="search-label">root@ </label>
+                    <input type="text" name="search-input" id="search-input" placeholder="Search..." value={this.inputValue} onChange={(e) => this.setState({inputValue: e.currentTarget.value})}/>
                     <button className="search-submit" onClick={(e) => this.searchPosts(e)}>Search</button>
                     </div>
-                {this.props.currentUser ? <Link to="/" onClick={(e) => this.logOutUser(e)}>Sign Out</Link> : <Link to="/signin">Sign In</Link>}
-                {this.props.currentUser ? <Link to="/question/add">Add a question</Link> : <Link to="/register">Sign Up</Link>}
+                {this.props.currentUser ? <Link to="/" onClick={(e) => this.logOutUser(e)}>Log Out</Link> : <Link to="/signin">Log In</Link>}
+                {this.props.currentUser ? <Link to="/question/add">Add Question</Link> : <Link to="/register">Sign Up</Link>}
                 {this.props.currentUser ? <Link to="/accountdetails">{this.props.currentUser.username}</Link> : null}
             </nav>
         )

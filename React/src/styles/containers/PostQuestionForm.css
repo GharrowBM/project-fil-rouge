@@ -1,5 +1,6 @@
 .form-add-question {
     width: 60%;
+    margin: 0 auto;
 }
 
 .form-add-question fieldset {
@@ -13,10 +14,10 @@
     color: var(--text--color-active);
 }
 
-.form-add-question fieldset input {
+.form-add-question fieldset textarea {
     width: 100%;
     height: 100%;
-    padding-left: 20px;
+    margin-left: 10px;
     border: none;
     color: white;
     font-family: var(--main-text-font);
@@ -29,18 +30,19 @@
 }
 
 .form-add-question button {
-    margin-right: 10px;
     appearance: none;
     border: none;
-    border-radius: 5px;
-    background-color: var(--main-bg-color);
-    color: white;
-    padding: 5px 10px;
+    background: var(--text--color-active);
+    color: black;
+    font-family: var(--main-text-font);
+    cursor: pointer;
+    height: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px;
 }
 
 .form-add-question button:hover {
-    background-color: var(--text--color-active);
-    color: var(--main-bg-color);
     cursor: pointer;
     transform: scale(1.02);
 }

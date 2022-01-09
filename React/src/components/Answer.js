@@ -90,7 +90,7 @@ class Answer extends React.PureComponent {
                     : this.props.currentUser?.id == this.props.answer.user.id ?
                         <div className="answer-content__toDisplay">
                             {this.props.answer.content}
-                            <button onClick={() => this.setState({isEditingAnswer: !this.state.isEditingAnswer})}>Edit</button>
+                            <button onClick={() => this.setState({isEditingAnswer: !this.state.isEditingAnswer})}>Edit Answer</button>
                         </div>
                         :  this.props.answer.content}
     {           <div className="answer-comments">

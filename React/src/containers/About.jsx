@@ -19,7 +19,7 @@ class About extends React.PureComponent {
                 <Incrementals>{this.props.allPosts?.length}</Incrementals>
             </div>
             <div className="forum-users-number">
-                <div>Utilisateurs</div>
+                <div>Users</div>
                 <Incrementals>{this.props.nbOfUsers}</Incrementals>
             </div>
             <div className="forum-tags-number">

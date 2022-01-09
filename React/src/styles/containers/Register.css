@@ -41,13 +41,16 @@
 }
 
 .form-register button {
-    margin-right: 10px;
     appearance: none;
     border: none;
-    border-radius: 5px;
-    background-color: var(--main-bg-color);
-    color: white;
-    padding: 5px 10px;
+    background: var(--text--color-active);
+    color: black;
+    font-family: var(--main-text-font);
+    cursor: pointer;
+    height: 100%;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 5px;
 }
 
 .form-register button:hover {
@@ -87,4 +90,12 @@
 .website-conditions, html {
     scrollbar-width: thin;
     scrollbar-color: greenyellow transparent;
+}
+
+.website-conditions h2 {
+    text-align: center;
+}
+
+.website-conditions p:last-child {
+    font-size: 3px;
 }

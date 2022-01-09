@@ -6,7 +6,6 @@
     padding: 10px;
     margin: 0 auto 50px auto;
     background-color: var(--main-color-1);
-    border-radius: 25px;
     text-align: center;
 }
 
@@ -22,7 +21,6 @@
     margin-bottom: 50px;
     background-color: var(--main-color-1);
     color: white;
-    border-radius: 5px;
     padding: 10px;
 }
 
@@ -36,6 +34,9 @@
     border-right: 1px solid white;
     padding-left: 15px;
     padding-right: 15px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .forum-question a {

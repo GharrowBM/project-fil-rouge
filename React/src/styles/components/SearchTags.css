@@ -1,7 +1,6 @@
 .search-tags {
     background-color: var(--main-bg-color);
     border: var(--text--color-active) 1px solid;
-    border-radius: 25px;
     padding: 10px;
     display: grid;
     grid-template: repeat(5, 1fr) / repeat(5, 1fr);
@@ -11,7 +10,6 @@
 
 .search-tags div {
     border: none;
-    border-radius: 25px;
     color: white;
     margin: 5px auto;
     padding: 2px 5px;

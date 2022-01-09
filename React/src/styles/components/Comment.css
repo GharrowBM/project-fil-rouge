@@ -1,11 +1,19 @@
+.comment-content__toDisplay{
+    font-size: 14px;
+}
+
 .comment-content__toDisplay button {
-    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.comment-content__toDisplay {
+    display: flex;
+    flex-direction: column;
 }
 
 .comment-content__toEdit textarea {
     margin: 20px 0;
-    width: 100%;
-    border-radius: 10px;
+    width: 98%;
     padding-left: 10px;
     background-color: var(--main-bg-color);
     font-family: var(--main-text-font);
@@ -17,7 +25,7 @@
 .comment {
     display: grid;
     grid-template: 50px 9fr / 1fr 11fr;
-
+    margin-bottom: 20px;
 }
 
 .comment:hover {
@@ -29,17 +37,19 @@
     grid-column: 1;
     display: flex;
     align-items: center;
-    font-size: 12px;
+    margin: auto;
 }
 
 .comment-writer span {
     margin-left: 10px;
+    font-size: 10px;
+    align-self: flex-start;
 }
 
 .comment-date {
     grid-row: 1;
     grid-column: 2;
-    margin: auto 0;
+    font-size: 14px;
 }
 
 .comment-score {

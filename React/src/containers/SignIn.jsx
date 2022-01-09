@@ -38,7 +38,7 @@ class SignIn extends React.PureComponent {
                     <label htmlFor="password">password</label>
                     <input type="password" name="password" id="password" value={this.state.password} onChange={(e) => this.setState({password: e.currentTarget.value})}/>
                 </fieldset>
-                <button onClick={(e) => this.signInUser(e)}>Se connecter</button>
+                <button onClick={(e) => this.signInUser(e)}>Log In</button>
                 <div className="loginerror"></div>
             </form>
 

@@ -48,7 +48,7 @@ constructor(props) {
               : this.props.currentUser?.id == this.props.comment.user.id ?
                   <div className="comment-content__toDisplay">
                       {this.props.comment.content}
-                      <button onClick={() => this.setState({isEditingComment: !this.state.isEditingComment})}>Edit</button>
+                      <button onClick={() => this.setState({isEditingComment: !this.state.isEditingComment})}>Edit Comment</button>
                   </div>
                   :  this.props.comment.content}
       </div>

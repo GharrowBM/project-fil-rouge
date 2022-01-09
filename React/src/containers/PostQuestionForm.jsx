@@ -31,16 +31,16 @@ class PostQuestionForm extends React.PureComponent {
     render() {
         return(<>
             <form className="form-add-question">
-                <fieldset>
+                <fieldset className="form-add-question__title">
                     <label htmlFor="title">title</label>
-                    <input type="text" name="title" id="title" value={this.state.title} onChange={(e) => this.setState({title: e.currentTarget.value})}/>
+                    <textarea type="text" name="title" id="title" value={this.state.title} onChange={(e) => this.setState({title: e.currentTarget.value})}></textarea>
                 </fieldset>
-                <fieldset>
+                <fieldset className="form-add-question__content">
                     <label htmlFor="content">content</label>
-                    <input type="textarea" name="content" id="content" value={this.state.content} onChange={(e) => this.setState({content: e.currentTarget.value})}/>
+                    <textarea name="content" id="content" value={this.state.content} onChange={(e) => this.setState({content: e.currentTarget.value})}></textarea>
                 </fieldset>
 
-                <button onClick={(e) => this.postPostFromForm(e)}>Poster une question</button>
+                <button onClick={(e) => this.postPostFromForm(e)}>Add Question</button>
             </form>
         </>)
     }
