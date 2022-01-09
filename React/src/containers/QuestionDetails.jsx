@@ -106,9 +106,9 @@ class QuestionDetails extends React.PureComponent {
                                     {index < this.props.currentPost.answers.length - 1 ? <hr/> : null}
                                 </>))}
                                 {this.props.currentUser ? <div className="new-answer-zone">
-                                    <textarea placeholder="Votre réponse..." value={this.state.answerText}
+                                    <textarea placeholder="Write a new answer here..." value={this.state.answerText}
                                            onChange={(e) => this.setState({answerText: e.currentTarget.value})}></textarea>
-                                    <button onClick={(e) => this.submitAnswer(e)}>Envoyer la réponse</button>
+                                    <button onClick={(e) => this.submitAnswer(e)}>New answer</button>
                                 </div> : null}
                             </div>
                         </div>

@@ -24,9 +24,6 @@ constructor(props) {
         const commentToEdit = this.props.comment
         commentToEdit.content = this.state.commentText
 
-        console.log(this.props.comment)
-
-        // this.props.updatePostAction(this.props.currentPost.id, postToEdit)
         this.props.updateCommentAction(this.props.comment.id, commentToEdit)
     }
 
@@ -41,15 +38,15 @@ constructor(props) {
           <span>Commented {this.formatDate(this.props.comment.createdAt)} </span>
         </div>
         <div className="comment-score">
-          <span>{this.props.comment.score}</span>
+          <span></span>
         </div>
           {this.state.isEditingComment ?
-              <div>
-                  <input type="text" value={this.state.commentText} onChange={(e) => this.setState({commentText: e.currentTarget.value})}/>
-                  <button onClick={(e) =>this.editComment(e)}>Submit</button>
+              <div className="comment-content__toEdit">
+                  <textarea placeholder="Your comment to edit here..." value={this.state.commentText} onChange={(e) => this.setState({commentText: e.currentTarget.value})}></textarea>
+                  <button onClick={(e) =>this.editComment(e)}>Submit Edited Comment</button>
               </div>
               : this.props.currentUser?.id == this.props.comment.user.id ?
-                  <div>
+                  <div className="comment-content__toDisplay">
                       {this.props.comment.content}
                       <button onClick={() => this.setState({isEditingComment: !this.state.isEditingComment})}>Edit</button>
                   </div>

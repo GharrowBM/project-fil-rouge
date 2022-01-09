@@ -78,17 +78,17 @@ class Answer extends React.PureComponent {
             <div className="answer-date">
                 <span>Answered {this.formatDate(this.props.answer.createdAt)}</span>
             </div>
-            <div className="answer-score">
+            {/* <div className="answer-score">
                 Score: {this.props.answer.score}
-            </div>
+            </div> */}
             <div className="answer-content">
                 {this.state.isEditingAnswer ?
-                    <div>
-                        <input type="text" value={this.state.answerText} onChange={(e) => this.setState({answerText: e.currentTarget.value})}/>
-                        <button onClick={(e) =>this.editAnswer(e)}>Submit</button>
+                    <div className="answer-content__toEdit">
+                        <textarea value={this.state.answerText} onChange={(e) => this.setState({answerText: e.currentTarget.value})}></textarea>
+                        <button onClick={(e) =>this.editAnswer(e)}>Submit Edited Answer</button>
                     </div>
                     : this.props.currentUser?.id == this.props.answer.user.id ?
-                        <div>
+                        <div className="answer-content__toDisplay">
                             {this.props.answer.content}
                             <button onClick={() => this.setState({isEditingAnswer: !this.state.isEditingAnswer})}>Edit</button>
                         </div>
@@ -102,7 +102,7 @@ class Answer extends React.PureComponent {
                                name={`new-comment-answer-${this.props.answer.id}`}
                                id={`new-comment-answer-${this.props.answer.id}`} value={this.state.commentText}
                                onChange={(e) => this.setState({commentText: e.currentTarget.value})}></textarea>
-                        <button onClick={(e) => this.postComment(e)}>Envoyer le commentaire</button>
+                        <button onClick={(e) => this.postComment(e)}>Send Comment</button>
                     </div> : null}
                 </div>}
             </div>
