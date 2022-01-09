@@ -23,6 +23,7 @@ class SignIn extends React.PureComponent {
             }
             this.props.loginUserAction(credentials)
         }
+        
     }
 
     render() {

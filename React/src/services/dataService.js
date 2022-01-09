@@ -1,5 +1,7 @@
 import axios from "axios"
+import { useHistory } from "react-router-dom";
 const baseUrl = "https://localhost:5001/api"
+
 
 const makeConfig = () => {
     return {
@@ -70,4 +72,11 @@ export const registerUser = (data) => {
 
 export const loginUser = (json) => {
     return axios.post(baseUrl + '/User/login', {...json}, makeConfig())
+    // return axios.post(baseUrl + '/User/login', {...json}, makeConfig()).then((res) => {
+    //     const history = useHistory();
+    //     if (!res.data.error) {
+    //         history.push("/");
+    //     }
+    //   });
+    
 }
