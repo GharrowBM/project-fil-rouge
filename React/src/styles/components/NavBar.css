@@ -8,6 +8,7 @@
 
 .search-area {
     display: grid;
+    border: var(--text--color-active) solid 1px;
     grid-template: 1fr / min-content 9fr 1fr;
     align-items: center;
     background-color: var(--main-bg-color);

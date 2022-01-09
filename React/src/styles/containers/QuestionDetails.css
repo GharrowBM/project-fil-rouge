@@ -2,7 +2,7 @@
     width: 90%;
     margin: auto;
     display: grid;
-    grid-template: 1fr/ 8fr 2fr;
+    grid-template: 1fr/ 1fr;
     background-color: var(--main-color-1);
     color: white;
 }
@@ -39,6 +39,7 @@
 
 .question-header hr {
     width: 90%;
+    color: var(--text--color-active);
 }
 
 .question-side {

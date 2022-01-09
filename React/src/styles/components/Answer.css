@@ -56,8 +56,7 @@
 
 .answers hr {
     width: 90%;
-    height: 2px;
-    background-color: var(--main-color-3);
+    color: var(--text--color-active);
 }
 
 .answer {

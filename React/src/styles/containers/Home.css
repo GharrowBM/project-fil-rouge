@@ -30,8 +30,8 @@
 }
 
 .forum-question__content {
-    border-left: 1px solid white;
-    border-right: 1px solid white;
+    border-left: 1px solid var(--text--color-active);
+    border-right: 1px solid var(--text--color-active);
     padding-left: 15px;
     padding-right: 15px;
     overflow: hidden;
