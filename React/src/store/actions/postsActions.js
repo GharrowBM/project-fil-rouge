@@ -3,9 +3,11 @@ import {
     getAllTags,
     getAllUsers,
     getPost, postAnswer,
+    postComment,
     postPost,
     searchPostWithString, updateAnswer,
-    updatePost
+    updatePost,
+    updateComment
 } from "../../services/dataService";
 
 export const IS_LOADING = "IS_LOADING"
@@ -21,6 +23,8 @@ export const END_ADDING_NEW_COMMENT = "END_ADDING_NEW_COMMENT"
 export const ERROR_ADDING_NEW_COMMENT = "ERROR_ADDING_NEW_COMMENT"
 export const END_UPDATING_POST = "END_UPDATING_POST"
 export const ERROR_UPDATING_POST = "ERROR_UPDATING_POST"
+export const END_UPDATING_COMMENT = "END_UPDATING_COMMENT"
+export const ERROR_UPDATING_COMMENT  = "ERROR_UPDATING_COMMENT"
 export const END_UPDATING_ANSWER = "END_UPDATING_ANSWER"
 export const ERROR_UPDATING_ANSWER = "ERROR_UPDATING_ANSWER"
 export const END_SEARCHING_POST_WITH_QUERY = "END_SEARCHING_POST_WITH_QUERY"
@@ -135,13 +139,13 @@ export const submitNewAnswer = (answer) => {
     }
 }
 
-/*xport const submitNewComment = (comment) => {
+export const submitNewComment = (comment) => {
     return (dispatch) => {
         dispatch({
             type: IS_LOADING,
             value: true
         })
-        postAnswer(answer).then(res => {
+        postComment(comment).then(res => {
             dispatch({
                 type: END_ADDING_NEW_COMMENT
             })
@@ -152,7 +156,7 @@ export const submitNewAnswer = (answer) => {
             })
         })
     }
-}*/
+}
 
 
 
@@ -169,6 +173,25 @@ export const updatePostAction = (id, post) => {
         }).catch(error => {
             dispatch({
                 type: ERROR_UPDATING_POST,
+                error: error
+            })
+        })
+    }
+}
+
+export const updateCommentAction = (id, comment) => {
+    return (dispatch) => {
+        dispatch({
+            type: IS_LOADING,
+            value: true
+        })
+        updateComment(id, comment).then(res => {
+            dispatch({
+                type: END_UPDATING_COMMENT
+            })
+        }).catch(error => {
+            dispatch({
+                type: ERROR_UPDATING_COMMENT,
                 error: error
             })
         })

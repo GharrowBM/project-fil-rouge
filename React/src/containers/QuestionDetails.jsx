@@ -26,7 +26,6 @@ class QuestionDetails extends React.PureComponent {
 
     submitAnswer(e) {
         e.preventDefault()
-        alert('submitAnswer')
 
         if (this.state.answerText.length > 0) {
 

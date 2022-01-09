@@ -3,6 +3,7 @@ import Comment from './Comment'
 import {fetchPostWithId, submitNewComment, updateAnswerAction, updatePostAction} from "../store/actions/postsActions";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
+import BASEAVATAR from "../assets/baseAvatar2wCircle.svg";
 import '../styles/components/Answer.css';
 import answer from "./Answer";
 
@@ -20,8 +21,10 @@ class Answer extends React.PureComponent {
         return `${dateString.substr(8, 2)}/${dateString.substr(5, 2)}/${dateString.substr(0, 4)} at ${dateString.substr(11, 8)}`
     }
 
-/*    postComment(e) {
+    postComment(e) {
         e.preventDefault()
+
+        if (this.state.answerText.length > 0) {
 
         const newComment = {
             content: this.state.commentText,
@@ -30,7 +33,11 @@ class Answer extends React.PureComponent {
         }
 
         this.props.submitNewComment(newComment)
-    }*/
+
+        console.log(newComment);
+
+        }
+    }
 
     editAnswer(e) {
         e.preventDefault()
@@ -40,6 +47,26 @@ class Answer extends React.PureComponent {
         }
 
         this.props.updateAnswerAction(this.props.answer.id, newAnswer)
+    }
+
+
+    getAvatar() {
+        /*if (baseUsers.find((x) => x.name === writer).avatar)
+          return (
+            <img
+              src={baseUsers.find((x) => x.name === writer).avatar}
+              alt="writer avatar"
+              className="post-poster__avatar"
+            />
+          );
+        else*/
+        return (
+            <img
+                src={BASEAVATAR}
+                alt="writer avatar"
+                className="post-poster__avatar"
+            />
+        )
     }
 
     render() {
@@ -66,18 +93,18 @@ class Answer extends React.PureComponent {
                             <button onClick={() => this.setState({isEditingAnswer: !this.state.isEditingAnswer})}>Edit</button>
                         </div>
                         :  this.props.answer.content}
-    {/*            <div className="answer-comments">
+    {           <div className="answer-comments">
                     {this.props.answer.comments?.map((comment,index) => <Comment key={comment.id}
-                                                                                 avatar={this.props.getAvatar(comment.writer)}
+                                                                                 avatar={this.getAvatar()}
                                                                                  comment={comment}/>)}
                     {this.props.currentUser ?                     <div>
                         <textarea type="text" placeholder="Your comment here..."
                                name={`new-comment-answer-${this.props.answer.id}`}
                                id={`new-comment-answer-${this.props.answer.id}`} value={this.state.commentText}
                                onChange={(e) => this.setState({commentText: e.currentTarget.value})}></textarea>
-                        <button onClick={this.postComment}>Envoyer le commentaire</button>
+                        <button onClick={(e) => this.postComment(e)}>Envoyer le commentaire</button>
                     </div> : null}
-                </div>*/}
+                </div>}
             </div>
         </article>)
     }
@@ -94,7 +121,7 @@ const mapStateToProps = (state) => {
 
 const mapActionToProps = (dispatch) => {
     return {
-        /*submitNewComment: (comment) => dispatch(submitNewComment(comment)),*/
+        submitNewComment: (comment) => dispatch(submitNewComment(comment)),
         updateAnswerAction: (id, answer) => dispatch(updateAnswerAction(id, answer))
     }
 }

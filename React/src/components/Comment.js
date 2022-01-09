@@ -1,6 +1,6 @@
 import React from "react";
 import '../styles/components/Comment.css';
-import {updatePostAction} from "../store/actions/postsActions";
+import {updateCommentAction} from "../store/actions/postsActions";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 
@@ -21,10 +21,13 @@ constructor(props) {
     editComment(e) {
         e.preventDefault()
 
-        const postToEdit = this.props.currentPost
-        postToEdit.answers[this.props.comment.answerId].content = this.state.commentText
+        const commentToEdit = this.props.comment
+        commentToEdit.content = this.state.commentText
 
-        this.props.updatePostAction(this.props.currentPost.id, postToEdit)
+        console.log(this.props.comment)
+
+        // this.props.updatePostAction(this.props.currentPost.id, postToEdit)
+        this.props.updateCommentAction(this.props.comment.id, commentToEdit)
     }
 
   render() {
@@ -67,7 +70,7 @@ const mapStateToProps = (state) => {
 
 const mapActionToProps = (dispatch) => {
     return {
-        updatePostAction: (id, post) => dispatch(updatePostAction(id, post))
+        updateCommentAction: (id, comment) => dispatch(updateCommentAction(id, comment))
     }
 }
 

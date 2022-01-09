@@ -45,7 +45,7 @@ export const postAnswer = (answer) => {
 }
 
 export const postComment = (comment) => {
-    return axios.post(baseUrl + '/Comment', {...comment}, makeConfig())
+    return axios.post(baseUrl + '/Comments', {...comment}, makeConfig())
 }
 
 export const updatePost = (id, post) => {
@@ -57,7 +57,7 @@ export const updateAnswer = (id, answer) => {
 }
 
 export const updateComment = (id, comment) => {
-    return axios.put(baseUrl + '/Comment/'+ id, {...comment}, makeConfig())
+    return axios.put(baseUrl + '/Comments/'+ id, {...comment}, makeConfig())
 }
 
 export const deletePost = (id) => {
