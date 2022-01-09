@@ -90,20 +90,24 @@ namespace FilRouge.WPFApp.ViewModel
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
         }
 
-        public async void DeletePost()
+        public async Task<List<Post>> DeletePost(int id)
         {
+            List<Post> newList = new List<Post>();
+            
             string url = "https://localhost:5001/api";
             
             using HttpClient client = new HttpClient();
             
-            var responseOfDeletion = await client.DeleteAsync(url + $"/Post/{SelectedPost.Id}");
+            var responseOfDeletion = await client.DeleteAsync(url + $"/Post/{id}");
             if (responseOfDeletion.IsSuccessStatusCode)
             {
                 var responseOfGetAll = await client.GetAsync(url + "/Post");
                 var json = await responseOfGetAll.Content.ReadAsStringAsync();
                 
-                Posts = JsonConvert.DeserializeObject<List<Post>>(json);
+                newList = JsonConvert.DeserializeObject<List<Post>>(json);
             }
+
+            return newList;
         }
 
         public async Task<List<Post>> UpdateListOfPosts()
