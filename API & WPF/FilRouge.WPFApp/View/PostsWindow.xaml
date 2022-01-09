@@ -15,9 +15,8 @@
         </ResourceDictionary>
     </Window.Resources>
 
-    <DockPanel DataContext="{StaticResource pVm}">
+    <DockPanel DataContext="{StaticResource pVm}" Loaded="FrameworkElement_OnLoaded">
         <Menu DockPanel.Dock="Top">
-
             <MenuItem Header="Edition">
                 <MenuItem Header="Supprimer le Post..."
                           Command="{Binding DeletePostCommand}"

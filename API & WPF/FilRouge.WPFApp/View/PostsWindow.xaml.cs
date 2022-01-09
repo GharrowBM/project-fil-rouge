@@ -35,5 +35,10 @@ namespace FilRouge.WPFApp.View
         {
 
         }
+
+        private void FrameworkElement_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            PVm.UpdateListOfPosts();
+        }
     }
 }

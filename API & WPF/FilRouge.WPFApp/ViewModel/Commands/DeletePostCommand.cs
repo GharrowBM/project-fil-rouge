@@ -33,7 +33,9 @@ namespace FilRouge.WPFApp.ViewModel.Commands
 
         public void Execute(object? parameter)
         {
-            VM.DeletePost();
+            Post post = parameter as Post;
+            
+            VM.DeletePost(post.Id);
         }
     }
 }

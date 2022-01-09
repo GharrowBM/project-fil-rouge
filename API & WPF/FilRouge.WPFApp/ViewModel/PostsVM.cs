@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace FilRouge.WPFApp.ViewModel
 {
     public class PostsVM : INotifyPropertyChanged
     {
-        private string _searchText;
+        private string _searchText = "a";
         private List<Post> posts;
         private List<Post> filteredPosts;
         private TypeOfFilterEnum selectedFilter;
@@ -30,7 +31,7 @@ namespace FilRouge.WPFApp.ViewModel
             { 
                 _searchText = value;
                 OnPropertyChanged("SearchText");
-                FilterListOfPosts();
+                FilterListOfPosts(SearchText);
             }
         }
 
@@ -43,11 +44,20 @@ namespace FilRouge.WPFApp.ViewModel
             { 
                 selectedFilter = value;
                 OnPropertyChanged("SelectedFilter");
-                FilterListOfPosts();
+                FilterListOfPosts(SearchText);
             }
         }
 
-        public List<Post> Posts { get { return posts; } set { posts = value; } }
+        public List<Post> Posts
+        {
+            get { return posts; }
+            set
+            {
+                posts = value;
+                OnPropertyChanged("Posts");
+                OnPropertyChanged("FilteredPosts");
+            }
+        }
         public List<Post> FilteredPosts 
         { 
             get { return filteredPosts; } 
@@ -80,7 +90,7 @@ namespace FilRouge.WPFApp.ViewModel
             SearchText = "";
         }
 
-        public async Task<List<Post>> FilterListOfPosts(string searchQuery)
+        public async void FilterListOfPosts(string searchQuery)
         {
             List<Post> newList = new List<Post>();
             
@@ -89,11 +99,14 @@ namespace FilRouge.WPFApp.ViewModel
             using HttpClient client = new HttpClient();
             
             var responseOfGetAll = await client.GetAsync(url + $"/Post/search{searchQuery}");
-            var json = await responseOfGetAll.Content.ReadAsStringAsync();
+            if (responseOfGetAll.IsSuccessStatusCode)
+            {
+                var json = await responseOfGetAll.Content.ReadAsStringAsync();
             
-            newList = JsonConvert.DeserializeObject<List<Post>>(json);
+                newList = JsonConvert.DeserializeObject<List<Post>>(json);
 
-            return newList;
+                FilteredPosts = newList;
+            }
         }
 
         private void OnPropertyChanged(string property)
@@ -112,16 +125,13 @@ namespace FilRouge.WPFApp.ViewModel
             var responseOfDeletion = await client.DeleteAsync(url + $"/Post/{id}");
             if (responseOfDeletion.IsSuccessStatusCode)
             {
-                var responseOfGetAll = await client.GetAsync(url + "/Post");
-                var json = await responseOfGetAll.Content.ReadAsStringAsync();
-                
-                newList = JsonConvert.DeserializeObject<List<Post>>(json);
+                FilterListOfPosts(SearchText);
             }
 
             return newList;
         }
 
-        public async Task<List<Post>> UpdateListOfPosts()
+        public async void UpdateListOfPosts()
         {
             List<Post> newList = new List<Post>();
             
@@ -134,7 +144,7 @@ namespace FilRouge.WPFApp.ViewModel
             
             newList = JsonConvert.DeserializeObject<List<Post>>(json);
 
-            return newList;
+            Posts = newList;
         }
     }
 }
