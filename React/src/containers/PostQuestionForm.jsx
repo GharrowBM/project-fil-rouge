@@ -17,6 +17,7 @@ class PostQuestionForm extends React.PureComponent {
         e.preventDefault()
 
         if (this.state.title && this.state.content) {
+
             const newPost = {
                 title: this.state.title,
                 content: this.state.content,

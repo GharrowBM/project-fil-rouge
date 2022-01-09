@@ -2,9 +2,10 @@ import React from "react";
 import {withRouter} from "react-router-dom";
 import Answer from "../components/Answer";
 import BASEAVATAR from "../assets/baseAvatar2wCircle.svg";
-import {fetchPostWithId, updatePostAction} from "../store/actions/postsActions";
+import {fetchPostWithId, submitNewAnswer, updatePostAction} from "../store/actions/postsActions";
 import {connect} from "react-redux";
 import '../styles/containers/QuestionDetails.css';
+import answer from "../components/Answer";
 
 class QuestionDetails extends React.PureComponent {
 
@@ -26,16 +27,16 @@ class QuestionDetails extends React.PureComponent {
     postAnswer(e) {
         e.preventDefault()
 
-        const newAnswer = {
-            content: this.state.answerText,
-            userId: this.props.currentUser.id,
-            postId: this.props.currentPost.id
+        if (this.state.answerText.length > 0) {
+
+            const newAnswer = {
+                userId: this.props.currentUser.id,
+                postId: this.props.currentPost.id,
+                content: this.state.answerText
+            }
+
+            this.props.addNewAnswer(newAnswer)
         }
-
-        const postToEdit = this.props.currentPost
-        postToEdit.answers.push(newAnswer)
-
-        this.props.updatePostAction(this.props.currentPost.id, postToEdit)
     }
 
     getAvatar(writer) {
@@ -122,15 +123,15 @@ const mapStateToProps = (state) => {
     return {
         loading: state.posts.isLoading,
         currentPost: state.posts.currentPost,
-        currentUser: state.users.currentUser,
-        allPosts: state.posts.allPosts
+        currentUser: state.users.currentUser
     }
 }
 
 const mapActionToProps = (dispatch) => {
     return {
         fetchPostWithId: (id) => dispatch(fetchPostWithId(id)),
-        updatePostAction: (id, post) => dispatch(updatePostAction(id, post))
+        updatePostAction: (id, post) => dispatch(updatePostAction(id, post)),
+        addNewAnswer: (answer) => dispatch(submitNewAnswer(answer))
     }
 }
 

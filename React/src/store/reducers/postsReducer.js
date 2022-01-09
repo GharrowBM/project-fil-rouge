@@ -61,12 +61,38 @@ export const postsReducer = (state = initialState, action) => {
                 error: action.error
             }
             break;
+        case 'END_ADDING_NEW_ANSWER':
+            return {
+                ...state,
+                isLoading: false,
+                error: undefined
+            }
+            break;
+        case 'ERROR_ADDING_NEW_ANSWER':
+            return {
+                ...state,
+                isLoading: false,
+                error: action.error
+            }
+            break;
+        case 'END_ADDING_NEW_COMMENT':
+            return {
+                ...state,
+                isLoading: false,
+                error: undefined
+            }
+            break;
+        case 'ERROR_ADDING_NEW_COMMENT':
+            return {
+                ...state,
+                isLoading: false,
+                error: action.error
+            }
+            break;
         case 'END_UPDATING_POST':
             return {
                 ...state,
                 isLoading: false,
-                currentPost: action.newCurrentPost,
-                allPosts: action.newAllPosts,
                 error: undefined
             }
             break;

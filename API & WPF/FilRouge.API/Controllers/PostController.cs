@@ -89,10 +89,7 @@ namespace FilRouge.API.Controllers
         {
             if (_postRepository.Update(id, post))
             {
-                var newAllPostsList = _postRepository.GetAll();
-                var newPost = _postRepository.Get(id);
-                
-                return Ok(new {Message = $"{post.Title} modified with success!", newAllPosts=newAllPostsList, newCurrentPost=newPost});
+                return Ok(new {Message = $"{post.Title} modified with success!"});
             }
             
             return NotFound(new {Message = $"{post.Title} cannot be modified..."});
@@ -100,7 +97,6 @@ namespace FilRouge.API.Controllers
 
         // DELETE api/<APIController>/5
         [HttpDelete("{id}")]
-        [Authorize(Policy = "admin")]
         public IActionResult Delete(int id)
         {
             if (_postRepository.Delete(id))

@@ -64,13 +64,9 @@ namespace FilRouge.Repositories
 
             if (c != null)
             {
-                c.Answer = entity.Answer;
                 c.Content = entity.Content;
                 c.Score = entity.Score;
-                c.User = entity.User;
-                c.AnswerId = entity.AnswerId;
-                c.EditedAt = entity.EditedAt;
-                c.UserId = entity.UserId;
+                c.EditedAt = DateTime.Now;
             }
 
             return _dataContext.SaveChanges() > 0;

@@ -2,9 +2,9 @@ import {
     getAllPosts,
     getAllTags,
     getAllUsers,
-    getPost,
+    getPost, postAnswer,
     postPost,
-    searchPostWithString,
+    searchPostWithString, updateAnswer,
     updatePost
 } from "../../services/dataService";
 
@@ -15,8 +15,14 @@ export const END_GETTING_POST_WITH_ID = "END_GETTING_POST_WITH_ID"
 export const ERROR_GETTING_POST_WITH_ID = "ERROR_GETTING_POST_WITH_ID"
 export const END_ADDING_NEW_POST = "END_ADDING_NEW_POST"
 export const ERROR_ADDING_NEW_POST = "ERROR_ADDING_NEW_POST"
+export const END_ADDING_NEW_ANSWER = "END_ADDING_NEW_ANSWER"
+export const ERROR_ADDING_NEW_ANSWER = "ERROR_ADDING_NEW_ANSWER"
+export const END_ADDING_NEW_COMMENT = "END_ADDING_NEW_COMMENT"
+export const ERROR_ADDING_NEW_COMMENT = "ERROR_ADDING_NEW_COMMENT"
 export const END_UPDATING_POST = "END_UPDATING_POST"
 export const ERROR_UPDATING_POST = "ERROR_UPDATING_POST"
+export const END_UPDATING_ANSWER = "END_UPDATING_ANSWER"
+export const ERROR_UPDATING_ANSWER = "ERROR_UPDATING_ANSWER"
 export const END_SEARCHING_POST_WITH_QUERY = "END_SEARCHING_POST_WITH_QUERY"
 export const ERROR_SEARCHING_POST_WITH_QUERY = "ERROR_SEARCHING_POST_WITH_QUERY"
 
@@ -110,6 +116,46 @@ export const submitNewPost = (post) => {
     }
 }
 
+export const submitNewAnswer = (answer) => {
+    return (dispatch) => {
+        dispatch({
+            type: IS_LOADING,
+            value: true
+        })
+        postAnswer(answer).then(res => {
+            dispatch({
+                type: END_ADDING_NEW_ANSWER
+            })
+        }).catch(error => {
+            dispatch({
+                type: ERROR_ADDING_NEW_ANSWER,
+                error: error
+            })
+        })
+    }
+}
+
+/*xport const submitNewComment = (comment) => {
+    return (dispatch) => {
+        dispatch({
+            type: IS_LOADING,
+            value: true
+        })
+        postAnswer(answer).then(res => {
+            dispatch({
+                type: END_ADDING_NEW_COMMENT
+            })
+        }).catch(error => {
+            dispatch({
+                type: ERROR_ADDING_NEW_COMMENT,
+                error: error
+            })
+        })
+    }
+}*/
+
+
+
 export const updatePostAction = (id, post) => {
     return (dispatch) => {
         dispatch({
@@ -118,13 +164,30 @@ export const updatePostAction = (id, post) => {
         })
         updatePost(id, post).then(res => {
             dispatch({
-                type: END_UPDATING_POST,
-                newAllPosts: res.data.newAllPosts,
-                newCurrentPost: res.data.newCurrentPost
+                type: END_UPDATING_POST
             })
         }).catch(error => {
             dispatch({
                 type: ERROR_UPDATING_POST,
+                error: error
+            })
+        })
+    }
+}
+
+export const updateAnswerAction = (id, answer) => {
+    return (dispatch) => {
+        dispatch({
+            type: IS_LOADING,
+            value: true
+        })
+        updateAnswer(id, answer).then(res => {
+            dispatch({
+                type: END_UPDATING_ANSWER
+            })
+        }).catch(error => {
+            dispatch({
+                type: ERROR_UPDATING_ANSWER,
                 error: error
             })
         })

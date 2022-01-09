@@ -3,6 +3,7 @@ import React from 'react'
 import {connect} from "react-redux";
 import {searchPosts} from "../store/actions/postsActions";
 import '../styles/components/NavBar.css';
+import {logoutUserAction} from "../store/actions/usersActions";
 
 class NavBar extends React.PureComponent {
 
@@ -19,7 +20,12 @@ class NavBar extends React.PureComponent {
         console.log(`searchQuery: ${this.state.inputValue}`)
 
         this.props.searchPosts(this.state.inputValue)
-        return (<Redirect to={'/'}/>)
+    }
+
+    logOutUser(e) {
+        e.preventDefault()
+
+        this.props.logOutAction()
     }
 
     render () {
@@ -32,7 +38,7 @@ class NavBar extends React.PureComponent {
                     <input type="text" name="search-input" id="search-input" placeholder="Your search..." value={this.inputValue} onChange={(e) => this.setState({inputValue: e.currentTarget.value})}/>
                     <button className="search-submit" onClick={(e) => this.searchPosts(e)}>Search</button>
                     </div>
-                {this.props.currentUser ? <Link to="/">Log Out</Link> : <Link to="/signin">Sign In</Link>}
+                {this.props.currentUser ? <Link to="/">Sign Out</Link> : <Link to="/signin">Sign In</Link>}
                 {this.props.currentUser ? <Link to="/question/add">Add a question</Link> : <Link to="/register">Sign Up</Link>}
                 {this.props.currentUser ? <Link to="/accountdetails">{this.props.currentUser.username}</Link> : null}
             </nav>
@@ -49,7 +55,8 @@ const mapStateToProps = (state) => {
 
 const mapActionToProps = (dispatch) => {
     return {
-        searchPosts: (searchString) => dispatch(searchPosts(searchString))
+        searchPosts: (searchString) => dispatch(searchPosts(searchString)),
+        logOutAction: () => dispatch(logoutUserAction)
     }
 }
 

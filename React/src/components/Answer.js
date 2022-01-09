@@ -1,6 +1,6 @@
 import React from 'react'
 import Comment from './Comment'
-import {fetchPostWithId, updatePostAction} from "../store/actions/postsActions";
+import {fetchPostWithId, submitNewComment, updateAnswerAction, updatePostAction} from "../store/actions/postsActions";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
 import '../styles/components/Answer.css';
@@ -20,28 +20,26 @@ class Answer extends React.PureComponent {
         return `${dateString.substr(8, 2)}/${dateString.substr(5, 2)}/${dateString.substr(0, 4)} at ${dateString.substr(11, 8)}`
     }
 
-    postComment(e, answerId) {
+/*    postComment(e) {
         e.preventDefault()
 
         const newComment = {
             content: this.state.commentText,
             userId: this.props.currentUser.id,
-            answerId: answerId
+            answerId: this.props.answer.id
         }
 
-        const postToEdit = this.props.currentPost
-        postToEdit.answers.find(a => a.id == answerId).comments?.push(newComment)
-
-        this.props.updatePostAction(this.props.currentPost.id, postToEdit)
-    }
+        this.props.submitNewComment(newComment)
+    }*/
 
     editAnswer(e) {
         e.preventDefault()
 
-        const postToEdit = this.props.currentPost
-        postToEdit.answers.find(a => a.id == this.props.answer.id).content = this.state.answerText
+        const newAnswer = {
+            content: this.state.answerText
+        }
 
-        this.props.updatePostAction(this.props.currentPost.id, postToEdit)
+        this.props.updateAnswerAction(this.props.answer.id, newAnswer)
     }
 
     render() {
@@ -68,7 +66,7 @@ class Answer extends React.PureComponent {
                             <button onClick={() => this.setState({isEditingAnswer: !this.state.isEditingAnswer})}>Edit</button>
                         </div>
                         :  this.props.answer.content}
-                <div className="answer-comments">
+    {/*            <div className="answer-comments">
                     {this.props.answer.comments?.map((comment,index) => <Comment key={comment.id}
                                                                                  avatar={this.props.getAvatar(comment.writer)}
                                                                                  comment={comment}/>)}
@@ -77,9 +75,9 @@ class Answer extends React.PureComponent {
                                name={`new-comment-answer-${this.props.answer.id}`}
                                id={`new-comment-answer-${this.props.answer.id}`} value={this.state.commentText}
                                onChange={(e) => this.setState({commentText: e.currentTarget.value})}></textarea>
-                        <button onClick={(e) => this.postComment(e, this.props.answer.id)}>Envoyer le commentaire</button>
+                        <button onClick={this.postComment}>Envoyer le commentaire</button>
                     </div> : null}
-                </div>
+                </div>*/}
             </div>
         </article>)
     }
@@ -96,7 +94,8 @@ const mapStateToProps = (state) => {
 
 const mapActionToProps = (dispatch) => {
     return {
-        updatePostAction: (id, post) => dispatch(updatePostAction(id, post))
+        /*submitNewComment: (comment) => dispatch(submitNewComment(comment)),*/
+        updateAnswerContent: (id, answer) => dispatch(updateAnswerAction(id, answer))
     }
 }
 

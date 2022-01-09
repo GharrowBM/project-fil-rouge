@@ -35,6 +35,14 @@ export const usersReducer = (state = initialState, action) => {
                 error: undefined
             }
             break;
+        case 'END_LOGOUT_USER':
+            return {
+                ...state,
+                isLoading: false,
+                currentUser: undefined,
+                error: undefined
+            }
+            break;
         case 'ERROR_LOGIN_USER':
             return {
                 ...state,

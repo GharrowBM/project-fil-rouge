@@ -69,23 +69,14 @@ namespace FilRouge.Repositories
         public bool Update(int id, Post entity)
         {
             Post p = Get(id);
-
-            if (p != null)
-            {
-                p.Answers.Add(entity.Answers.LastOrDefault());
-            }
             
-            /*if (p != null)
+            if (p != null)
             {
                 p.Title = entity.Title;
                 p.Content = entity.Content;
-                p.Answers = entity.Answers;
                 p.Score = entity.Score;
-                p.Tags = entity.Tags;
-                p.User = entity.User;
                 p.EditedAt = DateTime.Now;
-                p.UserId = entity.UserId;
-            }*/
+            }
             
             return _dataContext.SaveChanges() > 0;
         }
