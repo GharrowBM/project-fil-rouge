@@ -24,7 +24,7 @@ class Question extends React.PureComponent {
             <article className="forum-question">
             <aside className="forum-counters">
                 <div>{this.post.answers.length} answers</div>
-                <div>{this.post.score} score</div>
+                {/* <div>{this.post.score} score</div> */}
             </aside>
             <section className="forum-question__content">
                 <Link to={`/question/${this.post.id}`}><h2>{this.post.title}</h2></Link>
