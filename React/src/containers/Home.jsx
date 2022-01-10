@@ -15,7 +15,7 @@ class Home extends React.PureComponent {
     render() {
         return (<section className="home">
             
-            <div className="tags-area">
+            {/* <div className="tags-area">
                 <div>
                     <h2>Selected tags :</h2>
                 <SelectedTags />
@@ -24,7 +24,7 @@ class Home extends React.PureComponent {
                     <h2>Available tags :</h2>
                     <SearchTags />
                 </div>
-            </div>
+            </div> */}
 
             {this.props.posts !== undefined ? this.props.posts?.map((post,index) => <Question key={index} post={post}/>) : <> </>}
             

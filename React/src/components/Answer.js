@@ -87,7 +87,7 @@ class Answer extends React.PureComponent {
                         <textarea value={this.state.answerText} onChange={(e) => this.setState({answerText: e.currentTarget.value})}></textarea>
                         <button onClick={(e) =>this.editAnswer(e)}>Submit Edited Answer</button>
                     </div>
-                    : this.props.currentUser?.id == this.props.answer.user.id ?
+                    : this.props.currentUser?.id == this.props.answer.user?.id ?
                         <div className="answer-content__toDisplay">
                             {this.props.answer.content}
                             <button onClick={() => this.setState({isEditingAnswer: !this.state.isEditingAnswer})}>Edit Answer</button>
