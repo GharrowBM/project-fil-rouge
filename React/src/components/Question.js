@@ -1,16 +1,36 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import BASEAVATAR from '../assets/baseAvatar2wCircle.svg'
 import '../styles/components/Question.css';
+import {updateCommentAction} from "../store/actions/postsActions";
+import {connect} from "react-redux";
 
 class Question extends React.PureComponent {
     constructor(props) {
         super(props)
     }
 
-    getAvatar(user) {
-        // if (baseUsers.find(x => x.username === user).avatar) return baseUsers.find(x => x.username === user).avatar
-         return BASEAVATAR
+    getAvatar(writerId) {
+        if (this.props.allAvatarPath.find(x => x.userId === this.props.post.id)) {
+            const path = this.props.allAvatarPath.find(x => x.userId === this.props.post.id).avatarPath
+            console.log(path)
+            return (
+                <img
+                    src={path.toString()}
+                    alt={this.props.post.user.username}
+                    className="post-poster__avatar"
+                />
+            );
+        }
+
+        else
+            return (
+                <img
+                    src={BASEAVATAR}
+                    alt="writer avatar"
+                    className="post-poster__avatar"
+                />
+            )
     }
 
     formatDate(dateString) {
@@ -44,4 +64,10 @@ class Question extends React.PureComponent {
     }
 }
 
-export default Question;
+const mapStateToProps = (state) => {
+    return {
+        allAvatarPath: state.posts.allAvatarPath
+    }
+}
+
+export default connect(mapStateToProps, null)(withRouter(Question))

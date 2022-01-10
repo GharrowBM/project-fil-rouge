@@ -40,16 +40,16 @@ class QuestionDetails extends React.PureComponent {
         }
     }
 
-    getAvatar(writer) {
-        /*if (baseUsers.find((x) => x.name === writer).avatar)
+    getAvatar(writerId) {
+        if (this.props.allAvatarPath.find(x => x.userId === this.props.currentPost.id))
           return (
             <img
-              src={baseUsers.find((x) => x.name === writer).avatar}
-              alt="writer avatar"
+              src={this.props.allAvatarPath.find(x => x.userId === this.props.currentPost.id).avatarPath}
+              alt={this.props.currentPost.user.username}
               className="post-poster__avatar"
             />
           );
-        else*/
+        else
         return (
             <img
                 src={BASEAVATAR}
@@ -69,7 +69,7 @@ class QuestionDetails extends React.PureComponent {
                             <h1>{this.props.currentPost.title}</h1>
                             <div className="question-details">
                                 <div className="question-poster">
-                                    {this.getAvatar(this.props.currentPost.user.username)}
+                                    {this.getAvatar(this.props.currentPost.user.id)}
                                     <span className="question-poster__name">{this.props.currentPost.user.username}</span>
                                 </div>
                                 <div className="question-infos">
@@ -124,7 +124,8 @@ const mapStateToProps = (state) => {
     return {
         loading: state.posts.isLoading,
         currentPost: state.posts.currentPost,
-        currentUser: state.users.currentUser
+        currentUser: state.users.currentUser,
+        allAvatarPath: state.posts.allAvatarPath
     }
 }
 

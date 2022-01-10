@@ -50,7 +50,7 @@ namespace FilRouge.API.Controllers
                 listOfAvatars.Add(new
                 {
                     userId=u.Id,
-                    avatarPath= Path.Combine(Environment.CurrentDirectory, u.AvatarPath)
+                    avatarPath= $"{HttpContext.Request.Scheme}://{HttpContext.Request.Host + "/" +u.AvatarPath}"
                 });
             });
             

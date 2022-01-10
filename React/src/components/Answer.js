@@ -39,6 +39,25 @@ class Answer extends React.PureComponent {
         }
     }
 
+    getAvatar(writerId) {
+        if (this.props.allAvatarPath.find(x => x.userId === this.props.currentPost.id))
+            return (
+                <img
+                    src={this.props.allAvatarPath.find(x => x.userId === this.props.currentPost.id).avatarPath}
+                    alt={this.props.currentPost.user.username}
+                    className="post-poster__avatar"
+                />
+            );
+        else
+            return (
+                <img
+                    src={BASEAVATAR}
+                    alt="writer avatar"
+                    className="post-poster__avatar"
+                />
+            )
+    }
+
     editAnswer(e) {
         e.preventDefault()
 
@@ -51,30 +70,10 @@ class Answer extends React.PureComponent {
         this.state.isEditingAnswer = false
     }
 
-
-    getAvatar() {
-        /*if (baseUsers.find((x) => x.name === writer).avatar)
-          return (
-            <img
-              src={baseUsers.find((x) => x.name === writer).avatar}
-              alt="writer avatar"
-              className="post-poster__avatar"
-            />
-          );
-        else*/
-        return (
-            <img
-                src={BASEAVATAR}
-                alt="writer avatar"
-                className="post-poster__avatar"
-            />
-        )
-    }
-
     render() {
         return (<article className="answer">
             <div className="answer-writer">
-                {this.props.avatar}
+                {this.getAvatar(this.props.answer.user.id)}
                 <span>{this.props.answer.user?.username}</span>
             </div>
             <div className="answer-date">
@@ -97,7 +96,7 @@ class Answer extends React.PureComponent {
                         : <div className="answer-content__toDisplay"> {this.props.answer.content} </div>}
     {           <div className="answer-comments">
                     {this.props.answer.comments?.map((comment,index) => <Comment key={comment.id}
-                                                                                 avatar={this.getAvatar()}
+                                                                                 getAvatar={this.props.getAvatar}
                                                                                  comment={comment}/>)}
                     {this.props.currentUser ?                     <div>
                         <textarea type="text" placeholder="Your comment here..."
@@ -117,7 +116,8 @@ const mapStateToProps = (state) => {
         loading: state.posts.isLoading,
         currentPost: state.posts.currentPost,
         currentUser: state.users.currentUser,
-        allPosts: state.posts.allPosts
+        allPosts: state.posts.allPosts,
+        allAvatarPath: state.posts.allAvatarPath
     }
 }
 

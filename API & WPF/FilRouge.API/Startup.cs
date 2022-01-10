@@ -14,11 +14,13 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using FilRouge.API.Services;
+using Microsoft.Extensions.FileProviders;
 
 namespace FilRouge.API
 {
@@ -100,6 +102,13 @@ namespace FilRouge.API
             }
 
             app.UseHttpsRedirection();
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(env.ContentRootPath, "")),
+                RequestPath = ""
+            });
 
             app.UseRouting();
 

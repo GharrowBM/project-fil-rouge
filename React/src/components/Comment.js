@@ -3,6 +3,7 @@ import '../styles/components/Comment.css';
 import {updateCommentAction} from "../store/actions/postsActions";
 import {connect} from "react-redux";
 import {withRouter} from "react-router-dom";
+import BASEAVATAR from "../assets/baseAvatar2wCircle.svg";
 
 
 class Comment extends React.PureComponent {
@@ -16,6 +17,25 @@ constructor(props) {
 
     formatDate(dateString) {
         return `${dateString.substr(8, 2)}/${dateString.substr(5, 2)}/${dateString.substr(0, 4)} at ${dateString.substr(11, 8)}`
+    }
+
+    getAvatar(writerId) {
+        if (this.props.allAvatarPath.find(x => x.userId === this.props.currentPost.id))
+            return (
+                <img
+                    src={this.props.allAvatarPath.find(x => x.userId === this.props.currentPost.id).avatarPath}
+                    alt={this.props.currentPost.user.username}
+                    className="post-poster__avatar"
+                />
+            );
+        else
+            return (
+                <img
+                    src={BASEAVATAR}
+                    alt="writer avatar"
+                    className="post-poster__avatar"
+                />
+            )
     }
 
     editComment(e) {
@@ -34,7 +54,7 @@ constructor(props) {
     return (
       <div className="comment">
         <div className="comment-writer">
-          {this.props.avatar}
+          {this.getAvatar(this.props.comment.user.id)}
           <span>{this.props.comment.user.username}</span>
         </div>
         <div className="comment-date">
@@ -64,7 +84,8 @@ const mapStateToProps = (state) => {
         loading: state.posts.isLoading,
         currentPost: state.posts.currentPost,
         currentUser: state.users.currentUser,
-        allPosts: state.posts.allPosts
+        allPosts: state.posts.allPosts,
+        allAvatarPath: state.posts.allAvatarPath
     }
 }
 
