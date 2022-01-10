@@ -10,7 +10,7 @@ namespace FilRouge.WPFApp.View
         
         public EditUserWindow(User user)
         {
-            VM = new EditUserVM(user);
+            VM = new EditUserVM(user, this);
             DataContext = VM;
             
             InitializeComponent();

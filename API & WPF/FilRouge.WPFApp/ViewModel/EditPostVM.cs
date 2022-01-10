@@ -20,6 +20,7 @@ namespace FilRouge.WPFApp.ViewModel
         public event PropertyChangedEventHandler? PropertyChanged;
 
         private Post selectedPost;
+        private EditPostWindow _window;
 
 
         public Post SelectedPost
@@ -34,9 +35,10 @@ namespace FilRouge.WPFApp.ViewModel
 
         public EditPostCommand EditPostCommand { get; set; }
 
-        public EditPostVM(Post post)
+        public EditPostVM(Post post, EditPostWindow window)
         {
             SelectedPost = post;
+            _window = window;
             EditPostCommand = new EditPostCommand(this);
         }
 
@@ -55,11 +57,11 @@ namespace FilRouge.WPFApp.ViewModel
 
             using HttpClient client = new HttpClient();
 
-            var httpResponse = await client.PutAsync(url + $"/Put/{SelectedPost.Id}", httpContent);
+            var httpResponse = await client.PutAsync(url + $"/Post/{SelectedPost.Id}", httpContent);
 
-            if (httpResponse.Content != null)
+            if (httpResponse.IsSuccessStatusCode)
             {
-                var responseContent = await httpResponse.Content.ReadAsStringAsync();
+                _window.Close();
             }
         }
     }

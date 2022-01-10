@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
+using FilRouge.Classes;
 
 namespace FilRouge.WPFApp.ViewModel.Commands
 {
@@ -14,7 +15,14 @@ namespace FilRouge.WPFApp.ViewModel.Commands
         
         public bool CanExecute(object? parameter)
         {
-            throw new NotImplementedException();
+            User u = parameter as User;
+
+            if (u != null)
+            {
+                return true;
+            }
+
+            return false;
         }
 
         public void Execute(object? parameter)

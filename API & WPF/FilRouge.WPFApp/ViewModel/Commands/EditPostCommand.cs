@@ -21,14 +21,7 @@ namespace FilRouge.WPFApp.ViewModel.Commands
 
         public bool CanExecute(object? parameter)
         {
-            Post post = parameter as Post;
-
-            if (post != null)
-            {
-                return true;
-            }
-
-            return false;
+            return true;
         }
 
         public void Execute(object? parameter)

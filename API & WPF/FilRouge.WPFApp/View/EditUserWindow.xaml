@@ -5,8 +5,33 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:FilRouge.WPFApp.View"
         mc:Ignorable="d"
-        Title="EditUserWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Edit a User" Height="300" Width="800">
+    <Grid Margin="10">
+        <StackPanel>
+            <TextBlock Text="Username" />
+            <TextBox Text="{Binding SelectedUser.Username}"/>
+            <TextBlock Text="Password" />
+            <TextBox Text="{Binding SelectedUser.Password}"/>
+            <TextBlock Text="Email" />
+            <TextBox Text="{Binding SelectedUser.Email}"/>
+            <TextBlock Text="Firstname" />
+            <TextBox Text="{Binding SelectedUser.FirstName}"/>
+            <TextBlock Text="Lastname" />
+            <TextBox Text="{Binding SelectedUser.LastName}"/>
+            <Grid Margin="0 5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Text="Is Admin?" Grid.Column="0"/>
+                <CheckBox Grid.Column="1" Margin="10 0" IsChecked="{Binding SelectedUser.IsAdmin}"/>
+                <TextBlock Text="Is Blacklisted ?" Grid.Column="2"/>
+                <CheckBox Grid.Column="3" Margin="5 0 0 0" IsChecked="{Binding SelectedUser.IsBlacklisted}"/>
+            </Grid>
+            <Button Margin="20" Content="Edit"
+                    Command="{Binding EditUserCommand}"></Button>
+        </StackPanel>
     </Grid>
 </Window>

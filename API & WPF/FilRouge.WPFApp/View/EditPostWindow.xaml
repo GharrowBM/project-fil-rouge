@@ -6,7 +6,7 @@
         xmlns:vm="clr-namespace:FilRouge.WPFApp.ViewModel"
         xmlns:local="clr-namespace:FilRouge.WPFApp.View"
         mc:Ignorable="d"
-        Title="EditPostWindow" Height="400" Width="800">
+        Title="Edit a Post" Height="400" Width="800">
     <Grid Margin="10">
         <StackPanel>
             <TextBlock Text="Post title" />
@@ -14,8 +14,7 @@
             <TextBlock Text="Post content" />
             <TextBox Text="{Binding SelectedPost.Content}" Height="216"/>
             <Button Margin="0 5 0 0" Content="Edit"
-                    Command="{Binding EditPostCommand}"
-                    CommandParameter="{Binding SelectedPost, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"></Button>
+                    Command="{Binding EditPostCommand}"></Button>
         </StackPanel>
     </Grid>
 </Window>

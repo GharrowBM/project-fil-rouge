@@ -160,6 +160,32 @@ namespace FilRouge.API.Controllers
             
             return NotFound(new {Message = $"{username} cannot be edited..."});
         }
+        
+        [HttpPut("wpf/{id}")]
+        public IActionResult PutFromWPF(int id, [FromBody] User user)
+        {
+            User userToEdit = _userRepository.Get(id);
+
+            if(userToEdit != null)
+            {
+                userToEdit.FirstName = user.FirstName;
+                userToEdit.LastName = user.LastName;
+                userToEdit.Username = user.Username;
+                userToEdit.Password = user.Password;
+                userToEdit.Email = user.Email;
+                userToEdit.IsAdmin = user.IsAdmin;
+                userToEdit.IsBlacklisted = user.IsBlacklisted;
+                
+                if (_userRepository.Update(id, userToEdit))
+                {
+                    var newUser = _userRepository.Get(id);
+                    
+                    return Ok(new {Message=$"{user.Username} successfully edited!", newCurrentUser=newUser});
+                }
+            }
+            
+            return NotFound(new {Message = $"{user.Username} cannot be edited..."});
+        }
 
         // DELETE api/<APIController>/5
         [HttpDelete("{id}")]
