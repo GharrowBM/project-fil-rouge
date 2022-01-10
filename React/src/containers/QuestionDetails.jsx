@@ -75,7 +75,7 @@ class QuestionDetails extends React.PureComponent {
                                 </div>
                                 <div className="question-infos">
                                     <div className="question-date">Asked on: {this.formatDate(this.props.currentPost.createdAt)}</div>
-                                    <div className="question-views">Viewed {this.props.currentPost.score} times</div>
+                                    {/* <div className="question-views">Viewed {this.props.currentPost.score} times</div> */}
                                 </div>
                             </div>
                             <hr/>
