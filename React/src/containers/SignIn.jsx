@@ -2,7 +2,7 @@ import React from 'react'
 import { loginUserAction } from '../store/actions/usersActions'
 import {connect} from "react-redux";
 import '../styles/containers/SignIn.css';
-import {useHistory} from "react-router-dom"
+import {Redirect} from "react-router-dom"
 
 
 
@@ -37,10 +37,10 @@ class SignIn extends React.PureComponent {
 
     render() {
         return(<>
-            
-            <form className="form-signin">
-            <fieldset>
-                <label htmlFor="username">username</label>
+            {this.props.currentUser ? (<Redirect to="/" ></Redirect>) :
+                (<form className="form-signin">
+                <fieldset>
+                    <label htmlFor="username">username</label>
                     <input type="text" name="username" id="username" value={this.state.username} onChange={(e) => this.setState({username: e.currentTarget.value})}/>
                 </fieldset>
                 <fieldset>
@@ -49,7 +49,8 @@ class SignIn extends React.PureComponent {
                 </fieldset>
                 <button onClick={(e) => this.signInUser(e)}>Log In</button>
                 <div className="loginerror"></div>
-            </form>
+            </form>)}
+
 
         </>)
     }

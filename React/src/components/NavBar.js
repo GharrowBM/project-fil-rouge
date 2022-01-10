@@ -38,7 +38,7 @@ class NavBar extends React.PureComponent {
                     </div>
                 {this.props.currentUser ? <Link to="/" onClick={(e) => this.logOutUser(e)}>Log Out</Link> : <Link to="/signin">Log In</Link>}
                 {this.props.currentUser ? <Link to="/question/add">Add Question</Link> : <Link to="/register">Sign Up</Link>}
-                {this.props.currentUser ? <Link to="/accountdetails">{this.props.currentUser.username}</Link> : null}
+                {this.props.currentUser ? <Link to="/accountdetails"><img src={this.props.currentUserAvatarPath.replaceAll("/", "\\")} alt={"avatar"}/>{this.props.currentUser.username}</Link> : null}
             </nav>
         )
     }
@@ -47,7 +47,8 @@ class NavBar extends React.PureComponent {
 const mapStateToProps = (state) => {
     return {
         loading: state.users.isLoading,
-        currentUser: state.users.currentUser
+        currentUser: state.users.currentUser,
+        currentUserAvatarPath: state.users.currentUserAvatarPath
     }
 }
 

@@ -20,7 +20,8 @@ export const loginUserAction = (json) => {
 
             dispatch({
                 type: END_LOGIN_USER,
-                user: res.data.user
+                user: res.data.user,
+                avatarPath: res.data.userAvatarPath
             })
         }).catch(error => {
             dispatch({

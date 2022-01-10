@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.IO;
 using System.Security.Claims;
 using System.Text;
 using FilRouge.API.Services;
@@ -125,7 +126,7 @@ namespace FilRouge.API.Controllers
 
                 //Créer notre jwt
                 JwtSecurityToken jwt = new JwtSecurityToken(issuer: "m2i", audience: "m2i", claims: claims, signingCredentials: signingCredentials, expires: DateTime.Now.AddDays(2));
-                return Ok(new {Token= new JwtSecurityTokenHandler().WriteToken(jwt), User = userToFind});
+                return Ok(new {Token= new JwtSecurityTokenHandler().WriteToken(jwt), User = userToFind, UserAvatarPath=Path.Combine(Environment.CurrentDirectory, userToFind.AvatarPath)});
             }
 
             return NotFound(new {Message="Something went wrong"});

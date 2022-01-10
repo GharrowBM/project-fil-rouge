@@ -1,6 +1,7 @@
 const initialState = {
     isLoading: false,
     currentUser: undefined,
+    currentUserAvatarPath: undefined,
     error: undefined
 }
 
@@ -32,6 +33,7 @@ export const usersReducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 currentUser: action.user,
+                currentUserAvatarPath: action.avatarPath,
                 error: undefined
             }
             break;
