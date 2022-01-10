@@ -64,7 +64,7 @@ class AccountDetails extends React.PureComponent {
                     <label htmlFor={"avatar"}>avatar</label>
                     <input type={"file"} name={"avatar"} onChange={this.onChangeFile}/>
                 </fieldset>
-                <button onClick={(e) => this.updateUserInfos(e)}>Update info</button>
+                <button onClick={(e) => this.updateUserInfos(e)}>Update</button>
             </form>
             </section>)
     }

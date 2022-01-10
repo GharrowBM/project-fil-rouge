@@ -92,7 +92,7 @@ class Answer extends React.PureComponent {
                             {this.props.answer.content}
                             <button onClick={() => this.setState({isEditingAnswer: !this.state.isEditingAnswer})}>Edit Answer</button>
                         </div>
-                        :  this.props.answer.content}
+                        : <div className="answer-content__toDisplay"> {this.props.answer.content} </div>}
     {           <div className="answer-comments">
                     {this.props.answer.comments?.map((comment,index) => <Comment key={comment.id}
                                                                                  avatar={this.getAvatar()}

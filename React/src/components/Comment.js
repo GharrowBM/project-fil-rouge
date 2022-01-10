@@ -50,7 +50,7 @@ constructor(props) {
                       {this.props.comment.content}
                       <button onClick={() => this.setState({isEditingComment: !this.state.isEditingComment})}>Edit Comment</button>
                   </div>
-                  :  this.props.comment.content}
+                  :<div className="comment-content__toDisplay">  {this.props.comment.content}</div>}
       </div>
     );
   }
