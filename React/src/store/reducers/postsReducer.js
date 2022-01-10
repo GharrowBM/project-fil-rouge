@@ -3,6 +3,7 @@ const initialState = {
     allPosts: undefined,
     currentPost: undefined,
     allTags: undefined,
+    allAvatarPath: undefined,
     nbOfUsers: undefined,
     error: undefined
 }
@@ -22,6 +23,7 @@ export const postsReducer = (state = initialState, action) => {
                 allPosts: action.posts,
                 allTags: action.tags,
                 nbOfUsers: action.nbOfUsers,
+                allAvatarPath: action.allAvatarsPath,
                 error: undefined
             }
             break;

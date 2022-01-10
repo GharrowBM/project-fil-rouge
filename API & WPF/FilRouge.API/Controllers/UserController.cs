@@ -37,6 +37,25 @@ namespace FilRouge.API.Controllers
         {
             return Ok(_userRepository.GetAll());
         }
+        
+        [HttpGet("avatars")]
+        public IActionResult GetAllUsersAvatar()
+        {
+            var users = _userRepository.GetAll();
+
+            var listOfAvatars = new List<Object>();
+            
+            users.ForEach(u =>
+            {
+                listOfAvatars.Add(new
+                {
+                    userId=u.Id,
+                    avatarPath= Path.Combine(Environment.CurrentDirectory, u.AvatarPath)
+                });
+            });
+            
+            return Ok(listOfAvatars);
+        }
 
         // GET api/<APIController>/5
         [HttpGet("{id}")]

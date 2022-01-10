@@ -13,6 +13,10 @@ export const getAllUsers = () => {
     return axios.get(baseUrl + '/User', makeConfig())
 }
 
+export const getAllAvatars = () => {
+    return axios.get(baseUrl + '/User/avatars', makeConfig())
+}
+
 export const updateUser = (id, user) => {
     return axios.put(baseUrl + '/User/'+ id, user, makeConfig())
 }

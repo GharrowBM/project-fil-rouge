@@ -7,7 +7,7 @@ import {
     postPost,
     searchPostWithString, updateAnswer,
     updatePost,
-    updateComment
+    updateComment, getAllAvatars
 } from "../../services/dataService";
 
 export const IS_LOADING = "IS_LOADING"
@@ -42,13 +42,18 @@ export const fetchAllPostsWithTags = () => {
                 const tags = res.data
 
                 getAllUsers().then(res => {
-                    console.log(res.data)
-                    dispatch({
-                        type: END_GETTING_ALL_POSTS_WITH_TAGS,
-                        posts: posts,
-                        tags: tags,
-                        nbOfUsers: res.data.length
+                    const nbOfUsers = res.data.length
+
+                    getAllAvatars().then(res => {
+                        dispatch({
+                            type: END_GETTING_ALL_POSTS_WITH_TAGS,
+                            posts: posts,
+                            tags: tags,
+                            nbOfUsers: nbOfUsers,
+                            allAvatarsPath: res.data
+                        })
                     })
+
                 })
             })
         }).catch(error => {
