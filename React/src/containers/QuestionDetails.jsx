@@ -99,7 +99,7 @@ class QuestionDetails extends React.PureComponent {
                                 {this.props.currentPost.answers?.map((answer,index) => (<>
                                     <Answer
                                         key={answer.id}
-                                        answer={answer}
+                                        answer={this.props.currentPost.answers[index]}
                                         getAvatar={this.getAvatar}
                                         avatar={this.getAvatar(answer.writer)}
                                     />

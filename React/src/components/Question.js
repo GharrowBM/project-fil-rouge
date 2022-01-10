@@ -19,6 +19,10 @@ class Question extends React.PureComponent {
         return `${dateString.substr(8,2)}/${dateString.substr(5,2)}/${dateString.substr(0,4)}`
     }
 
+    formatContentLength(string) {
+        return string.length > 100 ? string.substr(0,100) + "..." : string;
+    }
+
     render() {
         return (<>
             <article className="forum-question">
@@ -28,7 +32,7 @@ class Question extends React.PureComponent {
             </aside>
             <section className="forum-question__content">
                 <Link to={`/question/${this.post.id}`}><h2>{this.post.title}</h2></Link>
-                <p>{this.post.content}</p>
+                <p>{this.formatContentLength(this.post.content)}</p>
             </section>
             <aside className="forum-poster">
                 <p className="forum-poster__asked">Asked : {this.formatDate(this.post.createdAt)}</p>
