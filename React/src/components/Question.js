@@ -55,7 +55,7 @@ class Question extends React.PureComponent {
             <aside className="forum-poster">
                 <p className="forum-poster__asked">Asked : {this.formatDate(this.props.post.createdAt)}</p>
                 <div className="forum-posterinfo">
-                <img src={this.getAvatar(this.props.post.user)} alt="writer avatar" className="forum-poster__avatar"/>
+                {this.getAvatar(this.props.post.user)}
                     <div className="forum-poster__name">{this.props.post.user?.username}</div>
                 </div>
             </aside>
