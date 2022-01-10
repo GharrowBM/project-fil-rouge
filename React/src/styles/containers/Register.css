@@ -4,7 +4,6 @@
 
 .form-register {
     background-color: var(--main-color-1);
-    border-radius: 10px;
     margin: auto;
     padding: 25px 10px;
     text-align: right;
@@ -98,4 +97,16 @@
 
 .website-conditions p:last-child {
     font-size: 3px;
+}
+
+@media (max-width: 700px) { 
+
+    .form-register {
+        width: 85%;
+    }
+
+    .form-register .website-conditions {
+        font-size: 12px;
+    }
+
 }

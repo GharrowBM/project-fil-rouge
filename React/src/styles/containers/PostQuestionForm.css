@@ -46,3 +46,27 @@
     cursor: pointer;
     transform: scale(1.02);
 }
+
+@media (max-width: 700px) { 
+
+    .form-add-question {
+        width: 90%;
+    }
+
+    .form-add-question fieldset:first-of-type {
+        min-height: 100px;
+    }
+
+    .form-add-question fieldset:first-of-type textarea{
+        min-height: 100px;
+    }
+
+    .form-add-question fieldset:last-of-type {
+        min-height: 300px;
+    }
+
+    .form-add-question fieldset:last-of-type textarea{
+        min-height: 300px;
+    }
+
+}

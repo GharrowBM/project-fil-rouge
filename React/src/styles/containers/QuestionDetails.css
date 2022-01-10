@@ -77,4 +77,16 @@
     font-weight: bolder;
 }
 
+@media (max-width: 700px) { 
+
+    .question-header h1 {
+        font-size: 18px;
+    }
+
+    .question-details {
+        flex-direction: column;
+    }
+
+
+}
 

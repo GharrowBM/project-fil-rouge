@@ -95,3 +95,15 @@
     scrollbar-width: thin;
     scrollbar-color: greenyellow transparent;
 }
+
+@media (max-width: 700px) { 
+
+    .form-accountDetails {
+        width: 80%;
+    }
+
+    .accountDetails h1 {
+        font-size: 18px;
+    }
+
+}

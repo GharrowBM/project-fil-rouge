@@ -73,3 +73,33 @@
 .forum-poster__name {
     align-self: center;
 }
+
+@media (max-width: 700px) { 
+
+    h2 {
+        font-size: 18px;
+    }
+
+    .tags-area {
+        width: 80%;
+        grid-template: 1fr / 1fr 1fr;
+        gap: 15px;
+    }
+
+    .forum-question {
+        width: 90%;
+        display: grid;
+        grid-template: 1fr / 1fr 1fr;
+        /* grid-template-columns: 0.7fr 8fr 1fr; */
+    }
+
+    .forum-question__content {
+        border-left: none;
+        border-right: none;
+        order: 1;
+        grid-column: span 2;
+        border-top: solid 1px var(--text--color-active);
+        margin-top: 10px;
+    }
+
+}
