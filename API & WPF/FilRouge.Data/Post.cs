@@ -18,8 +18,7 @@ namespace FilRouge.Classes
         public DateTime CreatedAt { get; set; }
         public DateTime EditedAt { get; set; }
         public int Score { get; set; }
-
-
+        
         public int UserId { get; set; }
 
         [ForeignKey("UserId")]

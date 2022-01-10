@@ -2,6 +2,9 @@ import React from 'react'
 import { loginUserAction } from '../store/actions/usersActions'
 import {connect} from "react-redux";
 import '../styles/containers/SignIn.css';
+import {useHistory} from "react-router-dom"
+
+
 
 class SignIn extends React.PureComponent {
     constructor(props) {
@@ -9,6 +12,12 @@ class SignIn extends React.PureComponent {
         this.state = {
             username: "",
             password: ""
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        if(this.props.currentUser != undefined) {
+/*            this.props.history.push("/")*/
         }
     }
 
@@ -46,10 +55,12 @@ class SignIn extends React.PureComponent {
     }
 }
 
+
 const mapStateToProps = (state) => {
     return {
       loading: state.users.isLoading,
-      currentUser: state.users.currentUser
+      currentUser: state.users.currentUser,
+        /*history: useHistory()*/
     }
   }
   

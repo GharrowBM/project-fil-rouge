@@ -35,9 +35,8 @@ class QuestionDetails extends React.PureComponent {
                 content: this.state.answerText
             }
 
-            console.log(newAnswer);
-
-            this.props.submitNewAnswer(newAnswer)
+            this.props.submitNewAnswer(newAnswer, this.props.currentPost.id)
+            console.log(this.props.currentPost)
         }
     }
 
@@ -133,7 +132,7 @@ const mapActionToProps = (dispatch) => {
     return {
         fetchPostWithId: (id) => dispatch(fetchPostWithId(id)),
         updatePostAction: (id, post) => dispatch(updatePostAction(id, post)),
-        submitNewAnswer: (answer) => dispatch(submitNewAnswer(answer))
+        submitNewAnswer: (answer, postId) => dispatch(submitNewAnswer(answer, postId))
     }
 }
 

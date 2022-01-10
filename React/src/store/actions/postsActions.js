@@ -120,13 +120,19 @@ export const submitNewPost = (post) => {
     }
 }
 
-export const submitNewAnswer = (answer) => {
+export const submitNewAnswer = (answer, postId) => {
     return (dispatch) => {
         dispatch({
             type: IS_LOADING,
             value: true
         })
         postAnswer(answer).then(res => {
+            getPost(postId).then(res => {
+                dispatch({
+                    type: END_GETTING_POST_WITH_ID,
+                    post: res.data
+                })
+            })
             dispatch({
                 type: END_ADDING_NEW_ANSWER
             })
@@ -139,15 +145,21 @@ export const submitNewAnswer = (answer) => {
     }
 }
 
-export const submitNewComment = (comment) => {
+export const submitNewComment = (comment, postId) => {
     return (dispatch) => {
         dispatch({
             type: IS_LOADING,
             value: true
         })
         postComment(comment).then(res => {
+            getPost(postId).then(res => {
+                dispatch({
+                    type: END_GETTING_POST_WITH_ID,
+                    post: res.data
+                })
+            })
             dispatch({
-                type: END_ADDING_NEW_COMMENT
+                type: ERROR_ADDING_NEW_COMMENT
             })
         }).catch(error => {
             dispatch({
@@ -179,13 +191,19 @@ export const updatePostAction = (id, post) => {
     }
 }
 
-export const updateCommentAction = (id, comment) => {
+export const updateCommentAction = (id, comment, postId) => {
     return (dispatch) => {
         dispatch({
             type: IS_LOADING,
             value: true
         })
         updateComment(id, comment).then(res => {
+            getPost(postId).then(res => {
+                dispatch({
+                    type: END_GETTING_POST_WITH_ID,
+                    post: res.data
+                })
+            })
             dispatch({
                 type: END_UPDATING_COMMENT
             })
@@ -198,13 +216,19 @@ export const updateCommentAction = (id, comment) => {
     }
 }
 
-export const updateAnswerAction = (id, answer) => {
+export const updateAnswerAction = (id, answer, postId) => {
     return (dispatch) => {
         dispatch({
             type: IS_LOADING,
             value: true
         })
         updateAnswer(id, answer).then(res => {
+            getPost(postId).then(res => {
+                dispatch({
+                    type: END_GETTING_POST_WITH_ID,
+                    post: res.data
+                })
+            })
             dispatch({
                 type: END_UPDATING_ANSWER
             })

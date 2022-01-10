@@ -32,7 +32,7 @@ class Answer extends React.PureComponent {
             answerId: this.props.answer.id
         }
 
-        this.props.submitNewComment(newComment)
+        this.props.submitNewComment(newComment, this.props.currentPost.id)
 
         console.log(newComment);
 
@@ -46,7 +46,9 @@ class Answer extends React.PureComponent {
             content: this.state.answerText
         }
 
-        this.props.updateAnswerAction(this.props.answer.id, newAnswer)
+        this.props.updateAnswerAction(this.props.answer.id, newAnswer, this.props.currentPost.id)
+
+        this.state.isEditingAnswer = false
     }
 
 
@@ -121,8 +123,8 @@ const mapStateToProps = (state) => {
 
 const mapActionToProps = (dispatch) => {
     return {
-        submitNewComment: (comment) => dispatch(submitNewComment(comment)),
-        updateAnswerAction: (id, answer) => dispatch(updateAnswerAction(id, answer))
+        submitNewComment: (comment, postId) => dispatch(submitNewComment(comment, postId)),
+        updateAnswerAction: (id, answer, postId) => dispatch(updateAnswerAction(id, answer, postId))
     }
 }
 

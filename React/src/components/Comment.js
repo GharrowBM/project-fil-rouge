@@ -9,7 +9,7 @@ class Comment extends React.PureComponent {
 constructor(props) {
     super(props)
     this.state = {
-        commentText: "",
+        commentText: this.props.comment.content,
         isEditingComment: false
     }
 }
@@ -21,10 +21,13 @@ constructor(props) {
     editComment(e) {
         e.preventDefault()
 
-        const commentToEdit = this.props.comment
-        commentToEdit.content = this.state.commentText
+        const newComment = {
+            content: this.state.commentText
+        }
 
-        this.props.updateCommentAction(this.props.comment.id, commentToEdit)
+        this.props.updateCommentAction(this.props.comment.id, newComment, this.props.currentPost.id)
+
+        this.state.isEditingComment = false
     }
 
   render() {
@@ -67,7 +70,7 @@ const mapStateToProps = (state) => {
 
 const mapActionToProps = (dispatch) => {
     return {
-        updateCommentAction: (id, comment) => dispatch(updateCommentAction(id, comment))
+        updateCommentAction: (id, comment, postId) => dispatch(updateCommentAction(id, comment, postId))
     }
 }
 

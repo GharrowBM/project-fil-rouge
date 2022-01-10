@@ -16,8 +16,6 @@ class NavBar extends React.PureComponent {
     searchPosts(e) {
         e.preventDefault()
 
-        console.log(`searchQuery: ${this.state.inputValue}`)
-
         this.props.searchPosts(this.state.inputValue)
     }
 
